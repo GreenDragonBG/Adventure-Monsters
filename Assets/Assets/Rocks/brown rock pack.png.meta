@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: b069ff0370bd618479ba5dbaf436ddc0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 527810112385983373
+    second: brown rock pack_0
+  - first:
+      213: 6725026040717380899
+    second: brown rock pack_1
+  - first:
+      213: -3790062881295776394
+    second: brown rock pack_2
+  - first:
+      213: 6761468449768045354
+    second: brown rock pack_3
+  - first:
+      213: -3597753919985647673
+    second: brown rock pack_4
+  - first:
+      213: -6422041420013135751
+    second: brown rock pack_5
+  - first:
+      213: -6890765772338125892
+    second: brown rock pack_6
+  - first:
+      213: 4712525650504169277
+    second: brown rock pack_7
+  - first:
+      213: -1702681604321954631
+    second: brown rock pack_8
+  - first:
+      213: 7196751273619731729
+    second: brown rock pack_9
+  - first:
+      213: 5344437797756252602
+    second: brown rock pack_10
+  - first:
+      213: -3578353523910754968
+    second: brown rock pack_11
+  - first:
+      213: 4431358934922711473
+    second: brown rock pack_12
+  - first:
+      213: -7055182939335060325
+    second: brown rock pack_13
+  - first:
+      213: -8332048743777991658
+    second: brown rock pack_14
+  - first:
+      213: 6700651006724237406
+    second: brown rock pack_15
+  - first:
+      213: 2775014957043446642
+    second: brown rock pack_16
+  - first:
+      213: 8703650668516311678
+    second: brown rock pack_17
+  - first:
+      213: 3969474963165034706
+    second: brown rock pack_18
+  - first:
+      213: 2341542548724394261
+    second: brown rock pack_19
+  - first:
+      213: -4036962435055620833
+    second: brown rock pack_20
+  - first:
+      213: -7439934449935261463
+    second: brown rock pack_21
+  - first:
+      213: 1963458736721157033
+    second: brown rock pack_22
+  - first:
+      213: 1760486737134338037
+    second: brown rock pack_23
+  - first:
+      213: -7332653896931881660
+    second: brown rock pack_24
+  - first:
+      213: -886186098767413014
+    second: brown rock pack_25
+  - first:
+      213: 4361528053907363494
+    second: brown rock pack_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: brown rock pack_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 161
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8320a13088235700800000000000000
+      internalID: 527810112385983373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 161
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d0636ad87145d50800000000000000
+      internalID: 6725026040717380899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 162
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 675c8fbd3edf66bc0800000000000000
+      internalID: -3790062881295776394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 162
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b7f643bbf85dd50800000000000000
+      internalID: 6761468449768045354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 161
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf7cf91fd5321ec0800000000000000
+      internalID: -3597753919985647673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 129
+        width: 38
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 978954b9a5350e6a0800000000000000
+      internalID: -6422041420013135751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 131
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb3ad55f9051f50a0800000000000000
+      internalID: -6890765772338125892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 129
+        width: 43
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d37b7317c11466140800000000000000
+      internalID: 4712525650504169277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 136
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b43cc02a1cde58e0800000000000000
+      internalID: -1702681604321954631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 95
+        width: 47
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115b1f0472fffd360800000000000000
+      internalID: 7196751273619731729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 101
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1be6b6cd14b2a40800000000000000
+      internalID: 5344437797756252602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 76
+        width: 50
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86d388ecd62275ec0800000000000000
+      internalID: -3578353523910754968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_12
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 101
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b1525419795f7d30800000000000000
+      internalID: 4431358934922711473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9499832f74f61e90800000000000000
+      internalID: -7055182939335060325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_14
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 67
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6148fd700dd9e5c80800000000000000
+      internalID: -8332048743777991658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_15
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 68
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5869abc69e7dfc50800000000000000
+      internalID: 6700651006724237406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_16
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 66
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27378f89665d28620800000000000000
+      internalID: 2775014957043446642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_17
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 35
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72810a4b2499c870800000000000000
+      internalID: 8703650668516311678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_18
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 31
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d83244a278661730800000000000000
+      internalID: 3969474963165034706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_19
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 34
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5192e23ca84de7020800000000000000
+      internalID: 2341542548724394261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_20
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 34
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1de9e6dd04d9f7c0800000000000000
+      internalID: -4036962435055620833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_21
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 36
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e0ea67490b00c890800000000000000
+      internalID: -7439934449935261463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abd665715b9f3b10800000000000000
+      internalID: 1963458736721157033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_23
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 4
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffbda62c518e6810800000000000000
+      internalID: 1760486737134338037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_24
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44dcd7c712e2d3a90800000000000000
+      internalID: -7332653896931881660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_25
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 4
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae0441a3072a3b3f0800000000000000
+      internalID: -886186098767413014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown rock pack_26
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 4
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a69c0b18a2478c30800000000000000
+      internalID: 4361528053907363494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      brown rock pack_0: 527810112385983373
+      brown rock pack_1: 6725026040717380899
+      brown rock pack_10: 5344437797756252602
+      brown rock pack_11: -3578353523910754968
+      brown rock pack_12: 4431358934922711473
+      brown rock pack_13: -7055182939335060325
+      brown rock pack_14: -8332048743777991658
+      brown rock pack_15: 6700651006724237406
+      brown rock pack_16: 2775014957043446642
+      brown rock pack_17: 8703650668516311678
+      brown rock pack_18: 3969474963165034706
+      brown rock pack_19: 2341542548724394261
+      brown rock pack_2: -3790062881295776394
+      brown rock pack_20: -4036962435055620833
+      brown rock pack_21: -7439934449935261463
+      brown rock pack_22: 1963458736721157033
+      brown rock pack_23: 1760486737134338037
+      brown rock pack_24: -7332653896931881660
+      brown rock pack_25: -886186098767413014
+      brown rock pack_26: 4361528053907363494
+      brown rock pack_3: 6761468449768045354
+      brown rock pack_4: -3597753919985647673
+      brown rock pack_5: -6422041420013135751
+      brown rock pack_6: -6890765772338125892
+      brown rock pack_7: 4712525650504169277
+      brown rock pack_8: -1702681604321954631
+      brown rock pack_9: 7196751273619731729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
