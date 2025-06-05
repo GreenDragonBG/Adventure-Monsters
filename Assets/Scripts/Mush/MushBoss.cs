@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class MushBoss : MonoBehaviour
 {
-    public float jumpForce = 10f;
-    public float jumpInterval = 5f;
+    [SerializeField] public float jumpForce;
+    [SerializeField]public float jumpInterval;
 
     private Rigidbody2D rb;
-    [SerializeField] private float timeScinceOnGround;
-    [SerializeField] private bool isGrounded;
+    private float timeScinceOnGround;
+    private bool isGrounded;
     private MushOrb[] orbs;
+    private MushSpores spores;
 
     void Start()
     {
-        isGrounded = true;
-        timeScinceOnGround = Time.time;
-        rb = GetComponent<Rigidbody2D>();
-
+        //finds the spores and orbs and make the orbs inactive
+        spores = transform.parent.GetComponentInChildren<MushSpores>();
         orbs = transform.parent.GetComponentsInChildren<MushOrb>();
         foreach (MushOrb orb in orbs)
         {
             orb.gameObject.SetActive(false);
         }
+        
+        //sets that the Boss starts on the ground and find Rigidbody2D
+        isGrounded = true;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (Time.time - timeScinceOnGround >= jumpInterval && isGrounded)
+        //checks if its time to jump and if it's he launches
+        //sets isGrounded to false
+        if (((Time.time - timeScinceOnGround) >= jumpInterval) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
@@ -36,13 +41,13 @@ public class MushBoss : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        //if it touches the ground after being in the air it lauches the orbs and calculates if to send spors
+        //sets isGrounded to true
+        if (other.gameObject.CompareTag("Ground") && !isGrounded)
         {
-            if (!isGrounded)
-            {
-                timeScinceOnGround = Time.time;
-                MushOrb.LaunchAll(orbs);
-            }
+            timeScinceOnGround = Time.time;
+            MushOrb.LaunchAll(orbs);
+            spores.CalculateChance();
             isGrounded = true;
         }
     }

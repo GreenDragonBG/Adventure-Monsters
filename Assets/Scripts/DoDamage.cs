@@ -165,7 +165,6 @@ public class DoDamage : MonoBehaviour
                             if (player.transform.GetChild(i).GetChild(j).GetChild(z).name =="Head")
                             { 
                                 //Found player Head
-                                Debug.Log(player.transform.GetChild(i).GetChild(j).GetChild(z).childCount);
                                 helmet = player.transform.GetChild(i).GetChild(j).GetChild(z).GetChild(0).gameObject;
                                 
                             }

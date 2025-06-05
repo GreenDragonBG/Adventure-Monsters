@@ -59,7 +59,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            //if noy attacking rotate
+            //if not attacking rotate
             direction *= -1;
             Vector3 newScale = gameObject.transform.localScale;
             newScale.x *= -1;

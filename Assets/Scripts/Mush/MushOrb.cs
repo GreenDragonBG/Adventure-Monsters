@@ -5,19 +5,22 @@ namespace Mush
 {
     public class MushOrb :MonoBehaviour
     {
-        public float launcForceX = 2f;
-        public float launcForceY = 10f;
+        [SerializeField] public float launcForceX;
+        [SerializeField] public float launcForceY;
         private Rigidbody2D rb;
         private Vector3 startPos;
 
         private void Start()
         {
+            //finds Rigidbody2D and it's starting position
             rb = GetComponent<Rigidbody2D>();
             startPos = transform.position;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            //checks if it hits the deadzone
+            //if it does it get's teleported to its starting position and deactivated
             if (other.gameObject.name == "OrbDeadZone")
             {
                 transform.position = startPos;
@@ -27,6 +30,7 @@ namespace Mush
 
         public static void LaunchAll(MushOrb[] orbs)
         {
+            //for each orb that is called it gets activated and launched
             foreach (MushOrb orb in orbs)
             {
                 orb.gameObject.SetActive(true);
