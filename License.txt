@@ -1,0 +1,41 @@
+Adventure&Monsters Game License Agreement
+
+Copyright © GreenDragonBG 2025
+
+This License Agreement (“Agreement”) governs the use, distribution, and reproduction of Adventure&Monsters, including all game rules, cards, artwork, and related materials (“Game”).
+
+1. Ownership
+
+All rights, title, and interest in Adventure&Monsters and its materials remain the exclusive property of GreenDragonBG.
+
+2. Permitted Uses
+
+You may:
+- Play the Game for personal, non-commercial enjoyment.
+- Share photos, videos, or written reviews of the Game online, provided you credit GreenDragonBG on GitHub (e.g. “Game by https://github.com/GreenDragonBG”).
+
+3. Restrictions
+
+You may NOT:
+- Sell, license, or distribute copies of the Game or its components for commercial purposes.
+- Modify, translate, or create derivative works based on the Game for commercial purposes.
+- Use the Game’s name, logo, or artwork for commercial products without written permission.
+
+4. Fan Creations
+
+Fan-made content (e.g. custom cards, stories, artwork) is allowed under these conditions:
+- It must be clearly marked “Fan-Made” and not official.
+- It may not be sold or used for profit.
+- It must not contain offensive or illegal material.
+- It should include credit to GreenDragonBG where appropriate.
+
+5. Disclaimer
+
+The Game is provided “as is,” without warranties of any kind. GreenDragonBG shall not be liable for any damages arising from its use.
+
+6. Governing Law
+
+This Agreement is governed by the laws of Bulgaria.
+
+Contact:
+ivan_koyrushki@abv.bg
