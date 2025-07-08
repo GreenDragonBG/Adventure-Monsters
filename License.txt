@@ -12,7 +12,7 @@ All rights, title, and interest in Adventure&Monsters and its materials remain t
 
 You may:
 - Play the Game for personal, non-commercial enjoyment.
-- Share photos, videos, or written reviews of the Game online, provided you credit GreenDragonBG on GitHub (e.g. “Game by https://github.com/GreenDragonBG”).
+- Share photos, videos, or written reviews of the Game online, provided you credit GreenDragonBG on GitHub (e.g. “Game by https://github.com/GreenDragonBG ”).
 
 3. Restrictions
 
