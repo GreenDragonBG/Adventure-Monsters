@@ -15,9 +15,9 @@ public class EnemyWallCheck : MonoBehaviour
         if (other.transform.tag != "Trigger")
         {
             // if hit a player out of cooldown time Attack
-            if (other.tag == "Player" && (Time.time - enemy.GetComponent<EnemyScript>().LastTimeHitAPlayer) >= 0.5f)
+            if (other.tag == "Player" && (Time.time - enemy.GetComponent<EnemyScript>().lastTimeHitAPlayer) >= 0.5f)
             {
-                enemy.GetComponent<EnemyScript>().LastTimeHitAPlayer = Time.time;
+                enemy.GetComponent<EnemyScript>().lastTimeHitAPlayer = Time.time;
                 enemy.GetComponent<EnemyScript>().attacking = true;
                 if (isBehind)
                 {
@@ -31,9 +31,9 @@ public class EnemyWallCheck : MonoBehaviour
                 }
             }
             // if hit a wall out of cooldown rotate
-            if ((Time.time - enemy.GetComponent<EnemyScript>().LastTimeHitAWall) >= 0.2)
+            if ((Time.time - enemy.GetComponent<EnemyScript>().lastTimeHitAWall) >= 0.2)
             {
-                enemy.GetComponent<EnemyScript>().LastTimeHitAWall = Time.time;
+                enemy.GetComponent<EnemyScript>().lastTimeHitAWall = Time.time;
                 enemy.GetComponent<EnemyScript>().ReverseDirection();
             }
         }

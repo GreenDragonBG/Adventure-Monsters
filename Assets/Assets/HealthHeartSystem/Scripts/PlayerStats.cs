@@ -7,17 +7,17 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public delegate void OnHealthChangedDelegate();
-    public OnHealthChangedDelegate onHealthChangedCallback;
+    public OnHealthChangedDelegate OnHealthChangedCallback;
 
     #region Sigleton
-    private static PlayerStats instance;
+    private static PlayerStats _instance;
     public static PlayerStats Instance
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<PlayerStats>();
-            return instance;
+            if (_instance == null)
+                _instance = FindObjectOfType<PlayerStats>();
+            return _instance;
         }
     }
     #endregion
@@ -52,8 +52,8 @@ public class PlayerStats : MonoBehaviour
             maxHealth += 1;
             health = maxHealth;
 
-            if (onHealthChangedCallback != null)
-                onHealthChangedCallback.Invoke();
+            if (OnHealthChangedCallback != null)
+                OnHealthChangedCallback.Invoke();
         }   
     }
 
@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
     {
         health = Mathf.Clamp(health, 0, maxHealth);
 
-        if (onHealthChangedCallback != null)
-            onHealthChangedCallback.Invoke();
+        if (OnHealthChangedCallback != null)
+            OnHealthChangedCallback.Invoke();
     }
 }

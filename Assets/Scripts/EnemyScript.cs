@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class EnemyScript : MonoBehaviour
     private float speed = 2f; // Movement speed
     public int direction = -1; // Start moving left
     public bool attacking = false;
-    public float LastTimeHitAWall = -Mathf.Infinity;
-    public float LastTimeHitAPlayer = -Mathf.Infinity;
-    public float TimeFromDead = -Mathf.Infinity;
+    [FormerlySerializedAs("LastTimeHitAWall")] public float lastTimeHitAWall = -Mathf.Infinity;
+    [FormerlySerializedAs("LastTimeHitAPlayer")] public float lastTimeHitAPlayer = -Mathf.Infinity;
+    [FormerlySerializedAs("TimeFromDead")] public float timeFromDead = -Mathf.Infinity;
     private bool haveToTurn = false;
     public bool hitFromBihind;
     private void Start()
@@ -24,7 +25,7 @@ public class EnemyScript : MonoBehaviour
     {
         // Move the enemy in the current direction if not attacking
         //And Notify that your not Attacking
-        if (!attacking && Time.time-LastTimeHitAPlayer>0.6 && health > 0 )
+        if (!attacking && Time.time-lastTimeHitAPlayer>0.6 && health > 0 )
         {
             transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
             if (haveToTurn)
@@ -39,12 +40,12 @@ public class EnemyScript : MonoBehaviour
             // if attacking trigger animation and start cooldown
             //And Notify that your Attacking
             PlayerIsAttacked = true;
-            LastTimeHitAPlayer = Time.time;
+            lastTimeHitAPlayer = Time.time;
             animator.SetTrigger("attack");
             attacking = false;
         }
 
-        if (health <= 0  && Time.time-TimeFromDead>1 &&  Time.time-LastTimeHitAPlayer>0.7)
+        if (health <= 0  && Time.time-timeFromDead>1 &&  Time.time-lastTimeHitAPlayer>0.7)
         {
             Destroy(gameObject);
         }

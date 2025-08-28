@@ -4,51 +4,68 @@ using UnityEngine;
 
 public class MushBoss : MonoBehaviour
 {
-    [SerializeField] public float jumpForce;
-    [SerializeField]public float jumpInterval;
+    [SerializeField] public float attackInterval= 10;
 
+    private float attackSize;
+    private float normalSize;
+    [SerializeField] private float sizeChangerValue;
+    private float timeScinceAttack;
+    private bool isAttacking;
     private Rigidbody2D rb;
-    private float timeScinceOnGround;
-    private bool isGrounded;
     private MushOrb[] orbs;
+    private bool chargeLeft = true;
     private MushSpores spores;
 
     void Start()
     {
-        //finds the spores and orbs and make the orbs inactive
+        //sets the orbs and spores game objects and turns the orbs off
         spores = transform.parent.GetComponentInChildren<MushSpores>();
         orbs = transform.parent.GetComponentsInChildren<MushOrb>();
         foreach (MushOrb orb in orbs)
         {
             orb.gameObject.SetActive(false);
         }
-        
-        //sets that the Boss starts on the ground and find Rigidbody2D
-        isGrounded = true;
+        //sets sizes on attack
+        attackSize = 1.2f;
+        normalSize = 1f;
         rb = GetComponent<Rigidbody2D>();
     }
-
-    void Update()
+    //Constantly keeps track of the size and attacks on every time intreval
+    private void Update()
     {
-        //checks if its time to jump and if it's he launches
-        //sets isGrounded to false
-        if (((Time.time - timeScinceOnGround) >= jumpInterval) && isGrounded)
+        ChangeSize();
+        
+        if (((Time.time - timeScinceAttack) >= attackInterval) && !isAttacking)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            isGrounded = false;
+            Attack();
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    
+    //on attack grows in size and get back to normal size
+    private void ChangeSize()
     {
-        //if it touches the ground after being in the air it lauches the orbs and calculates if to send spors
-        //sets isGrounded to true
-        if (other.gameObject.CompareTag("Ground") && !isGrounded)
+        if (isAttacking)
         {
-            timeScinceOnGround = Time.time;
-            MushOrb.LaunchAll(orbs);
-            spores.CalculateChance();
-            isGrounded = true;
+            transform.localScale = new Vector3(1, transform.localScale.y + sizeChangerValue, 1);
+            if (transform.localScale.y >= attackSize)
+            {
+                isAttacking = false;
+            }
+        }
+        else if ( transform.localScale.y > normalSize)
+        {
+            transform.localScale = new Vector3(1,transform.localScale.y - 0.003f, 1);
         }
     }
+    
+    //sends out the orbs and calculates if it has to send the spores too
+    private void Attack()
+    {
+        timeScinceAttack = Time.time;
+        isAttacking = true;
+        
+        MushOrb.LaunchAll(orbs);
+        spores.CalculateChance();
+    }
+    
 }

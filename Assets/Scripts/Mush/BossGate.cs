@@ -55,6 +55,7 @@ public class BossGate : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         startMoving = true;
+        PlatformGrow.IsActive = true;
     }
 
     //moves the gate
