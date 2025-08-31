@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class MushBoss : MonoBehaviour
 {
+    //Orb vars
     [SerializeField] public float attackInterval= 10;
-
+    private float timeSinceAttack;
+    private bool isAttacking;
+    private MushOrb[] orbs;
+        //Size changing on orb attack vars
     private float attackSize;
     private float normalSize;
     [SerializeField] private float sizeChangerValue;
-    private float timeScinceAttack;
-    private bool isAttacking;
-    private Rigidbody2D rb;
-    private MushOrb[] orbs;
-    private bool chargeLeft = true;
+    
+    
+    //Spore vars
     private MushSpores spores;
+    [SerializeField]private float sporeInterval = 7f;
+    private float lastSporeCalculated;
 
     void Start()
     {
@@ -28,16 +32,24 @@ public class MushBoss : MonoBehaviour
         //sets sizes on attack
         attackSize = 1.2f;
         normalSize = 1f;
-        rb = GetComponent<Rigidbody2D>();
+        
+        //sets the time of last orb attack and last spore calcualted on that Start 
+        timeSinceAttack = Time.time;
+        lastSporeCalculated = Time.time;
     }
     //Constantly keeps track of the size and attacks on every time intreval
     private void Update()
     {
         ChangeSize();
         
-        if (((Time.time - timeScinceAttack) >= attackInterval) && !isAttacking)
+        if (((Time.time - timeSinceAttack) >= attackInterval) && !isAttacking)
         {
             Attack();
+        }
+        
+        if ((Time.time - lastSporeCalculated) >= sporeInterval)
+        {
+            SporeCalculate();
         }
     }
     
@@ -61,11 +73,17 @@ public class MushBoss : MonoBehaviour
     //sends out the orbs and calculates if it has to send the spores too
     private void Attack()
     {
-        timeScinceAttack = Time.time;
+        timeSinceAttack = Time.time;
         isAttacking = true;
         
         MushOrb.LaunchAll(orbs);
-        spores.CalculateChance();
     }
-    
+
+    private void SporeCalculate()
+    {
+        Debug.Log("SporeCalculate called");
+        spores.CalculateChance();
+        lastSporeCalculated = Time.time;
+    }
+
 }

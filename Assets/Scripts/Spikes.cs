@@ -4,7 +4,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     private float lastDamageTime= -Mathf.Infinity;
-    private float damageCooldown = 0.1f;
+    private float damageCooldown = 3f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,12 +15,10 @@ public class Spikes : MonoBehaviour
         }
     }
 
-    private static void SpikeDamage()
-    {
-        if (DoDamage._playerController.PlayerHealth>30)
-        {
-            Checkpoint.Respawn();
-        }
+    public  static void SpikeDamage()
+    {  
+        Debug.Log("SpikeDamage");
+        Checkpoint.Respawn();
         DoDamage.DealDamage();
     }
 }

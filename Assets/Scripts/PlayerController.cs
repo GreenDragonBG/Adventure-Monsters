@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
     private Animator animator;
+    public bool canMove = true;
     public int PlayerHealth = 90;
 
     public float speed;
@@ -18,15 +20,20 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+        canMove = true;
         rb2d = GetComponent<Rigidbody2D> ();
         animator = GetComponent<Animator> ();
     }
 
     void Update()
     {
-        CheckAttack();
-        HandleJump();
-        HandleHorizontalMovement();
+        checkIfGrounded();
+        if (canMove)
+        {
+            CheckAttack();
+            HandleJump();
+            HandleHorizontalMovement();
+        }
 
     }
     private void HandleHorizontalMovement()
@@ -64,16 +71,27 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleJump()
     {
-        // Check if player is on the ground
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        animator.SetBool("IsGrounded", isGrounded);
-        animator.SetFloat("jumpVelocity", rb2d.linearVelocityY);
 
         // Jump when X is pressed and player is grounded
         if (Input.GetKeyDown(KeyCode.X) && isGrounded)
         {
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
         }
+
+        // ✨ Variable jump height
+        if (Input.GetKeyUp(KeyCode.X) && rb2d.linearVelocity.y > 0)
+        {
+            // Cut the upward velocity in half (tweak as needed)
+            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, rb2d.linearVelocity.y * 0.5f);
+        }
+    }
+
+    private void checkIfGrounded()
+    {
+        // Check if player is on the ground
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("jumpVelocity", rb2d.linearVelocityY);
     }
 
     private void CheckAttack()
@@ -88,6 +106,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     // Start first attack if not attacking
                     animator.SetTrigger("Attack");
+                    comboQueued = false;
                 }
             }
     }
@@ -103,5 +122,11 @@ public class PlayerController : MonoBehaviour {
         {
             animator.SetBool("Combo", false);
         }
+    }
+    
+    public void Death()
+    {
+        //player dies and resets the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

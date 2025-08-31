@@ -26,6 +26,12 @@ namespace Mush
                 transform.position = startPos;
                 gameObject.SetActive(false);
             }
+
+            if (other.CompareTag("Player"))
+            {
+                DoDamage.DealDamage();
+                other.GetComponent<Animator>().SetTrigger("Damage");
+            }
         }
 
         public static void LaunchAll(MushOrb[] orbs)

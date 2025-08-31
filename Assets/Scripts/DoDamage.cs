@@ -1,35 +1,20 @@
-using System;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DoDamage : MonoBehaviour
 {
     private float lastDamageTime= -Mathf.Infinity;
     private float damageCooldown = 0.001f;
+    private float movementCooldown = 0.5f;
     private static GameObject _player;
-    public static PlayerController _playerController;
+    private static PlayerController _playerController;
+    private static Animator _animator;
     [SerializeField]private bool fromAbove;
     
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player") && ((Time.time - lastDamageTime) >= damageCooldown))
-        {
-            DealDamage();
-            
-            DamageBounce(other);
-            
-            //tracks the last time taken damage for damage cooldown
-            lastDamageTime = Time.time;
-
-        }
-    }
-
     private void Start()
     {
         _player= GameObject.FindGameObjectWithTag("Player");
         _playerController = _player.GetComponent<PlayerController>();
+        _animator = _player.GetComponent<Animator>();
     }
 
     public void Update()
@@ -42,15 +27,34 @@ public class DoDamage : MonoBehaviour
             {
                 fromAbove = false;
             }
+            
+            if (!float.IsNegativeInfinity(lastDamageTime) && _playerController.isGrounded && Time.time - lastDamageTime>= movementCooldown)
+            {
+                _playerController.canMove = true;
+            }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && ((Time.time - lastDamageTime) >= damageCooldown))
+        {
+            _animator.SetTrigger("Damage");
+            _playerController.canMove = false;
+            DealDamage();
+            DamageBounce(other);
+            
+            //tracks the last time taken damage for damage cooldown
+            lastDamageTime = Time.time;
+
+        }
+    }
+
 
     public static void DealDamage()
     {
         if (_playerController.PlayerHealth-30<=0)
         {
-            //player dies and resets the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            _playerController.PlayerHealth = 90;
+            _animator.SetBool("isDeath", true);
+            _player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else
         {
