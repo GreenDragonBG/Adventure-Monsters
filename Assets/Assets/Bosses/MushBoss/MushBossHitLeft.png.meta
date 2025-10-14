@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d8df83c6eac878d4ebeac3c9155f55f2
+guid: b3ca4029f3bcf614a86b18917e283167
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6112168125462103520
-    second: MushBossHit_0
+      213: -7250618146785731573
+    second: MushBossHitLeft_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MushBossHit_0
+      name: MushBossHitLeft_0
       rect:
         serializedVersion: 2
         x: 172
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02abd5a39773d2ba0800000000000000
-      internalID: -6112168125462103520
+      spriteID: b0cd5def531a06b90800000000000000
+      internalID: -7250618146785731573
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MushBossHit_0: -6112168125462103520
+      MushBossHitLeft_0: -7250618146785731573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -22,7 +22,7 @@ namespace Mush
         {
             //finds the mushroomLights and sets lightPeriod
             mushroomLights = mushrooms.GetComponentsInChildren<Light2D>();
-            lightPeriod = 0.2f;
+            lightPeriod = 0.3f;
             //finds the particleSystems and stops them at the start
             particles = gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (ParticleSystem particle in particles)
@@ -34,18 +34,29 @@ namespace Mush
 
         private void Update()
         {
+            //if it's calculated to be triggered it sets isWarning to True
+            if (willTrigger)
+            {
+                warningStart= Time.time;
+                willTrigger = false;
+                isWarning = true;
+                MushPlatform.IsActive = true;
+            }
+            
+            
             //if isWarning and it has waited long enough it flashes warning lights on and off
             if (isWarning && Time.time - warningStart >= lightPeriod)
             {
                 if (warningCounter %2 == 0)
                 {
                     LightWarningOff();
+                    warningCounter++;
                 }
                 else
                 {
                     LightWarningOn();
+                    warningCounter++;
                 }
-                warningCounter++;
                 warningStart = Time.time;
                 
                 if (warningCounter>=7)
@@ -55,13 +66,9 @@ namespace Mush
                     PlyaParticles();
                 }
             }
-
-            //if it's calculated to be triggered it sets isWarning to True
-            if (willTrigger)
+            else if (particles[0].isPlaying==false && !isWarning) 
             {
-                isWarning = true;
-                warningStart= Time.time;
-                willTrigger = false;
+                MushPlatform.IsActive = false;
             }
         }
 
@@ -94,9 +101,9 @@ namespace Mush
 
         public void CalculateChance()
         {
-            // 1 out of 3 chance
-            int roll = Random.Range(0, 3); // returns 0, 1, or 2
-            if (roll == 0)
+            // 2 out of 5 chance
+            int roll = Random.Range(0, 5); // returns 0, 1, 2, 3 or 4
+            if (roll == 0 || roll == 1)
             {
                 willTrigger = true;
             }

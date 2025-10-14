@@ -6,16 +6,18 @@ using UnityEngine.Rendering.Universal;
 using System.Collections.Generic;
 public class BossGate : MonoBehaviour
 {
-    [SerializeField]private float moveSpeed;
-    [SerializeField]private float lightSpeed;
-    [SerializeField]private Tilemap gate;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float lightSpeed;
+    [SerializeField] private Tilemap gate;
     [SerializeField] private GameObject layer;
+    [SerializeField] private MushBoss boss;
     private bool startMoving = false;
     private List<Light2D> lights;
 
-    //Turns the lights off and make their intensity to 0 
+    //Makes the boss not active , turns the lights off and make their intensity to 0 
     private void Start()
     {
+        boss.enabled = false;
         lights = new List<Light2D>();
         for (int i =0; i<layer.transform.childCount; i++)
         {
@@ -51,11 +53,11 @@ public class BossGate : MonoBehaviour
         }
     }
     
-    //registers that we have triggered the zone
+    //registers that we have triggered the zone and turns the boss script on
     private void OnTriggerEnter2D(Collider2D other)
     {
+        boss.enabled = true;
         startMoving = true;
-        PlatformGrow.IsActive = true;
     }
 
     //moves the gate

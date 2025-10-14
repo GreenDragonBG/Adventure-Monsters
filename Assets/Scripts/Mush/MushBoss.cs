@@ -5,30 +5,29 @@ using UnityEngine;
 public class MushBoss : MonoBehaviour
 {
     //Orb vars
+    [Header("Orbs")]
     [SerializeField] public float attackInterval= 10;
     private float timeSinceAttack;
     private bool isAttacking;
     private MushOrb[] orbs;
-        //Size changing on orb attack vars
+    
+    //Size changing on orb attack vars
+    [Header("Orbs animation size change")]
+    [SerializeField] private float sizeChangerValue;
     private float attackSize;
     private float normalSize;
-    [SerializeField] private float sizeChangerValue;
-    
     
     //Spore vars
+    [Header("Spores")]
+    [SerializeField] public float sporeInterval = 7f;
     private MushSpores spores;
-    [SerializeField]private float sporeInterval = 7f;
     private float lastSporeCalculated;
 
     void Start()
     {
-        //sets the orbs and spores game objects and turns the orbs off
+        //sets the orbs and spores game objects
         spores = transform.parent.GetComponentInChildren<MushSpores>();
-        orbs = transform.parent.GetComponentsInChildren<MushOrb>();
-        foreach (MushOrb orb in orbs)
-        {
-            orb.gameObject.SetActive(false);
-        }
+        orbs = transform.parent.GetComponentsInChildren<MushOrb>(true);
         //sets sizes on attack
         attackSize = 1.2f;
         normalSize = 1f;
@@ -76,14 +75,23 @@ public class MushBoss : MonoBehaviour
         timeSinceAttack = Time.time;
         isAttacking = true;
         
-        MushOrb.LaunchAll(orbs);
+        LaunchAll(orbs);
     }
 
     private void SporeCalculate()
-    {
-        Debug.Log("SporeCalculate called");
+    {   
         spores.CalculateChance();
         lastSporeCalculated = Time.time;
+    }
+    
+    private void LaunchAll(MushOrb[] orbs)
+    {
+        //for each orb that is called it gets activated and launched
+        foreach (MushOrb orb in orbs)
+        {
+            orb.gameObject.SetActive(true);
+            orb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(orb.launcForceX, orb.launcForceY);
+        }
     }
 
 }

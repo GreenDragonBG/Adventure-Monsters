@@ -18,7 +18,7 @@ namespace Mush
         }
 
         private void OnTriggerEnter2D(Collider2D other)
-        {
+        {  
             //checks if it hits the deadzone
             //if it does it get's teleported to its starting position and deactivated
             if (other.gameObject.name == "OrbDeadZone")
@@ -34,14 +34,6 @@ namespace Mush
             }
         }
 
-        public static void LaunchAll(MushOrb[] orbs)
-        {
-            //for each orb that is called it gets activated and launched
-            foreach (MushOrb orb in orbs)
-            {
-                orb.gameObject.SetActive(true);
-                orb.rb.linearVelocity = new Vector2(orb.launcForceX, orb.launcForceY);
-            }
-        }
+
     }
 }

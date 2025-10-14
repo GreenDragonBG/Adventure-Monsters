@@ -77,8 +77,7 @@ public class PlayerController : MonoBehaviour {
         {
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
         }
-
-        // ✨ Variable jump height
+        
         if (Input.GetKeyUp(KeyCode.X) && rb2d.linearVelocity.y > 0)
         {
             // Cut the upward velocity in half (tweak as needed)

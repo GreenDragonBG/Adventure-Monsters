@@ -17,7 +17,6 @@ public class Spikes : MonoBehaviour
 
     public  static void SpikeDamage()
     {  
-        Debug.Log("SpikeDamage");
         Checkpoint.Respawn();
         DoDamage.DealDamage();
     }
