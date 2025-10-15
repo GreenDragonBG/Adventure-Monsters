@@ -50,8 +50,8 @@ namespace Mush
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            //if player enters sets the enter time
-            if (other.CompareTag("Player"))
+            //if player enters 5 sec after the last attack sets the enter time
+            if (other.CompareTag("Player") && Time.time-timeEnteredRange>= (hitDelay+returnDelay+3f))
             {
                 inRange = true;
                 timeEnteredRange = Time.time;
