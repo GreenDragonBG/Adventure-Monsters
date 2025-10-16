@@ -1,12 +1,20 @@
 using Mush;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MushBoss : MonoBehaviour
 {
+    [Header("BossHealth")]
+    [SerializeField ]private GameObject bossBar;
+    private BossBar bossBarScript;
+    private float bossHealth = 80f;
+    
+    
+    
     //Orb vars
     [Header("Orbs")]
-    [SerializeField] public float attackInterval= 10;
+    [SerializeField] public float attackInterval= 5;
     private float timeSinceAttack;
     private bool isAttacking;
     private MushOrb[] orbs;
@@ -19,7 +27,7 @@ public class MushBoss : MonoBehaviour
     
     //Spore vars
     [Header("Spores")]
-    [SerializeField] public float sporeInterval = 7f;
+    [SerializeField] public float sporeInterval = 4.3f;
     private MushSpores spores;
     private float lastSporeCalculated;
 
@@ -35,10 +43,18 @@ public class MushBoss : MonoBehaviour
         //sets the time of last orb attack and last spore calcualted on that Start 
         timeSinceAttack = Time.time;
         lastSporeCalculated = Time.time;
+        
+        //gets the boss bar script and sets  health
+        bossBar.SetActive(true);
+        bossBarScript = bossBar.GetComponent<BossBar>();
+        bossBarScript.maxHealth = 100f;
+        bossBarScript.currentHealth = bossHealth;
     }
     //Constantly keeps track of the size and attacks on every time intreval
     private void Update()
     {
+        HealthChange();
+        
         ChangeSize();
         
         if (((Time.time - timeSinceAttack) >= attackInterval) && !isAttacking)
@@ -68,7 +84,19 @@ public class MushBoss : MonoBehaviour
             transform.localScale = new Vector3(1,transform.localScale.y - 0.003f, 1);
         }
     }
-    
+
+    private void HealthChange()
+    {
+        if (bossBarScript.currentHealth<=0)
+        {
+            bossBar.SetActive(false);
+        }
+        else
+        {
+            bossBarScript.currentHealth = bossHealth;
+        }
+    }
+
     //sends out the orbs and calculates if it has to send the spores too
     private void Attack()
     {

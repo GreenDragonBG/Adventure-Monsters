@@ -11,8 +11,11 @@ namespace Mush
         private ParticleSystem[] particles;
         private bool willTrigger;
 
+        [Header("Mushroom lights")]
         [SerializeField] private GameObject mushrooms;
         private Light2D[] mushroomLights;
+        
+        [Header("Warning Effect")]
         private float lightPeriod;
         private float warningStart;
         private bool isWarning;
@@ -62,11 +65,11 @@ namespace Mush
                 if (warningCounter>=7)
                 {
                     warningCounter = 0;
-                    isWarning = false;
                     PlyaParticles();
+                    isWarning = false;
                 }
             }
-            else if (particles[0].isPlaying==false && !isWarning) 
+            else if (particles[0].isPlaying==false && !isWarning && !willTrigger) 
             {
                 MushPlatform.IsActive = false;
             }
@@ -101,9 +104,14 @@ namespace Mush
 
         public void CalculateChance()
         {
-            // 2 out of 5 chance
+            if (particles[0].isPlaying || isWarning)
+            {
+                return;
+            }
+
+            //1 out of 5 chance
             int roll = Random.Range(0, 5); // returns 0, 1, 2, 3 or 4
-            if (roll == 0 || roll == 1)
+            if (roll == 0)
             {
                 willTrigger = true;
             }
