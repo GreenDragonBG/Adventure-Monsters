@@ -14,7 +14,8 @@ public class MushBoss : MonoBehaviour
     
     //Orb vars
     [Header("Orbs")]
-    [SerializeField] public float attackInterval= 5;
+    [SerializeField] public float startingAttackInterval= 6;
+    public  float attackInterval;
     private float timeSinceAttack;
     private bool isAttacking;
     private MushOrb[] orbs;
@@ -59,6 +60,7 @@ public class MushBoss : MonoBehaviour
         
         if (((Time.time - timeSinceAttack) >= attackInterval) && !isAttacking)
         {
+            RandomzeAttackInterval();
             Attack();
         }
         
@@ -118,8 +120,13 @@ public class MushBoss : MonoBehaviour
         foreach (MushOrb orb in orbs)
         {
             orb.gameObject.SetActive(true);
-            orb.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(orb.launcForceX, orb.launcForceY);
+            orb.Launch();
         }
+    }
+
+    private void RandomzeAttackInterval()
+    {
+        attackInterval = Random.Range(startingAttackInterval, startingAttackInterval*2+1);
     }
 
 }

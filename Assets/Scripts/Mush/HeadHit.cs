@@ -1,84 +1,85 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using Random = UnityEngine.Random;
 
 namespace Mush
 {
     public class HeadHit : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        
-        private float timeEnteredRange = 0f;
-        private bool canHit= false;
-        private bool returnToDefault = false;
-        private bool inRange = false;
-        [SerializeField] private float hitDelay = 2f;
-        [SerializeField] private float returnDelay = 1f;
-        
-        private Rigidbody2D playerRB;
-        private Camera cam;
 
+        private bool inRange = false;
+        private bool attackScheduled = false;
+        private bool returnToDefault = false;
+
+        [SerializeField] private float hitDelay = 0.5f;
+        [SerializeField] private float returnDelay = 0.12f;
+        [SerializeField] private float attackCooldown = 2f;
+
+        private float nextAttackTime = 0f;
+        private float lastAttackTime = -Mathf.Infinity;
+
+        private CameraShake camShake;
+
+        private Collider2D playerCollider;
         private void Start()
         {
-            cam= Camera.main.GetComponent<Camera>();
+            camShake = Camera.main?.GetComponent<CameraShake>();
         }
 
         private void Update()
         {
-            if (canHit && Time.time-timeEnteredRange >= hitDelay)
+            if (attackScheduled && Time.time-lastAttackTime>=attackCooldown && Time.time >= nextAttackTime)
             {
+                whereToAttack(playerCollider);
                 animator.SetTrigger("Hit");
-                canHit = false;
                 returnToDefault = true;
-                if (inRange)
-                {
-                    DoDamage.DealDamage();
-                    playerRB.AddForce(Vector2.left * 10f, ForceMode2D.Impulse);
-                }
+                lastAttackTime= Time.time;
 
-                StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.6f, 0.2f));
+                if (camShake != null)
+                    StartCoroutine(camShake.Shake(0.6f, 0.2f));
+
+                if (inRange)
+                    DoDamage.DealDamage();
+
+                
+                nextAttackTime = Time.time + hitDelay;
+
+                // Schedule next attack only if player is still in range
+                attackScheduled = inRange;
             }
 
-            if (returnToDefault && Time.time-timeEnteredRange >= (hitDelay+returnDelay))
+            if (returnToDefault && Time.time >= nextAttackTime - returnDelay)
             {
-                returnToDefault=false;
+                returnToDefault = false;
             }
         }
-        
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            //if player enters 5 sec after the last attack sets the enter time
-            if (other.CompareTag("Player") && Time.time-timeEnteredRange>= (hitDelay+returnDelay+3f))
+            if (other.CompareTag("Player"))
             {
+                playerCollider= other;
                 inRange = true;
-                timeEnteredRange = Time.time;
-                canHit = true;
-                playerRB = other.GetComponent<Rigidbody2D>();
-                
-                //checks if the player enters from the right or left
-                if (other.transform.position.x < transform.position.x)
-                {
-                    animator.SetBool("hitIsLeft", true);
-                }
-                else
-                {
-                    animator.SetBool("hitIsLeft", false);
-                }
+                attackScheduled = true;
+
+               
+
+                nextAttackTime = Time.time + hitDelay;
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
-            {
                 inRange = false;
-                playerRB = null;
-            }
         }
 
-
+        private void whereToAttack(Collider2D other)
+        {
+            if (other.transform.position.x < transform.position.x)
+                animator.SetBool("hitIsLeft", true);
+            else
+                animator.SetBool("hitIsLeft", false);
+        }
     }
 }

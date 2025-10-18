@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ParticleDamage : MonoBehaviour
 {
+    [SerializeField] public bool willTeleport;
     private ParticleSystem particleSystem;
     private float damageCooldown = 6f;
 
@@ -17,8 +18,11 @@ public class ParticleDamage : MonoBehaviour
             {
                 lastDamageTime = Time.time;
 
-                Debug.Log("SpikeDamage");
-                Checkpoint.Respawn();
+                if (willTeleport)
+                {
+                    Checkpoint.Respawn();
+                }
+                
                 DoDamage.DealDamage();
             }
         }
