@@ -1,22 +1,36 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 namespace Mush
 {
     public class MushOrb :MonoBehaviour
     {
-        [SerializeField] public float launcForceX;
-        [SerializeField] public float launcForceY;
+        [SerializeField] public float timeTillLand;
+        [SerializeField] public Transform playerPosition;
+        [SerializeField] public float launchDelay;
+        private MushBoss boss;
+        private bool toLaunch = false;
         private Rigidbody2D rb;
-        private Vector3 startPos;
-        private static bool blastIsTriggered = false;
+        private Vector2 startPos;
+        
+        private float timeStartedDelay = -Mathf.Infinity;
 
         private void Start()
         {
             //finds Rigidbody2D and it's starting position
             rb = GetComponent<Rigidbody2D>();
             startPos = transform.position;
+        }
+
+        private void Update()
+        { 
+            if (toLaunch && Time.time - timeStartedDelay >=launchDelay)
+            {
+                toLaunch = false;
+                Launch();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -26,30 +40,7 @@ namespace Mush
             if (other.gameObject.name == "OrbDeadZone")
             {
                 transform.position = startPos;
-                blastIsTriggered = false;
                 gameObject.SetActive(false);
-            }
-            
-            if (other.gameObject.name == "OrbBlastZone")
-            {
-                if (blastIsTriggered)
-                {
-                    return;
-                }
-                
-                blastIsTriggered = true;
-                int trigeredBlasts = 0;
-                
-                foreach (ParticleSystem particle in other.GetComponentsInChildren<ParticleSystem>())
-                {
-                    // firts blast has 1 out of 4 chance
-                    int roll = Random.Range(0, 4);
-                    if (roll == 0)
-                    {
-                        trigeredBlasts++;
-                        particle.Play();
-                    }
-                }
             }
 
             if (other.CompareTag("Player"))
@@ -59,9 +50,27 @@ namespace Mush
             }
         }
 
-        public void Launch()
+        private void Launch()
         {
-            rb.linearVelocity = new Vector2(launcForceX,launcForceY);
+            Vector2 endPos = playerPosition.position;
+            float g = Physics2D.gravity.y;
+            
+            Vector2 distance = endPos - startPos;
+            
+            float Vx = distance.x / timeTillLand;
+            float Vy = ( distance.y / timeTillLand) + (0.5f * Mathf.Abs(Physics2D.gravity.y)  * timeTillLand);
+            
+            boss.isAttacking = true;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.linearVelocity = new Vector2(Vx,Vy);
+        }
+
+        public void StartLaunch(MushBoss boss)
+        {
+            this.boss = boss;
+            rb.bodyType = RigidbodyType2D.Static;
+            timeStartedDelay = Time.time;
+            toLaunch = true;
         }
 
     }

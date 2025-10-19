@@ -17,7 +17,7 @@ public class MushBoss : MonoBehaviour
     [SerializeField] public float startingAttackInterval= 6;
     public  float attackInterval;
     private float timeSinceAttack;
-    private bool isAttacking;
+    public bool isAttacking;
     private MushOrb[] orbs;
     
     //Size changing on orb attack vars
@@ -103,7 +103,6 @@ public class MushBoss : MonoBehaviour
     private void Attack()
     {
         timeSinceAttack = Time.time;
-        isAttacking = true;
         
         LaunchAll(orbs);
     }
@@ -120,7 +119,7 @@ public class MushBoss : MonoBehaviour
         foreach (MushOrb orb in orbs)
         {
             orb.gameObject.SetActive(true);
-            orb.Launch();
+            orb.StartLaunch(this);
         }
     }
 
