@@ -11,7 +11,7 @@ namespace Mush
         [SerializeField] public Transform playerPosition;
         [SerializeField] public float launchDelay;
         private MushBoss boss;
-        private bool toLaunch = false;
+        public bool toLaunch = false;
         private Rigidbody2D rb;
         private Vector2 startPos;
         

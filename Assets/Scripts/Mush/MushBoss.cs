@@ -1,7 +1,9 @@
+using System;
 using Mush;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MushBoss : MonoBehaviour
 {
@@ -14,8 +16,7 @@ public class MushBoss : MonoBehaviour
     
     //Orb vars
     [Header("Orbs")]
-    [SerializeField] public float startingAttackInterval= 6;
-    public  float attackInterval;
+    [SerializeField] public float attackInterval= 6;
     private float timeSinceAttack;
     public bool isAttacking;
     private MushOrb[] orbs;
@@ -31,6 +32,9 @@ public class MushBoss : MonoBehaviour
     [SerializeField] public float sporeInterval = 4.3f;
     private MushSpores spores;
     private float lastSporeCalculated;
+    
+    [Header("Head Hit")]
+    [SerializeField] private HeadHit headHit;
 
     void Start()
     {
@@ -50,17 +54,22 @@ public class MushBoss : MonoBehaviour
         bossBarScript = bossBar.GetComponent<BossBar>();
         bossBarScript.maxHealth = 100f;
         bossBarScript.currentHealth = bossHealth;
+        
+        //sets the attack time for headHit
+        headHit.enabled = true;
     }
+
     //Constantly keeps track of the size and attacks on every time intreval
     private void Update()
     {
+        changeCanHeadHit();        
+
         HealthChange();
         
         ChangeSize();
         
         if (((Time.time - timeSinceAttack) >= attackInterval) && !isAttacking)
         {
-            RandomzeAttackInterval();
             Attack();
         }
         
@@ -103,29 +112,41 @@ public class MushBoss : MonoBehaviour
     private void Attack()
     {
         timeSinceAttack = Time.time;
-        
         LaunchAll(orbs);
     }
 
     private void SporeCalculate()
-    {   
-        spores.CalculateChance();
+    {
+        if (!orbs[1].toLaunch)
+        {
+            spores.CalculateChance();
+        }
         lastSporeCalculated = Time.time;
     }
     
     private void LaunchAll(MushOrb[] orbs)
     {
-        //for each orb that is called it gets activated and launched
-        foreach (MushOrb orb in orbs)
+        if (!spores.isAttacking && orbs[^1].enabled)
         {
-            orb.gameObject.SetActive(true);
-            orb.StartLaunch(this);
+            //for each orb that is called it gets activated and launched
+            foreach (MushOrb orb in orbs)
+            {
+                orb.gameObject.SetActive(true);
+                orb.StartLaunch(this);
+            }
         }
     }
 
-    private void RandomzeAttackInterval()
+    private void changeCanHeadHit()
     {
-        attackInterval = Random.Range(startingAttackInterval, startingAttackInterval*2+1);
+        if (spores.isAttacking)
+        {
+            headHit.canAttack = false;
+        }
+        else if(!headHit.canAttack)
+        {
+            headHit.canAttack = true;
+            headHit.lastAttackTime = Time.time;
+        }
     }
-
 }

@@ -10,6 +10,8 @@ namespace Mush
     {
         private ParticleSystem[] particles;
         private bool willTrigger;
+        
+        public bool isAttacking = false;
 
         [Header("Mushroom lights")]
         [SerializeField] private GameObject mushrooms;
@@ -37,6 +39,15 @@ namespace Mush
 
         private void Update()
         {
+            if (particles[0].isPlaying || isWarning)
+            {
+                isAttacking = true;
+            }
+            else
+            {
+                isAttacking = false;
+            }
+
             //if it's calculated to be triggered it sets isWarning to True
             if (willTrigger)
             {
@@ -104,7 +115,7 @@ namespace Mush
 
         public void CalculateChance()
         {
-            if (particles[0].isPlaying || isWarning)
+            if (isAttacking)
             {
                 return;
             }
