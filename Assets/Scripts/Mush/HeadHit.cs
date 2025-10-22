@@ -10,19 +10,21 @@ namespace Mush
 
         private bool inRange = false;
         private bool attackScheduled = false;
-        private bool returnToDefault = false;
 
         public bool canAttack = false;
-        
-        [Header("Normal Close Attack")]
+        private bool isAttacking = false;
+
+        private bool isLeft = false;
+
+        [Header("Close Attack")]
         [SerializeField] private float hitDelay = 1f;
         [SerializeField] private float returnDelay = 0.12f;
         [SerializeField] private float attackCooldown = 4f;
-        private float timeEnteredInRange =  -Mathf.Infinity;
+        private float timeEnteredInRange = -Mathf.Infinity;
+        private int timesHit = 0;
         
-        private float nextAttackTime = 0f;
         public float lastAttackTime = -Mathf.Infinity;
-        
+
         [Header("Shock Wave Attack")]
         [SerializeField] private float firstWaveTime = 6f;
         [SerializeField] private float consecutiveWaveTime = 3f;
@@ -31,59 +33,43 @@ namespace Mush
         private ParticleSystem[] wave;
         private ParticleSystem waveLeft;
         private ParticleSystem waveRight;
-        
+
         private CameraShake camShake;
 
         private Collider2D playerCollider;
+
         private void Start()
         {
-            camShake = Camera.main?.GetComponent<CameraShake>();
             wave = transform.GetComponentsInChildren<ParticleSystem>();
-            waveLeft = wave[0];
-            waveRight = wave[1];
+            if (wave != null && wave.Length >= 2)
+            {
+                waveLeft = wave[0];
+                waveRight = wave[1];
+            }
             calculateWavesDelay();
-            
-            playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+
+            camShake = Camera.main?.GetComponent<CameraShake>();
+            playerCollider = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Collider2D>();
         }
 
         private void Update()
         {
+            if (isAttacking) return; // block repeated attacks
 
+            // Wave attack
             if (canAttack && Time.time - lastAttackTime >= (firstWave ? firstWaveTime : currentWaveTimer))
             {
-                WaveAttack();
-                
-                if (inRange)
-                {
-                    DoDamage.DealDamage();
-                }
-            } 
-            
-            if (attackScheduled && Time.time-timeEnteredInRange>=attackCooldown && Time.time >= nextAttackTime)
-            {
-                whereToAttack(playerCollider);
-                animator.SetTrigger("Hit");
-                returnToDefault = true;
-                lastAttackTime= Time.time;
-
-                if (camShake != null)
-                    StartCoroutine(camShake.Shake(0.6f, 0.2f));
-
-                if (inRange)
-                {
-                    DoDamage.DealDamage();
-                }
-
-
-                nextAttackTime = Time.time + hitDelay;
-
-                // Schedule next attack only if player is still in range
-                attackScheduled = inRange;
+                StartCoroutine(WaveAttack());
             }
-
-            if (returnToDefault && Time.time >= nextAttackTime - returnDelay)
+            // Tri-hit combo
+            else if (inRange && timesHit < 3 && Time.time - timeEnteredInRange >= attackCooldown)
             {
-                returnToDefault = false;
+                StartCoroutine(TriHitAttack());
+            }
+            // Single hit if player stays in after Tri-hit combo
+            else if (attackScheduled && Time.time - lastAttackTime >= (attackCooldown / 2) && timesHit > 2)
+            {
+                StartCoroutine(SingleCapHit());
             }
         }
 
@@ -93,43 +79,56 @@ namespace Mush
             {
                 inRange = true;
                 attackScheduled = true;
-                
-                nextAttackTime = Time.time + hitDelay;
+                timeEnteredInRange = Time.time;
                 firstWave = true;
+                timesHit = 0;
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player")) 
+            if (other.CompareTag("Player"))
+            {
                 inRange = false;
+                timesHit = 0;
+                attackScheduled = false;
+            }
         }
-
-        private void whereToAttack(Collider2D other)
+        
+        //sets the animator and script values on wether the attack is left or right
+        private void whereToAttack(Vector3 other, bool isOpposite)
         {
-            if (other.transform.position.x < transform.position.x)
-                animator.SetBool("hitIsLeft", true);
+            if (other.x < transform.position.x)
+            {
+                animator.SetBool("hitIsLeft", !isOpposite);
+                isLeft = !isOpposite;
+            }
             else
-                animator.SetBool("hitIsLeft", false);
+            {
+                animator.SetBool("hitIsLeft", isOpposite);
+                isLeft = isOpposite;
+            }
         }
-
-        private void calculateWavesDelay()
+        //a variation of 'whereToAttack' so you dont need to right the 'isOpposite' boolean
+        private void whereToAttack(Vector3 other)
         {
-            currentWaveTimer = Random.Range(consecutiveWaveTime, consecutiveWaveTime* 2f);
+            whereToAttack(other, false);
         }
+        
 
-        private void WaveAttack()
+        // Wave attack
+        private System.Collections.IEnumerator WaveAttack()
         {
+            isAttacking = true;
+
             firstWave = false;
-            whereToAttack(playerCollider);
+            whereToAttack(playerCollider.transform.position);
             animator.SetTrigger("Hit");
-            returnToDefault = true;
-                
+
             if (camShake != null)
                 StartCoroutine(camShake.Shake(0.6f, 0.2f));
-                
-            // play correct wave direction
-            if (playerCollider != null) 
+
+            if (playerCollider != null)
             {
                 if (playerCollider.transform.position.x < transform.position.x)
                     waveLeft.Play();
@@ -139,6 +138,68 @@ namespace Mush
 
             lastAttackTime = Time.time;
             calculateWavesDelay();
+
+            yield return new WaitForSeconds(hitDelay);
+            isAttacking = false;
+        }
+        //randomly deseides what is the time between evry shockwave
+        private void calculateWavesDelay()
+        {
+            currentWaveTimer = Random.Range(consecutiveWaveTime, consecutiveWaveTime * 2f);
+        }
+
+        // Tri-hit combo
+        private System.Collections.IEnumerator TriHitAttack()
+        {
+            isAttacking = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                bool opposite = (i == 1); //makes the middle hit opposite based on the boolean answer of 'i == 1'
+                CapHit(playerCollider.transform.position, opposite); //uses the close range attack
+                yield return new WaitForSeconds(hitDelay); //waits the delay
+            }
+
+            isAttacking = false;
+            attackScheduled = inRange; //schedules an attack based on if the player is still in range
+        }
+
+        // Single hit after combo
+        private System.Collections.IEnumerator SingleCapHit()
+        {
+            isAttacking = true;
+            CapHit(playerCollider.transform.position); //uses the close range attack
+            yield return new WaitForSeconds(hitDelay); //waits the delay
+            isAttacking = false;
+        }
+    
+        //Close Range Attack
+        private void CapHit(Vector3 other, bool opposite)
+        {
+            timesHit++;
+            whereToAttack(other, opposite);
+            animator.SetTrigger("Hit");
+            lastAttackTime = Time.time;
+            
+            //Add the shacking camera effect
+            if (camShake != null)
+                StartCoroutine(camShake.Shake(0.6f, 0.2f));
+            
+            //Deals damage if the player is on the side of the the hit and in range
+            if (playerCollider != null && inRange)
+            {
+                if ((isLeft && playerCollider.transform.position.x < transform.position.x) ||
+                    (!isLeft && playerCollider.transform.position.x > transform.position.x))
+                {
+                    DoDamage.DealDamage();
+                }
+            }
+        }
+        
+        //a variation of 'whereToAttack' so you dont need to right the 'opposite' boolean
+        private void CapHit(Vector3 other)
+        {
+            CapHit(other, false);
         }
     }
 }

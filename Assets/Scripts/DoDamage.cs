@@ -6,6 +6,7 @@ public class DoDamage : MonoBehaviour
     private float damageCooldown = 0.001f;
     private float movementCooldown = 0.5f;
     private static GameObject _player;
+    private static Rigidbody2D _playerBody;
     private static PlayerController _playerController;
     private static Animator _animator;
     [SerializeField]private bool fromAbove;
@@ -13,6 +14,7 @@ public class DoDamage : MonoBehaviour
     private void Start()
     {
         _player= GameObject.FindGameObjectWithTag("Player");
+        _playerBody = _player.GetComponent<Rigidbody2D>();
         _playerController = _player.GetComponent<PlayerController>();
         _animator = _player.GetComponent<Animator>();
     }
@@ -54,7 +56,7 @@ public class DoDamage : MonoBehaviour
         if (_playerController.PlayerHealth-30<=0)
         {
             _animator.SetBool("isDeath", true);
-            _player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            _playerBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else
         {
