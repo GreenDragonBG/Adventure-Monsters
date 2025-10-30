@@ -4,8 +4,10 @@ using UnityEngine.Rendering.Universal;
 public class MushPlatform : MonoBehaviour
 {
     private float currentTime;
-    private float timeDelay = 0.01f;
-    private float scaleGrowt = 0.001f;
+    [SerializeField]private float timeDelay = 0.01f;
+    [SerializeField]private float scaleGrowt = 0.001f;
+    [SerializeField]private float maxScale = 5f;
+    [SerializeField]private float minScale = 1f;
     private Collider2D platformCollider;
     public static bool IsActive = false;
     private Light2D[] lights;
@@ -17,14 +19,18 @@ public class MushPlatform : MonoBehaviour
         currentTime = Time.deltaTime;
         platformCollider = GetComponent<Collider2D>();
         platformCollider.enabled = false;
+        foreach (Light2D light in lights)
+        {
+            light.enabled = false;
+        }
     }
     
     void Update()
     {
-        CheckToGorwPlatform();
+        CheckToGrowPlatform();
         CheckToLowerPlatform();
         
-        if(transform.localScale.x >= 0.2f && IsPlayerAboveCollider()){
+        if(transform.localScale.x >= maxScale && IsPlayerAboveCollider()){
             platformCollider.enabled = true;
         }
         else
@@ -33,9 +39,9 @@ public class MushPlatform : MonoBehaviour
         }
     }
 
-    private void CheckToGorwPlatform()
+    private void CheckToGrowPlatform()
     {
-        if (IsActive && Time.time - currentTime > timeDelay && transform.localScale.x <= 0.2f)
+        if (IsActive && Time.time - currentTime > timeDelay && transform.localScale.x <= maxScale)
         {
             currentTime = Time.time;
             transform.localScale = new Vector3(transform.localScale.x + scaleGrowt, transform.localScale.y + scaleGrowt, 1f);
@@ -47,7 +53,7 @@ public class MushPlatform : MonoBehaviour
     }
     private void CheckToLowerPlatform()
     {
-        if (!IsActive && Time.time - currentTime > timeDelay && transform.localScale.x >= 0.01f)
+        if (!IsActive && Time.time - currentTime > timeDelay && transform.localScale.x >= minScale)
         {
             currentTime = Time.time;
             transform.localScale = new Vector3(transform.localScale.x - scaleGrowt, transform.localScale.y - scaleGrowt, 1f);

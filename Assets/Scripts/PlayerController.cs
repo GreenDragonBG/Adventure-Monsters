@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +12,12 @@ public class PlayerController : MonoBehaviour {
     
     private bool comboQueued;
     
+    [Header("Horizontal Movement")]
+    public float HorizontalmoveInput = 0f;
+    
+    
     [Header("Jump Settings")]
-    public float jumpForce = 12f;
+    public float jumpForce = 10f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
@@ -38,18 +43,20 @@ public class PlayerController : MonoBehaviour {
     }
     private void HandleHorizontalMovement()
     {
-        float moveInput = 0f;
-        
-        if (Input.GetKey(KeyCode.LeftArrow))
+
+        if (HorizontalmoveInput == 0)
         {
-            moveInput = -1f;
-        } else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            moveInput = 1f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                HorizontalmoveInput = -1f;
+            } else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                HorizontalmoveInput = 1f;
+            }
         }
 
         // Apply movement
-        rb2d.linearVelocity = new Vector2(moveInput * speed, rb2d.linearVelocity.y);
+        rb2d.linearVelocity = new Vector2(HorizontalmoveInput * speed, rb2d.linearVelocity.y);
         if (rb2d.linearVelocity.x > 0.1 || rb2d.linearVelocity.x < -0.1)
         {
             animator.SetBool("IsRunning", true);
@@ -60,13 +67,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Flip the character sprite based on direction
-        if (moveInput > 0) {
+        if (HorizontalmoveInput > 0) {
          transform.localScale = new Vector3(6, 6, 1);
-        }else if (moveInput < 0)
+        }else if (HorizontalmoveInput < 0)
         {
          transform.localScale = new Vector3(-6, 6, 1);
         }
 
+        HorizontalmoveInput = 0f;
     }
 
     private void HandleJump()

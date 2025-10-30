@@ -5,16 +5,23 @@ using UnityEngine.Serialization;
 public class CameraController : MonoBehaviour {
     public static CameraController Instance;
     [FormerlySerializedAs("Target")] public GameObject target;
-    [FormerlySerializedAs("Smoothvalue")] public int smoothvalue = 2;
+    [FormerlySerializedAs("Smooth Value")] public int smoothValue = 2;
     [FormerlySerializedAs("PosY")] public float posY = 1;
     
-    // Use this for initialization
     public Coroutine MyCo;
 
-
+    public static Vector3 SpawnPos;
+    
+    private void Awake()
+    {
+        if (!SpawnPos.Equals(Vector3.zero))
+        {
+            transform.position = SpawnPos;
+        }
+    }
     void FixedUpdate()
     {
         Vector3 targetpos = new Vector3(target.transform.position.x, target.transform.position.y + posY, -100);
-        transform.position = Vector3.Lerp(transform.position, targetpos, Time.deltaTime * smoothvalue);
+        transform.position = Vector3.Lerp(transform.position, targetpos, Time.deltaTime * smoothValue);
     } 
 }
