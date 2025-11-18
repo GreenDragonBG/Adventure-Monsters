@@ -10,7 +10,7 @@ namespace SceneChange
 
         private void Start()
         {
-            isNextScene = false;
+            IsNextScene = false;
         }
 
         protected override void OnCameraDisabled()

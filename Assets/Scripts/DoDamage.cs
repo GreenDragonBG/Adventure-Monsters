@@ -53,15 +53,13 @@ public class DoDamage : MonoBehaviour
 
     public static void DealDamage()
     {
-        if (_playerController.PlayerHealth-30<=0)
+        
+        _playerController.PlayerHealth -= 30;
+        if (_playerController.PlayerHealth<=0)
         {
+            _playerController.canMove = false;
             _animator.SetBool("isDeath", true);
-            _playerBody.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else
-        {
-            // player health is lowered
-            _playerController.PlayerHealth -= 30;
+            _playerBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

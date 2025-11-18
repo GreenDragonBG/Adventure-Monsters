@@ -68,10 +68,10 @@ public class PlayerController : MonoBehaviour {
 
         // Flip the character sprite based on direction
         if (HorizontalmoveInput > 0) {
-         transform.localScale = new Vector3(6, 6, 1);
+         transform.localScale = new Vector3(5, 5, 1);
         }else if (HorizontalmoveInput < 0)
         {
-         transform.localScale = new Vector3(-6, 6, 1);
+         transform.localScale = new Vector3(-5, 5, 1);
         }
 
         HorizontalmoveInput = 0f;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour {
 
     private void CheckAttack()
     {  
-            if (Input.GetKeyDown(KeyCode.Z)) // Left mouse for attack
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
                 {

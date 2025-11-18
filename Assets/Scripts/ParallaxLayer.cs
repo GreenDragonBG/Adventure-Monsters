@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
  
 [ExecuteInEditMode]
 public class ParallaxLayer : MonoBehaviour
 {
+    
     public float parallaxFactor;
- 
+    
     public void Move(float delta)
     {
         Vector3 newPos = transform.localPosition;
@@ -12,5 +14,5 @@ public class ParallaxLayer : MonoBehaviour
  
         transform.localPosition = newPos;
     }
- 
+
 }

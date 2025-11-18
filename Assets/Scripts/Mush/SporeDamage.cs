@@ -6,11 +6,11 @@ public class ParticleDamage : MonoBehaviour
 {
     [SerializeField] public bool willTeleport;
     private ParticleSystem particleSystem;
-    private float damageCooldown = 4f;
+    private static float _damageCooldown = 4f;
     
     private ParticleSystem.CollisionModule particleCollision;
 
-    private float lastDamageTime = -Mathf.Infinity;
+    private static float _lastDamageTime = -Mathf.Infinity;
 
     void OnParticleCollision(GameObject other)
     {
@@ -19,9 +19,9 @@ public class ParticleDamage : MonoBehaviour
         {
             particleCollision.enabled = false;
             // Check if cooldown has passed
-            if (Time.time - lastDamageTime >= damageCooldown)
+            if (Time.time - _lastDamageTime >= _damageCooldown)
             {
-                lastDamageTime = Time.time;
+                _lastDamageTime = Time.time;
 
                 if (willTeleport)
                 {

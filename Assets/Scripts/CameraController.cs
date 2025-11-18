@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
     {
         if (!SpawnPos.Equals(Vector3.zero))
         {
-            transform.position = SpawnPos;
+            transform.localPosition = SpawnPos;
         }
     }
     void FixedUpdate()
