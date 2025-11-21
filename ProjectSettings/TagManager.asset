@@ -14,7 +14,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Fire
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Background (Front)
     uniqueID: 3917634425
+    locked: 0
+  - name: Fire
+    uniqueID: 4062152003
     locked: 0
   - name: Default
     uniqueID: 0
