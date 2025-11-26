@@ -9,15 +9,15 @@ namespace SceneChange
         protected override void Awake()
         {
             base.Awake();
-            cam.enabled = false;
-            isActive = true; // entrance starts active
+            Cam.enabled = false;
+            IsActive = true; // entrance starts active
         }
         private void Start()
         {
-            bool isPlayerLeft = player.gameObject.transform.position.x < transform.position.x;
+            bool isPlayerLeft = Player.gameObject.transform.position.x < transform.position.x;
             if (isPlayerLeft == toMoveLeft)
             {
-                disableEntrance();
+                DisableEntrance();
             }
         }
 
@@ -27,20 +27,20 @@ namespace SceneChange
         {
             if (other.CompareTag("Player"))
             {
-                disableEntrance();
+                DisableEntrance();
             }
         }
 
-        private void disableEntrance()
+        private void DisableEntrance()
         {
             Debug.Log("Disabling Area");
-            cam.enabled = true;
+            Cam.enabled = true;
 
             // Enable corresponding exit if exists
             if (exit != null) exit.enabled = true;
 
             // Disable this entrance to prevent conflicts
-            isActive = false;
+            IsActive = false;
             gameObject.SetActive(false);
         }
     }

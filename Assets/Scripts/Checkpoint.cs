@@ -4,50 +4,50 @@ using UnityEngine.UIElements;
 
 public class Checkpoint : MonoBehaviour
 {
-    private static Transform playerSpawnPoint;
-    private static GameObject player;
-    private static Animator animator;
-    private static Rigidbody2D rb2d;
-    private static bool waitingForAnimation = false;
-    private static float animationDelay = 0.2f;
-    private static float timeStartedWaiting = 0f;
+    private static Transform _playerSpawnPoint;
+    private static GameObject _player;
+    private static Animator _animator;
+    private static Rigidbody2D _rb2d;
+    private static bool _waitingForAnimation = false;
+    private static float _animationDelay = 0.2f;
+    private static float _timeStartedWaiting = 0f;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerSpawnPoint = player.gameObject.transform;
-        animator = player.GetComponent<Animator>();
-        rb2d = player.GetComponent<Rigidbody2D>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerSpawnPoint = _player.gameObject.transform;
+        _animator = _player.GetComponent<Animator>();
+        _rb2d = _player.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Respawn"))
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Respawn"))
         {
-            player.transform.position = playerSpawnPoint.position;
-            animator.SetBool("Teleport", false);
-            waitingForAnimation = true;
-            timeStartedWaiting = Time.time;
+            _player.transform.position = _playerSpawnPoint.position;
+            _animator.SetBool("Teleport", false);
+            _waitingForAnimation = true;
+            _timeStartedWaiting = Time.time;
         }
 
-        if (waitingForAnimation && Time.time- timeStartedWaiting>animationDelay)
+        if (_waitingForAnimation && Time.time- _timeStartedWaiting>_animationDelay)
         {
-            rb2d.constraints=RigidbodyConstraints2D.FreezeRotation;
-            waitingForAnimation = false;
+            _rb2d.constraints=RigidbodyConstraints2D.FreezeRotation;
+            _waitingForAnimation = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && playerSpawnPoint!=this.gameObject.transform)
+        if (other.CompareTag("Player") && _playerSpawnPoint!=this.gameObject.transform)
         {
-            playerSpawnPoint= this.gameObject.transform;
+            _playerSpawnPoint= this.gameObject.transform;
         }
     }
 
     public static void Respawn()
     {
-        rb2d.constraints=RigidbodyConstraints2D.FreezeAll;
-        animator.SetBool("Teleport", true);
-        animator.SetTrigger("Damage");
+        _rb2d.constraints=RigidbodyConstraints2D.FreezeAll;
+        _animator.SetBool("Teleport", true);
+        _animator.SetTrigger("Damage");
     }
 }

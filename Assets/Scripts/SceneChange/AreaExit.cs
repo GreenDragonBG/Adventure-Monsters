@@ -15,9 +15,9 @@ namespace SceneChange
         {
             if (other.CompareTag("Player"))
             {
-                cam.enabled = false;
+                Cam.enabled = false;
                 timeExitedArea = Time.time;
-                isActive = true; // now this exit is active
+                IsActive = true; // now this exit is active
             }
         }
 

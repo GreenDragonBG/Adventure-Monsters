@@ -46,7 +46,7 @@ namespace Mush
                 waveLeft = wave[0];
                 waveRight = wave[1];
             }
-            calculateWavesDelay();
+            CalculateWavesDelay();
 
             camShake = Camera.main?.GetComponent<CameraShake>();
             playerCollider = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Collider2D>();
@@ -96,7 +96,7 @@ namespace Mush
         }
         
         //sets the animator and script values on wether the attack is left or right
-        private void whereToAttack(Vector3 other, bool isOpposite)
+        private void WhereToAttack(Vector3 other, bool isOpposite)
         {
             if (other.x < transform.position.x)
             {
@@ -110,9 +110,9 @@ namespace Mush
             }
         }
         //a variation of 'whereToAttack' so you dont need to right the 'isOpposite' boolean
-        private void whereToAttack(Vector3 other)
+        private void WhereToAttack(Vector3 other)
         {
-            whereToAttack(other, false);
+            WhereToAttack(other, false);
         }
         
 
@@ -122,7 +122,7 @@ namespace Mush
             isAttacking = true;
 
             firstWave = false;
-            whereToAttack(playerCollider.transform.position);
+            WhereToAttack(playerCollider.transform.position);
             animator.SetTrigger("Hit");
 
             if (camShake != null)
@@ -137,13 +137,13 @@ namespace Mush
             }
 
             lastAttackTime = Time.time;
-            calculateWavesDelay();
+            CalculateWavesDelay();
 
             yield return new WaitForSeconds(hitDelay);
             isAttacking = false;
         }
         //randomly deseides what is the time between evry shockwave
-        private void calculateWavesDelay()
+        private void CalculateWavesDelay()
         {
             currentWaveTimer = Random.Range(consecutiveWaveTime, consecutiveWaveTime * 2f);
         }
@@ -177,7 +177,7 @@ namespace Mush
         private void CapHit(Vector3 other, bool opposite)
         {
             timesHit++;
-            whereToAttack(other, opposite);
+            WhereToAttack(other, opposite);
             animator.SetTrigger("Hit");
             lastAttackTime = Time.time;
             

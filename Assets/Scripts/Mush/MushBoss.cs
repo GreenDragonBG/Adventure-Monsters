@@ -62,7 +62,7 @@ public class MushBoss : MonoBehaviour
     //Constantly keeps track of the size and attacks on every time intreval
     private void Update()
     {
-        changeCanHeadHit();        
+        ChangeCanHeadHit();        
 
         HealthChange();
         
@@ -137,7 +137,7 @@ public class MushBoss : MonoBehaviour
         }
     }
 
-    private void changeCanHeadHit()
+    private void ChangeCanHeadHit()
     {
         if (spores.isAttacking)
         {

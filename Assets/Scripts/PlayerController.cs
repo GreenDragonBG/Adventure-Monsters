@@ -1,19 +1,26 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour {
+    [Header("Main Settings")]
     private Rigidbody2D rb2d;
     private Animator animator;
-    public bool canMove = true;
-    public int PlayerHealth = 90;
-
-    public float speed;
-    
+    private Camera cam;
+    private CameraController camController;
+    private CameraShake camShake;
+    public bool canMove = true; 
     private bool comboQueued;
+    public float speed;
+
+    public int playerHealth = 90;
+    
     
     [Header("Horizontal Movement")]
-    public float HorizontalmoveInput = 0f;
+    public float horizontalmoveInput = 0f;
     
     
     [Header("Jump Settings")]
@@ -22,41 +29,53 @@ public class PlayerController : MonoBehaviour {
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     public bool isGrounded;
+    
+    [Header("Long Fall")]
+    [SerializeField] private float longFallThreshold = 6f;
+    [SerializeField] private Animator longFallSmokeAnimator;
+    private bool wasFalling = false;
+    private bool hasEnteredThreshold = false;
+    private float fallStartY = 0f;
+    
 
     void Start()
     {
         canMove = true;
-        rb2d = GetComponent<Rigidbody2D> ();
-        animator = GetComponent<Animator> ();
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        cam = Camera.main;
+        camController = cam.GetComponent<CameraController>();
+        camShake = cam.GetComponent<CameraShake>();
     }
 
     void Update()
     {
-        checkIfGrounded();
-        if (canMove)
-        {
-            CheckAttack();
-            HandleJump();
-            HandleHorizontalMovement();
-        }
-
+        //Methods that dont need for the player to move
+        CheckIfGrounded(); 
+        HandleFallingDistance();
+        
+        if (!canMove) return;
+        //Methods that need for the player to be able to move
+        CheckAttack();
+        HandleJump();
+        HandleHorizontalMovement();
     }
     private void HandleHorizontalMovement()
     {
 
-        if (HorizontalmoveInput == 0)
+        if (horizontalmoveInput == 0)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                HorizontalmoveInput = -1f;
+                horizontalmoveInput = -1f;
             } else if (Input.GetKey(KeyCode.RightArrow))
             {
-                HorizontalmoveInput = 1f;
+                horizontalmoveInput = 1f;
             }
         }
 
         // Apply movement
-        rb2d.linearVelocity = new Vector2(HorizontalmoveInput * speed, rb2d.linearVelocity.y);
+        rb2d.linearVelocity = new Vector2(horizontalmoveInput * speed, rb2d.linearVelocity.y);
         if (rb2d.linearVelocity.x > 0.1 || rb2d.linearVelocity.x < -0.1)
         {
             animator.SetBool("IsRunning", true);
@@ -67,14 +86,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Flip the character sprite based on direction
-        if (HorizontalmoveInput > 0) {
+        if (horizontalmoveInput > 0) {
          transform.localScale = new Vector3(5, 5, 1);
-        }else if (HorizontalmoveInput < 0)
+        }else if (horizontalmoveInput < 0)
         {
          transform.localScale = new Vector3(-5, 5, 1);
         }
 
-        HorizontalmoveInput = 0f;
+        horizontalmoveInput = 0f;
     }
 
     private void HandleJump()
@@ -93,7 +112,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void checkIfGrounded()
+    private void CheckIfGrounded()
     {
         // Check if player is on the ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -128,6 +147,107 @@ public class PlayerController : MonoBehaviour {
         else
         {
             animator.SetBool("Combo", false);
+        }
+    }
+    
+    
+    
+    private void OnLongFallLanding()
+    {
+        camController.smoothValue = 2f;
+        longFallSmokeAnimator.SetTrigger("LandEffect");
+        rb2d.gravityScale = 3f;
+        float fallDistance = fallStartY - transform.position.y;
+
+        // Trigger shake scaled by fall distance
+        TriggerScaledCameraShake(fallDistance);
+        
+        StartCoroutine(MovementImpactAfterLongFall());
+    }
+    
+    private void TriggerScaledCameraShake(float fallDistance)
+    {
+        // Falling 6 meters = minimum shake
+        // Falling 20+ meters = maximum shake
+        float t = Mathf.InverseLerp(longFallThreshold, 20f, fallDistance);
+
+        float shakeDuration = Mathf.Lerp(0.4f, 1f, t);   // 0.4 → 1 seconds
+        float shakeStrength = Mathf.Lerp(0.05f, 0.4f, t); // 0.05 → 0.4 intensity
+        StartCoroutine(camShake.Shake(shakeDuration, shakeStrength));
+    }
+    
+    private IEnumerator SmoothCameraSmoothness(float targetValue, float duration)
+    {
+        float startValue = camController.smoothValue;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            camController.smoothValue = Mathf.Lerp(startValue, targetValue, t / duration);
+            t += Time.deltaTime;
+            if (isGrounded)
+            {
+                camController.smoothValue = 2f;
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        camController.smoothValue = targetValue; // ensure exact
+    }
+
+    private IEnumerator MovementImpactAfterLongFall()
+    {
+        animator.SetTrigger("HeavyLanding");
+        horizontalmoveInput = 0;
+        rb2d.linearVelocity= Vector2.zero;
+        canMove = false;
+        yield return new WaitForSeconds(1.5f);
+        canMove = true;
+    }
+    
+    private void OnEnterLongFallThreshold()
+    {
+        if(hasEnteredThreshold) return;
+        
+        StartCoroutine(SmoothCameraSmoothness(6f, 0.08f));
+        rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, -20f);
+        rb2d.gravityScale = 0f;
+        
+        hasEnteredThreshold = true;
+    }
+
+    private void HandleFallingDistance()
+    {
+        // Player is falling (velocity < 0) and NOT grounded
+        bool isFalling = rb2d.linearVelocity.y < -0.1f && !isGrounded;
+        
+        // Start of falling
+        if (isFalling && !wasFalling)
+        {
+            wasFalling = true;
+            fallStartY = transform.position.y;
+        }
+
+        if (wasFalling)
+        {
+            //calc the fallDistance
+            float fallDistance = fallStartY - transform.position.y;
+            
+            //if has fallen distance over the longFallThreshold 
+            if (fallDistance >= longFallThreshold)
+            {
+                OnEnterLongFallThreshold();
+                //if grounded start longFallLanding
+                if (!isGrounded) return;    
+                OnLongFallLanding();
+            }
+            
+            //If grounded end fall
+            if (!isGrounded) return;
+            wasFalling = false;
+            hasEnteredThreshold = false;
         }
     }
     

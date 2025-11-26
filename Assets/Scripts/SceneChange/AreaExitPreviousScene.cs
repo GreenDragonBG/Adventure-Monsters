@@ -8,8 +8,9 @@ namespace SceneChange
         [SerializeField] Vector3 returnStartPos;
         [SerializeField] Vector3 camPos;
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
             IsNextScene = false;
         }
 

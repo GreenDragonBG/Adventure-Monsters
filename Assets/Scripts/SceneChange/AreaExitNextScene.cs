@@ -4,9 +4,10 @@ namespace SceneChange
     public class AreaExitNextScene : AreaExit
     {
         [SerializeField] Vector3 nextStartPos;
-
-        private void Start()
+        
+        protected override void Awake()
         {
+            base.Awake();
             IsNextScene = true;
         }
 

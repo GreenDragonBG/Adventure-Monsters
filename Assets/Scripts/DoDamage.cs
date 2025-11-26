@@ -54,8 +54,8 @@ public class DoDamage : MonoBehaviour
     public static void DealDamage()
     {
         
-        _playerController.PlayerHealth -= 30;
-        if (_playerController.PlayerHealth<=0)
+        _playerController.playerHealth -= 30;
+        if (_playerController.playerHealth<=0)
         {
             _playerController.canMove = false;
             _animator.SetBool("isDeath", true);

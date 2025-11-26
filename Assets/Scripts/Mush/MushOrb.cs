@@ -57,12 +57,12 @@ namespace Mush
             
             Vector2 distance = endPos - startPos;
             
-            float Vx = distance.x / timeTillLand;
-            float Vy = ( distance.y / timeTillLand) + (0.5f * Mathf.Abs(Physics2D.gravity.y)  * timeTillLand);
+            float vx = distance.x / timeTillLand;
+            float vy = ( distance.y / timeTillLand) + (0.5f * Mathf.Abs(Physics2D.gravity.y)  * timeTillLand);
             
             boss.isAttacking = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.linearVelocity = new Vector2(Vx,Vy);
+            rb.linearVelocity = new Vector2(vx,vy);
         }
 
         public void StartLaunch(MushBoss boss)

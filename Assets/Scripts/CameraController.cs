@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class CameraController : MonoBehaviour {
     public static CameraController Instance;
     [FormerlySerializedAs("Target")] public GameObject target;
-    [FormerlySerializedAs("Smooth Value")] public int smoothValue = 2;
+    [FormerlySerializedAs("Smooth Value")] public float smoothValue = 2;
     [FormerlySerializedAs("PosY")] public float posY = 1;
     
     public Coroutine MyCo;

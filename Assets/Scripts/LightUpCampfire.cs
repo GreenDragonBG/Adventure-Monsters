@@ -26,7 +26,7 @@ public class LightUpCampfire : MonoBehaviour
 
     void Update()
     {
-        if (isTriggered && Time.time-timeInbetweenGrowth > timeInterval && fire.localScale.x < 2)
+        if (isTriggered && Time.time-timeInbetweenGrowth > timeInterval && fire.localScale.x < 3)
         {
             fire.localScale = new Vector3(fire.localScale.x+scaleGroweth,fire.localScale.y+scaleGroweth, 1f);
             timeInbetweenGrowth = Time.time;
