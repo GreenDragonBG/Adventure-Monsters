@@ -22,15 +22,13 @@ public class GroundCheck : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, checkDistance, groundLayer);
         
-        Debug.DrawRay(transform.position, Vector2.down * checkDistance, Color.yellow); // Shows the ray in Scene view
+        Debug.DrawRay(transform.position, Vector2.down * checkDistance, Color.yellow);
 
         if (hit.collider != null)
         {
-            Debug.Log("Hit object: " + hit.collider.gameObject.name); // Shows what the ray hits
             
             if (hit.collider.CompareTag("Ground"))  // Correct way to check tag
             {
-                Debug.Log("Ground detected!");
                 rb.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
             }
         }

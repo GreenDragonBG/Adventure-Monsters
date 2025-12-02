@@ -1,0 +1,1116 @@
+fileFormatVersion: 2
+guid: cd8fa55bbdc9a8c4abca405469a6f7bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9069618762841748605
+    second: Plant1_Run_body_0
+  - first:
+      213: -5457154242883874537
+    second: Plant1_Run_body_1
+  - first:
+      213: -438652247392642513
+    second: Plant1_Run_body_2
+  - first:
+      213: -5849532591458499313
+    second: Plant1_Run_body_3
+  - first:
+      213: -2095235151424658157
+    second: Plant1_Run_body_4
+  - first:
+      213: -216952983197209069
+    second: Plant1_Run_body_5
+  - first:
+      213: 9179792430652530358
+    second: Plant1_Run_body_6
+  - first:
+      213: 3785785264928643770
+    second: Plant1_Run_body_7
+  - first:
+      213: 6795950514876361125
+    second: Plant1_Run_body_8
+  - first:
+      213: 9214479032696275922
+    second: Plant1_Run_body_9
+  - first:
+      213: -2887739302703583112
+    second: Plant1_Run_body_10
+  - first:
+      213: 2293308455478848817
+    second: Plant1_Run_body_11
+  - first:
+      213: 680180212958278824
+    second: Plant1_Run_body_12
+  - first:
+      213: 8931668898174833139
+    second: Plant1_Run_body_13
+  - first:
+      213: 2218590014550844334
+    second: Plant1_Run_body_14
+  - first:
+      213: 8448271883359550696
+    second: Plant1_Run_body_15
+  - first:
+      213: 4485513985795622151
+    second: Plant1_Run_body_16
+  - first:
+      213: 8966492866121923864
+    second: Plant1_Run_body_17
+  - first:
+      213: 810602153821442645
+    second: Plant1_Run_body_18
+  - first:
+      213: 8865284444554617231
+    second: Plant1_Run_body_19
+  - first:
+      213: 812675620875450089
+    second: Plant1_Run_body_20
+  - first:
+      213: -3730948222041961571
+    second: Plant1_Run_body_21
+  - first:
+      213: 4135353308995950534
+    second: Plant1_Run_body_22
+  - first:
+      213: -1841899305669473730
+    second: Plant1_Run_body_23
+  - first:
+      213: -6485622839921642596
+    second: Plant1_Run_body_24
+  - first:
+      213: -7132793982611149887
+    second: Plant1_Run_body_25
+  - first:
+      213: -6977904723689775297
+    second: Plant1_Run_body_26
+  - first:
+      213: -6586798164093452166
+    second: Plant1_Run_body_27
+  - first:
+      213: -858131411727218352
+    second: Plant1_Run_body_28
+  - first:
+      213: 9069166399910086913
+    second: Plant1_Run_body_29
+  - first:
+      213: 4126948740842654619
+    second: Plant1_Run_body_30
+  - first:
+      213: -1499649902992464282
+    second: Plant1_Run_body_31
+  - first:
+      213: 3368391030913477544
+    second: Plant1_Run_body_32
+  - first:
+      213: 1089229138304171652
+    second: Plant1_Run_body_33
+  - first:
+      213: -2759402476955945807
+    second: Plant1_Run_body_34
+  - first:
+      213: 964740197823248384
+    second: Plant1_Run_body_35
+  - first:
+      213: 756885641327845078
+    second: Plant1_Run_body_36
+  - first:
+      213: -1529689940033517054
+    second: Plant1_Run_body_37
+  - first:
+      213: 7400120344803858549
+    second: Plant1_Run_body_38
+  - first:
+      213: -2305101434081148144
+    second: Plant1_Run_body_39
+  - first:
+      213: -3917512682022193316
+    second: Plant1_Run_body_40
+  - first:
+      213: 2741514181143768571
+    second: Plant1_Run_body_41
+  - first:
+      213: 4133912569435451442
+    second: Plant1_Run_body_42
+  - first:
+      213: -8895803447562778141
+    second: Plant1_Run_body_43
+  - first:
+      213: 7471375359652692747
+    second: Plant1_Run_body_44
+  - first:
+      213: 7977296957662199920
+    second: Plant1_Run_body_45
+  - first:
+      213: -766010332135099396
+    second: Plant1_Run_body_46
+  - first:
+      213: 821798120574380069
+    second: Plant1_Run_body_47
+  - first:
+      213: -7683017620852503330
+    second: Plant1_Run_body_48
+  - first:
+      213: 8120519572492825060
+    second: Plant1_Run_body_49
+  - first:
+      213: -64702646691489696
+    second: Plant1_Run_body_50
+  - first:
+      213: 3503605842387253230
+    second: Plant1_Run_body_51
+  - first:
+      213: 8994736250151603623
+    second: Plant1_Run_body_52
+  - first:
+      213: -8905529732520742778
+    second: Plant1_Run_body_53
+  - first:
+      213: -7186583337228507234
+    second: Plant1_Run_body_54
+  - first:
+      213: -1427464654351158693
+    second: Plant1_Run_body_55
+  - first:
+      213: 3926356559300771746
+    second: Plant1_Run_body_56
+  - first:
+      213: -6965786422251605971
+    second: Plant1_Run_body_57
+  - first:
+      213: 122529308698523773
+    second: Plant1_Run_body_58
+  - first:
+      213: -4234689985771539134
+    second: Plant1_Run_body_59
+  - first:
+      213: 2245903345279769145
+    second: Plant1_Run_body_60
+  - first:
+      213: -892849844206310506
+    second: Plant1_Run_body_61
+  - first:
+      213: -3542175011096959492
+    second: Plant1_Run_body_62
+  - first:
+      213: 6304760360151845985
+    second: Plant1_Run_body_63
+  - first:
+      213: 206958048688363683
+    second: Plant1_Run_body_64
+  - first:
+      213: -789688862190888115
+    second: Plant1_Run_body_65
+  - first:
+      213: -1630203559939370827
+    second: Plant1_Run_body_66
+  - first:
+      213: -8751116645356270511
+    second: Plant1_Run_body_67
+  - first:
+      213: 3314597876061365559
+    second: Plant1_Run_body_68
+  - first:
+      213: 9169732744693938406
+    second: Plant1_Run_body_69
+  - first:
+      213: 5119380465972342575
+    second: Plant1_Run_body_70
+  - first:
+      213: -7962304768010587411
+    second: Plant1_Run_body_71
+  - first:
+      213: 1728344936969910141
+    second: Plant1_Run_body_72
+  - first:
+      213: 828863593319545961
+    second: Plant1_Run_body_73
+  - first:
+      213: -90458124012437829
+    second: Plant1_Run_body_74
+  - first:
+      213: -4652064134876381857
+    second: Plant1_Run_body_75
+  - first:
+      213: 6880729026674365017
+    second: Plant1_Run_body_76
+  - first:
+      213: 3803840931179301504
+    second: Plant1_Run_body_77
+  - first:
+      213: -9050305514521945749
+    second: Plant1_Run_body_78
+  - first:
+      213: 1257057564901756627
+    second: Plant1_Run_body_79
+  - first:
+      213: -497682811784235301
+    second: Plant1_Run_body_80
+  - first:
+      213: -4724245463498612049
+    second: Plant1_Run_body_81
+  - first:
+      213: 1528359666708779788
+    second: Plant1_Run_body_82
+  - first:
+      213: -7410789763298553067
+    second: Plant1_Run_body_83
+  - first:
+      213: -4703109134484946673
+    second: Plant1_Run_body_84
+  - first:
+      213: 8517447503059747763
+    second: Plant1_Run_body_85
+  - first:
+      213: 2641061682677571799
+    second: Plant1_Run_body_86
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Plant1_Run_body_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b8990c9cd322280800000000000000
+      internalID: -9069618762841748605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 711146c112b4444b0800000000000000
+      internalID: -5457154242883874537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2a1c36ea1899e9f0800000000000000
+      internalID: -438652247392642513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05cb08a91942dea0800000000000000
+      internalID: -5849532591458499313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 315eb661bba3ce2e0800000000000000
+      internalID: -2095235151424658157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ea197496a3dfcf0800000000000000
+      internalID: -216952983197209069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be1ddc349c256f70800000000000000
+      internalID: 9179792430652530358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abadaf7f3afc98430800000000000000
+      internalID: 3785785264928643770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9a65e9cf0105e50800000000000000
+      internalID: 6795950514876361125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3852e1cd760ef70800000000000000
+      internalID: 9214479032696275922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8703b627760bce7d0800000000000000
+      internalID: -2887739302703583112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d6739c3e773df10800000000000000
+      internalID: 2293308455478848817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_12
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4b0a8cc4c707900800000000000000
+      internalID: 680180212958278824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_13
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f19d177a89a3fb70800000000000000
+      internalID: 8931668898174833139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea328871dd30ace10800000000000000
+      internalID: 2218590014550844334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_15
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ecf09d548a4e3570800000000000000
+      internalID: 8448271883359550696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705056e643fbf3e30800000000000000
+      internalID: 4485513985795622151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d754651c16f6c70800000000000000
+      internalID: 8966492866121923864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55291b83d56df3b00800000000000000
+      internalID: 810602153821442645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8169766b31d70b70800000000000000
+      internalID: 8865284444554617231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6b6e3eb24374b00800000000000000
+      internalID: 812675620875450089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b40d50c52093cc0800000000000000
+      internalID: -3730948222041961571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7907bace9b36930800000000000000
+      internalID: 4135353308995950534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_23
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a488d17524076e0800000000000000
+      internalID: -1841899305669473730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c937f4fa3607ef5a0800000000000000
+      internalID: -6485622839921642596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb2b6af9a9330d90800000000000000
+      internalID: -7132793982611149887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f53f3df90892f90800000000000000
+      internalID: -6977904723689775297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70c306d7fdf694a0800000000000000
+      internalID: -6586798164093452166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0590561170e4714f0800000000000000
+      internalID: -858131411727218352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_29
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1098c8b4ac62cdd70800000000000000
+      internalID: 9069166399910086913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_30
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b0c28a30ed54930800000000000000
+      internalID: 4126948740842654619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant1_Run_body_31
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6666fa4db5c203be0800000000000000
+      internalID: -1499649902992464282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 55a322ece30178843ac0d709d1156430
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Plant1_Run_body_0: -9069618762841748605
+      Plant1_Run_body_1: -5457154242883874537
+      Plant1_Run_body_10: -2887739302703583112
+      Plant1_Run_body_11: 2293308455478848817
+      Plant1_Run_body_12: 680180212958278824
+      Plant1_Run_body_13: 8931668898174833139
+      Plant1_Run_body_14: 2218590014550844334
+      Plant1_Run_body_15: 8448271883359550696
+      Plant1_Run_body_16: 4485513985795622151
+      Plant1_Run_body_17: 8966492866121923864
+      Plant1_Run_body_18: 810602153821442645
+      Plant1_Run_body_19: 8865284444554617231
+      Plant1_Run_body_2: -438652247392642513
+      Plant1_Run_body_20: 812675620875450089
+      Plant1_Run_body_21: -3730948222041961571
+      Plant1_Run_body_22: 4135353308995950534
+      Plant1_Run_body_23: -1841899305669473730
+      Plant1_Run_body_24: -6485622839921642596
+      Plant1_Run_body_25: -7132793982611149887
+      Plant1_Run_body_26: -6977904723689775297
+      Plant1_Run_body_27: -6586798164093452166
+      Plant1_Run_body_28: -858131411727218352
+      Plant1_Run_body_29: 9069166399910086913
+      Plant1_Run_body_3: -5849532591458499313
+      Plant1_Run_body_30: 4126948740842654619
+      Plant1_Run_body_31: -1499649902992464282
+      Plant1_Run_body_4: -2095235151424658157
+      Plant1_Run_body_5: -216952983197209069
+      Plant1_Run_body_6: 9179792430652530358
+      Plant1_Run_body_7: 3785785264928643770
+      Plant1_Run_body_8: 6795950514876361125
+      Plant1_Run_body_9: 9214479032696275922
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

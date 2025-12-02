@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
 namespace Mush
 {
@@ -45,8 +42,8 @@ namespace Mush
 
             if (other.CompareTag("Player"))
             {
-                DoDamage.DealDamage();
                 other.GetComponent<Animator>().SetTrigger("Damage");
+                DoDamage.DealDamage();
             }
         }
 

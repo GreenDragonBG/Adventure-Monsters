@@ -1,0 +1,1585 @@
+fileFormatVersion: 2
+guid: 53687a3486ca610478e6b0d447f0192e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6505396933394449869
+    second: Plant3_Death_brown_0
+  - first:
+      213: -1671869120286756515
+    second: Plant3_Death_brown_1
+  - first:
+      213: 1430112947072781941
+    second: Plant3_Death_brown_2
+  - first:
+      213: 7059161070200903889
+    second: Plant3_Death_brown_3
+  - first:
+      213: -2849476566075043961
+    second: Plant3_Death_brown_4
+  - first:
+      213: 4105527510692098235
+    second: Plant3_Death_brown_5
+  - first:
+      213: -738662433656278877
+    second: Plant3_Death_brown_6
+  - first:
+      213: 8503789227628774289
+    second: Plant3_Death_brown_7
+  - first:
+      213: 1022507516981387471
+    second: Plant3_Death_brown_8
+  - first:
+      213: 3677497350222859282
+    second: Plant3_Death_brown_9
+  - first:
+      213: -1368971144928318207
+    second: Plant3_Death_brown_10
+  - first:
+      213: 5714314576113806477
+    second: Plant3_Death_brown_11
+  - first:
+      213: 7321969488453887720
+    second: Plant3_Death_brown_12
+  - first:
+      213: -6066898453136275103
+    second: Plant3_Death_brown_13
+  - first:
+      213: -4577706983216994773
+    second: Plant3_Death_brown_14
+  - first:
+      213: 1043077759471838511
+    second: Plant3_Death_brown_15
+  - first:
+      213: 3386193476704658891
+    second: Plant3_Death_brown_16
+  - first:
+      213: -6444888886475046436
+    second: Plant3_Death_brown_17
+  - first:
+      213: -5776794127582843
+    second: Plant3_Death_brown_18
+  - first:
+      213: -4464815066894034000
+    second: Plant3_Death_brown_19
+  - first:
+      213: 3576613464318655263
+    second: Plant3_Death_brown_20
+  - first:
+      213: -1311746929893325022
+    second: Plant3_Death_brown_21
+  - first:
+      213: 1428230335391855572
+    second: Plant3_Death_brown_22
+  - first:
+      213: -4569794021926317324
+    second: Plant3_Death_brown_23
+  - first:
+      213: 6856587509600409003
+    second: Plant3_Death_brown_24
+  - first:
+      213: -8915420206324241374
+    second: Plant3_Death_brown_25
+  - first:
+      213: -4172998478809877341
+    second: Plant3_Death_brown_26
+  - first:
+      213: 7902304557456710760
+    second: Plant3_Death_brown_27
+  - first:
+      213: 9084983990180415201
+    second: Plant3_Death_brown_28
+  - first:
+      213: 3439668104139534894
+    second: Plant3_Death_brown_29
+  - first:
+      213: -2138317018943374670
+    second: Plant3_Death_brown_30
+  - first:
+      213: -6277398125979136613
+    second: Plant3_Death_brown_31
+  - first:
+      213: 6120548293429084984
+    second: Plant3_Death_brown_32
+  - first:
+      213: 4656139404376992576
+    second: Plant3_Death_brown_33
+  - first:
+      213: -1171894185870910377
+    second: Plant3_Death_brown_34
+  - first:
+      213: 1517741586545874738
+    second: Plant3_Death_brown_35
+  - first:
+      213: 6909679280320645965
+    second: Plant3_Death_brown_36
+  - first:
+      213: 2920497833823629596
+    second: Plant3_Death_brown_37
+  - first:
+      213: 4376210665365828216
+    second: Plant3_Death_brown_38
+  - first:
+      213: -7801034444933623818
+    second: Plant3_Death_brown_39
+  - first:
+      213: 2923511914206056358
+    second: Plant3_Death_brown_40
+  - first:
+      213: 3262065928387371121
+    second: Plant3_Death_brown_41
+  - first:
+      213: 3299328772567641269
+    second: Plant3_Death_brown_42
+  - first:
+      213: 5389604664197991711
+    second: Plant3_Death_brown_43
+  - first:
+      213: -7025833980416227661
+    second: Plant3_Death_brown_44
+  - first:
+      213: -7075631763227943353
+    second: Plant3_Death_brown_45
+  - first:
+      213: 221976006495823613
+    second: Plant3_Death_brown_46
+  - first:
+      213: -6439706109198735975
+    second: Plant3_Death_brown_47
+  - first:
+      213: 4160893093543632178
+    second: Plant3_Death_brown_48
+  - first:
+      213: 8451512171819096996
+    second: Plant3_Death_brown_49
+  - first:
+      213: 7967260291184314470
+    second: Plant3_Death_brown_50
+  - first:
+      213: 9146605210461530474
+    second: Plant3_Death_brown_51
+  - first:
+      213: -7807949700313222476
+    second: Plant3_Death_brown_52
+  - first:
+      213: -6875603823933907584
+    second: Plant3_Death_brown_53
+  - first:
+      213: -7641657152772041670
+    second: Plant3_Death_brown_54
+  - first:
+      213: 8669101829602286624
+    second: Plant3_Death_brown_55
+  - first:
+      213: 3322738919954956955
+    second: Plant3_Death_brown_56
+  - first:
+      213: -1732935550947501170
+    second: Plant3_Death_brown_57
+  - first:
+      213: 1805508911851645932
+    second: Plant3_Death_brown_58
+  - first:
+      213: 951541031673292960
+    second: Plant3_Death_brown_59
+  - first:
+      213: -3796892734794067211
+    second: Plant3_Death_brown_60
+  - first:
+      213: -1680542041321957295
+    second: Plant3_Death_brown_61
+  - first:
+      213: -3833411768324836156
+    second: Plant3_Death_brown_62
+  - first:
+      213: -7474016140387002138
+    second: Plant3_Death_brown_63
+  - first:
+      213: 4863656695005514330
+    second: Plant3_Death_brown_64
+  - first:
+      213: 4924488979577476919
+    second: Plant3_Death_brown_65
+  - first:
+      213: -8531155367945586421
+    second: Plant3_Death_brown_66
+  - first:
+      213: 8217496603620734671
+    second: Plant3_Death_brown_67
+  - first:
+      213: 153067127773465406
+    second: Plant3_Death_brown_68
+  - first:
+      213: -6793118044663723875
+    second: Plant3_Death_brown_69
+  - first:
+      213: 6005538381941172002
+    second: Plant3_Death_brown_70
+  - first:
+      213: 2851568189831815212
+    second: Plant3_Death_brown_71
+  - first:
+      213: 7455426783030954328
+    second: Plant3_Death_brown_72
+  - first:
+      213: 534090344834054111
+    second: Plant3_Death_brown_73
+  - first:
+      213: 6107612787570935199
+    second: Plant3_Death_brown_74
+  - first:
+      213: 1309648577209353081
+    second: Plant3_Death_brown_75
+  - first:
+      213: 3772483339567021811
+    second: Plant3_Death_brown_76
+  - first:
+      213: -3003415402743383359
+    second: Plant3_Death_brown_77
+  - first:
+      213: -4933488316371008811
+    second: Plant3_Death_brown_78
+  - first:
+      213: -593813115195778467
+    second: Plant3_Death_brown_79
+  - first:
+      213: 7405726221743482824
+    second: Plant3_Death_brown_80
+  - first:
+      213: -1832395713504755330
+    second: Plant3_Death_brown_81
+  - first:
+      213: 7695288816037004767
+    second: Plant3_Death_brown_82
+  - first:
+      213: 3882822379269423795
+    second: Plant3_Death_brown_83
+  - first:
+      213: 2289521630470532465
+    second: Plant3_Death_brown_84
+  - first:
+      213: -1970026503441873732
+    second: Plant3_Death_brown_85
+  - first:
+      213: 4618048876026342904
+    second: Plant3_Death_brown_86
+  - first:
+      213: 2318620882623335925
+    second: Plant3_Death_brown_87
+  - first:
+      213: 652074228185890907
+    second: Plant3_Death_brown_88
+  - first:
+      213: 5155082763093987590
+    second: Plant3_Death_brown_89
+  - first:
+      213: 7740554805611186560
+    second: Plant3_Death_brown_90
+  - first:
+      213: -744274633364876571
+    second: Plant3_Death_brown_91
+  - first:
+      213: -2040678845406439881
+    second: Plant3_Death_brown_92
+  - first:
+      213: 9146440396832043514
+    second: Plant3_Death_brown_93
+  - first:
+      213: 1024522422429642285
+    second: Plant3_Death_brown_94
+  - first:
+      213: -2129643176078705086
+    second: Plant3_Death_brown_95
+  - first:
+      213: -7954718305635880696
+    second: Plant3_Death_brown_96
+  - first:
+      213: -924141273579663917
+    second: Plant3_Death_brown_97
+  - first:
+      213: -1248737270143835070
+    second: Plant3_Death_brown_98
+  - first:
+      213: -1938820291419236268
+    second: Plant3_Death_brown_99
+  - first:
+      213: 368017315037272508
+    second: Plant3_Death_brown_100
+  - first:
+      213: 7421305900502807352
+    second: Plant3_Death_brown_101
+  - first:
+      213: 2488943776798438418
+    second: Plant3_Death_brown_102
+  - first:
+      213: 5310823904540349755
+    second: Plant3_Death_brown_103
+  - first:
+      213: 3004905929447245934
+    second: Plant3_Death_brown_104
+  - first:
+      213: -1246021180492766609
+    second: Plant3_Death_brown_105
+  - first:
+      213: 6891429753934085495
+    second: Plant3_Death_brown_106
+  - first:
+      213: 8292511146129644439
+    second: Plant3_Death_brown_107
+  - first:
+      213: -1507242030941952436
+    second: Plant3_Death_brown_108
+  - first:
+      213: 8840170028534915776
+    second: Plant3_Death_brown_109
+  - first:
+      213: -8769263110752189569
+    second: Plant3_Death_brown_110
+  - first:
+      213: 6778447511572333489
+    second: Plant3_Death_brown_111
+  - first:
+      213: -8325702828644641899
+    second: Plant3_Death_brown_112
+  - first:
+      213: 5203837514087419139
+    second: Plant3_Death_brown_113
+  - first:
+      213: -8781341011731127196
+    second: Plant3_Death_brown_114
+  - first:
+      213: -5285463017846354445
+    second: Plant3_Death_brown_115
+  - first:
+      213: 4095174513387237199
+    second: Plant3_Death_brown_116
+  - first:
+      213: -1721943646993854426
+    second: Plant3_Death_brown_117
+  - first:
+      213: 1095209291069420535
+    second: Plant3_Death_brown_118
+  - first:
+      213: 3203444108125933308
+    second: Plant3_Death_brown_119
+  - first:
+      213: -6196560903383392037
+    second: Plant3_Death_brown_120
+  - first:
+      213: -3571920753876691730
+    second: Plant3_Death_brown_121
+  - first:
+      213: -4925644626811621333
+    second: Plant3_Death_brown_122
+  - first:
+      213: 3290618066850573792
+    second: Plant3_Death_brown_123
+  - first:
+      213: 3859257583372322565
+    second: Plant3_Death_brown_124
+  - first:
+      213: 9115788761434567599
+    second: Plant3_Death_brown_125
+  - first:
+      213: 6284474681513869708
+    second: Plant3_Death_brown_126
+  - first:
+      213: 1746123386780381089
+    second: Plant3_Death_brown_127
+  - first:
+      213: 2801306194725310987
+    second: Plant3_Death_brown_128
+  - first:
+      213: -5466077288785965605
+    second: Plant3_Death_brown_129
+  - first:
+      213: 890733373456499599
+    second: Plant3_Death_brown_130
+  - first:
+      213: 7926051947765936986
+    second: Plant3_Death_brown_131
+  - first:
+      213: -1888369696444300038
+    second: Plant3_Death_brown_132
+  - first:
+      213: -2487396082401212963
+    second: Plant3_Death_brown_133
+  - first:
+      213: 1183567528602133491
+    second: Plant3_Death_brown_134
+  - first:
+      213: 2453026090050164125
+    second: Plant3_Death_brown_135
+  - first:
+      213: -4424610028574685
+    second: Plant3_Death_brown_136
+  - first:
+      213: -77635590256529102
+    second: Plant3_Death_brown_137
+  - first:
+      213: -7971303947495827370
+    second: Plant3_Death_brown_138
+  - first:
+      213: -8109057664512783136
+    second: Plant3_Death_brown_139
+  - first:
+      213: 2301781889013391855
+    second: Plant3_Death_brown_140
+  - first:
+      213: -1545195411123482856
+    second: Plant3_Death_brown_141
+  - first:
+      213: -5009769396137479969
+    second: Plant3_Death_brown_142
+  - first:
+      213: 1561977194355485070
+    second: Plant3_Death_brown_143
+  - first:
+      213: 3424727900038738251
+    second: Plant3_Death_brown_144
+  - first:
+      213: 4232851454900725000
+    second: Plant3_Death_brown_145
+  - first:
+      213: -3730257316483372283
+    second: Plant3_Death_brown_146
+  - first:
+      213: 1461996617663282440
+    second: Plant3_Death_brown_147
+  - first:
+      213: 5852564473209069821
+    second: Plant3_Death_brown_148
+  - first:
+      213: -5307278723907809463
+    second: Plant3_Death_brown_149
+  - first:
+      213: 43189344113513488
+    second: Plant3_Death_brown_150
+  - first:
+      213: -6006863217231872250
+    second: Plant3_Death_brown_151
+  - first:
+      213: 1261368344682969979
+    second: Plant3_Death_brown_152
+  - first:
+      213: -4975750329699889798
+    second: Plant3_Death_brown_153
+  - first:
+      213: -2584790179454618553
+    second: Plant3_Death_brown_154
+  - first:
+      213: 8969760817431679786
+    second: Plant3_Death_brown_155
+  - first:
+      213: 4116901948816487567
+    second: Plant3_Death_brown_156
+  - first:
+      213: 3334913002928168773
+    second: Plant3_Death_brown_157
+  - first:
+      213: -8219454632123335814
+    second: Plant3_Death_brown_158
+  - first:
+      213: -5652995112679199090
+    second: Plant3_Death_brown_159
+  - first:
+      213: -7885412221953223702
+    second: Plant3_Death_brown_160
+  - first:
+      213: -4390630485725372339
+    second: Plant3_Death_brown_161
+  - first:
+      213: 5781338536593405695
+    second: Plant3_Death_brown_162
+  - first:
+      213: -4582792726338883016
+    second: Plant3_Death_brown_163
+  - first:
+      213: 9128639405025937322
+    second: Plant3_Death_brown_164
+  - first:
+      213: 7086616858411401441
+    second: Plant3_Death_brown_165
+  - first:
+      213: 8962463332097460959
+    second: Plant3_Death_brown_166
+  - first:
+      213: 6930921977475962879
+    second: Plant3_Death_brown_167
+  - first:
+      213: -7598018755350481094
+    second: Plant3_Death_brown_168
+  - first:
+      213: 300074580004174098
+    second: Plant3_Death_brown_169
+  - first:
+      213: 1249792615400046072
+    second: Plant3_Death_brown_170
+  - first:
+      213: 4796388201397317635
+    second: Plant3_Death_brown_171
+  - first:
+      213: 938654940149537003
+    second: Plant3_Death_brown_172
+  - first:
+      213: 2180169699003839298
+    second: Plant3_Death_brown_173
+  - first:
+      213: 29405306100657863
+    second: Plant3_Death_brown_174
+  - first:
+      213: -8326233348436118961
+    second: Plant3_Death_brown_175
+  - first:
+      213: -8559067495098036096
+    second: Plant3_Death_brown_176
+  - first:
+      213: 6207039839915605534
+    second: Plant3_Death_brown_177
+  - first:
+      213: 7037989970316573031
+    second: Plant3_Death_brown_178
+  - first:
+      213: 9031913502588922786
+    second: Plant3_Death_brown_179
+  - first:
+      213: 700153566923640406
+    second: Plant3_Death_brown_180
+  - first:
+      213: -3246574022344272787
+    second: Plant3_Death_brown_181
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Plant3_Death_brown_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33abb16c4ff28b5a0800000000000000
+      internalID: -6505396933394449869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d51fc5e94e35cc8e0800000000000000
+      internalID: -1671869120286756515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ec5f6f528c8d310800000000000000
+      internalID: 1430112947072781941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d85791a79d27f160800000000000000
+      internalID: 7059161070200903889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f0c4b0920a478d0800000000000000
+      internalID: -2849476566075043961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb0756ad483c9f830800000000000000
+      internalID: 4105527510692098235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a0fdf02e6ebfb5f0800000000000000
+      internalID: -738662433656278877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1934b9d5f37830670800000000000000
+      internalID: 8503789227628774289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc0a7d15b2da03e00800000000000000
+      internalID: 1022507516981387471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c49761b58190330800000000000000
+      internalID: 3677497350222859282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10da9ce2fff600de0800000000000000
+      internalID: -1368971144928318207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ca91cc4d25d4f40800000000000000
+      internalID: 5714314576113806477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6ea8fc47cdc9560800000000000000
+      internalID: 7321969488453887720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 169027c200c0ecba0800000000000000
+      internalID: -6066898453136275103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26a683a0c7b870c0800000000000000
+      internalID: -4577706983216994773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_15
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25ed6e12b1c97e00800000000000000
+      internalID: 1043077759471838511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5e9b7b60d2efe20800000000000000
+      internalID: 3386193476704658891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_17
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1cac844b72f86a0800000000000000
+      internalID: -6444888886475046436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589b51e490a7beff0800000000000000
+      internalID: -5776794127582843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_19
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bb18fd2a5ac902c0800000000000000
+      internalID: -4464815066894034000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1bb79ffefea2a130800000000000000
+      internalID: 3576613464318655263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 227cf700e1dbbcde0800000000000000
+      internalID: -1311746929893325022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d3f7764ce712d310800000000000000
+      internalID: 1428230335391855572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2d0628c84d490c0800000000000000
+      internalID: -4569794021926317324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_24
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5dc11230e772f50800000000000000
+      internalID: 6856587509600409003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_25
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c24baee80164480800000000000000
+      internalID: -8915420206324241374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_26
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4ba463ef78616c0800000000000000
+      internalID: -4172998478809877341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_27
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c58267020aaad60800000000000000
+      internalID: 7902304557456710760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e680d40ec8541e70800000000000000
+      internalID: 9084983990180415201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_29
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e227a74aae72cbf20800000000000000
+      internalID: 3439668104139534894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba35b4200c2352e0800000000000000
+      internalID: -2138317018943374670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d8f4bd9a332e8a0800000000000000
+      internalID: -6277398125979136613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 833c67cae3e80f450800000000000000
+      internalID: 6120548293429084984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04be6967e1eed9040800000000000000
+      internalID: 4656139404376992576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c91d862789cbfe0800000000000000
+      internalID: -1171894185870910377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23797ee7ee9101510800000000000000
+      internalID: 1517741586545874738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_36
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b836742bc14ef50800000000000000
+      internalID: 6909679280320645965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_37
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c11fa507e41b78820800000000000000
+      internalID: 2920497833823629596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_38
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 872f76bf96c6bbc30800000000000000
+      internalID: 4376210665365828216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plant3_Death_brown_39
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff052501882db390800000000000000
+      internalID: -7801034444933623818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 22f0d49fdaef43642b7bef31c76b3048
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Plant3_Death_brown_0: -6505396933394449869
+      Plant3_Death_brown_1: -1671869120286756515
+      Plant3_Death_brown_10: -1368971144928318207
+      Plant3_Death_brown_11: 5714314576113806477
+      Plant3_Death_brown_12: 7321969488453887720
+      Plant3_Death_brown_13: -6066898453136275103
+      Plant3_Death_brown_14: -4577706983216994773
+      Plant3_Death_brown_15: 1043077759471838511
+      Plant3_Death_brown_16: 3386193476704658891
+      Plant3_Death_brown_17: -6444888886475046436
+      Plant3_Death_brown_18: -5776794127582843
+      Plant3_Death_brown_19: -4464815066894034000
+      Plant3_Death_brown_2: 1430112947072781941
+      Plant3_Death_brown_20: 3576613464318655263
+      Plant3_Death_brown_21: -1311746929893325022
+      Plant3_Death_brown_22: 1428230335391855572
+      Plant3_Death_brown_23: -4569794021926317324
+      Plant3_Death_brown_24: 6856587509600409003
+      Plant3_Death_brown_25: -8915420206324241374
+      Plant3_Death_brown_26: -4172998478809877341
+      Plant3_Death_brown_27: 7902304557456710760
+      Plant3_Death_brown_28: 9084983990180415201
+      Plant3_Death_brown_29: 3439668104139534894
+      Plant3_Death_brown_3: 7059161070200903889
+      Plant3_Death_brown_30: -2138317018943374670
+      Plant3_Death_brown_31: -6277398125979136613
+      Plant3_Death_brown_32: 6120548293429084984
+      Plant3_Death_brown_33: 4656139404376992576
+      Plant3_Death_brown_34: -1171894185870910377
+      Plant3_Death_brown_35: 1517741586545874738
+      Plant3_Death_brown_36: 6909679280320645965
+      Plant3_Death_brown_37: 2920497833823629596
+      Plant3_Death_brown_38: 4376210665365828216
+      Plant3_Death_brown_39: -7801034444933623818
+      Plant3_Death_brown_4: -2849476566075043961
+      Plant3_Death_brown_5: 4105527510692098235
+      Plant3_Death_brown_6: -738662433656278877
+      Plant3_Death_brown_7: 8503789227628774289
+      Plant3_Death_brown_8: 1022507516981387471
+      Plant3_Death_brown_9: 3677497350222859282
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
