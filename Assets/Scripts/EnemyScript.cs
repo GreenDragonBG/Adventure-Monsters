@@ -27,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         //And Notify that your not Attacking
         if (!attacking && Time.time-lastTimeHitAPlayer>0.6 && health > 0 )
         {
-            transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+            transform.Translate(Vector2.right * (direction * speed * Time.deltaTime));
             if (haveToTurn)
             {
                 haveToTurn = false;

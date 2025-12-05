@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class HiddenPlant : MonoBehaviour
 {
     [Header("Attack Settings")]
-    [SerializeField]private bool canDoDamage = true;
+    private bool canDoDamage = false;
     private bool canAttack = true;
         
     [Header("Animation")]
@@ -38,15 +39,23 @@ public class HiddenPlant : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && canAttack)
-        {
-            playerAnimator = other.GetComponent<Animator>();
-            MakeVisible();
-            StartCoroutine(MoveToAttack(4f));
-            StartCoroutine(Attack());
+        if (other.CompareTag("Player"))
+        {   canDoDamage = true;
+            if(canAttack)
+            {
+                playerAnimator = other.GetComponent<Animator>();
+                MakeVisible();
+                StartCoroutine(MoveToAttack(4f));
+                StartCoroutine(Attack());
+            }
         }
     }
-    
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        canDoDamage = false;
+    }
+
     private IEnumerator Attack()
     {
         animator.SetTrigger("Attack");
