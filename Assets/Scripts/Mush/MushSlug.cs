@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MushSlug : MonoBehaviour
 {
-    private float speed = 1f;
+    private const float Speed = 1f;
     public int direction = -1;
     
     // Layer mask for ground
@@ -14,7 +14,7 @@ public class MushSlug : MonoBehaviour
         // Only include the "Ground" layer
         groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
     }
-    void Update()
+    void FixedUpdate()
     {
         // Position where DOWN ray ends
         Vector2 downRayOrigin = transform.position + transform.TransformDirection(new Vector2(0, -0.2f));
@@ -30,7 +30,7 @@ public class MushSlug : MonoBehaviour
         if (groundCheck.collider != null)
         {
             // Walk forward on the current surface (local space)
-            transform.Translate(Vector3.right * (direction * speed * Time.deltaTime), Space.Self);
+            transform.Translate(Vector3.right * (direction * Speed * Time.deltaTime), Space.Self);
             return;
         }
 
@@ -44,37 +44,28 @@ public class MushSlug : MonoBehaviour
         Vector3 offsetDown = localDown * (0.5f * scaleY);     // distance down relative to height
         Vector3 offsetSide = localRight * (0.4f * scaleX);   // distance sideways relative to width
 
-        // Moving LEFT
-        if (direction == -1)
-        {
-            RaycastHit2D leftCheck = Physics2D.Raycast(sideRayOrigin, localRight, 0.2f , groundLayerMask);
+        
+        RaycastHit2D sideCheck = Physics2D.Raycast(sideRayOrigin, direction == -1 ? localRight: localLeft, 0.2f , groundLayerMask);
 
-            if (leftCheck.collider != null)
-            {
-                transform.Rotate(0, 0, 90);
-                // Apply scale-relative offset
-                transform.position += offsetDown - offsetSide;
-            }
-        }
-        // Moving RIGHT
-        else if (direction == 1)
+        if (sideCheck.collider != null)
         {
-            RaycastHit2D rightCheck = Physics2D.Raycast(sideRayOrigin, localLeft, 0.2f , groundLayerMask);
-
-            if (rightCheck.collider != null)
-            {
-                transform.Rotate(0, 0, -90);
-                transform.position += offsetDown - offsetSide;
-            }
+            transform.Rotate(0, 0, direction == -1 ? 90f : -90f);
+            // Apply scale-relative offset
+            transform.position += offsetDown - offsetSide;
         }
     }
 
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.CompareTag("Ground"))
         {
             transform.Rotate(0, 0,  direction == -1 ? -90f : 90f);
+        }
+        else if (other.CompareTag("Player"))
+        {
+            other.GetComponent<Animator>().SetTrigger("Damage");
+            DoDamage.DealDamage();
         }
     }
 }
