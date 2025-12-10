@@ -1,85 +1,66 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiddenPlant : MonoBehaviour
+public class HiddenPlant : ExtendePlant
 {
-    [Header("Attack Settings")]
-    private bool canDoDamage = false;
-    private bool canAttack = true;
-        
-    [Header("Animation")]
-    private Animator animator;
-    private Animator playerAnimator;
-    
     [Header("Position")]
     private Vector3 attackPos;
     private Vector3 hiddenPos;
-    
+
     [Header("Sprite Colors")]
     private SpriteRenderer[] spriteRenderers;
     private List<Color> spriteColors;
-    void Start()
+    private readonly Color transparent = new Color(0, 0, 0, 0);
+
+    protected override void Start()
     {
-        animator = GetComponent<Animator>();
-        
+        base.Start();
+
         attackPos = transform.position;
         hiddenPos = new Vector3(attackPos.x, attackPos.y - 0.65f, attackPos.z);
         transform.position = hiddenPos;
-        
-        spriteRenderers = transform.GetComponentsInChildren<SpriteRenderer>();
+
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         spriteColors = new List<Color>();
-        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+
+        foreach (SpriteRenderer sr in spriteRenderers)
         {
-            spriteColors.Add(spriteRenderer.color);
-            spriteRenderer.color = new Color(0, 0, 0, 0);
+            spriteColors.Add(sr.color);
+            sr.color = transparent;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {   canDoDamage = true;
-            if(canAttack)
+        { 
+            if (CanAttack)
             {
-                playerAnimator = other.GetComponent<Animator>();
+                PlayerAnimator = other.GetComponent<Animator>();
+
                 MakeVisible();
+
                 StartCoroutine(MoveToAttack(4f));
-                StartCoroutine(Attack());
+                StartCoroutine(Attack()); 
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected override IEnumerator Attack()
     {
-        canDoDamage = false;
+        yield return base.Attack(); // plays animation & disables canAttack
     }
 
-    private IEnumerator Attack()
-    {
-        animator.SetTrigger("Attack");
-        canAttack = false;
-        yield break;
-    }
-    
+    // ========== Movement + Visibility ==========
+
     private IEnumerator MoveToAttack(float speed)
     {
         while (transform.position.y < attackPos.y)
         {
             float newY = Mathf.MoveTowards(transform.position.y, attackPos.y, speed * Time.deltaTime);
             transform.position = new Vector3(attackPos.x, newY, attackPos.z);
-            
             yield return null;
-        }
-        
-    }
-
-    private void MakeVisible()
-    {
-        for (int i =0; i < spriteRenderers.Length; i++)
-        {
-            spriteRenderers[i].color = spriteColors[i];
         }
     }
 
@@ -89,28 +70,22 @@ public class HiddenPlant : MonoBehaviour
         {
             float newY = Mathf.MoveTowards(transform.position.y, hiddenPos.y, speed * Time.deltaTime);
             transform.position = new Vector3(hiddenPos.x, newY, hiddenPos.z);
-            
             yield return null;
         }
 
         MakeInvisible();
-        canAttack = true;
-    }
-    
-    private void MakeInvisible()
-    {
-        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
-        {
-            spriteRenderer.color = new Color(0, 0, 0, 0);
-        }
+        CanAttack = true;
     }
 
-    private void DealTheDamage()
+    private void MakeVisible()
     {
-        if (canDoDamage)
-        {
-            playerAnimator.SetTrigger("Damage");
-            DoDamage.DealDamage();
-        }
+        for (int i = 0; i < spriteRenderers.Length; i++)
+            spriteRenderers[i].color = spriteColors[i];
+    }
+
+    private void MakeInvisible()
+    {
+        foreach (var sr in spriteRenderers)
+            sr.color = transparent;
     }
 }
