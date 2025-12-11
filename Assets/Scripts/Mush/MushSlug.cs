@@ -4,7 +4,7 @@ using UnityEngine;
 public class MushSlug : MonoBehaviour
 {
     private const float Speed = 1f;
-    public int direction = -1;
+    private float direction = -1;
     
     // Layer mask for ground
     private int groundLayerMask;
@@ -14,6 +14,12 @@ public class MushSlug : MonoBehaviour
         // Only include the "Ground" layer
         groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
     }
+
+    private void Start()
+    {
+        direction= transform.localScale.x>0 ? -1 : 1;
+    }
+
     void FixedUpdate()
     {
         // Position where DOWN ray ends

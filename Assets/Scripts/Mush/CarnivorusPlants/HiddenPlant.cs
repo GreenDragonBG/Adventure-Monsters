@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class HiddenPlant : ExtendePlant
 {
@@ -12,6 +13,9 @@ public class HiddenPlant : ExtendePlant
     private SpriteRenderer[] spriteRenderers;
     private List<Color> spriteColors;
     private readonly Color transparent = new Color(0, 0, 0, 0);
+
+    [Header("Lighting")] 
+    private Light2D light;
 
     protected override void Start()
     {
@@ -29,6 +33,9 @@ public class HiddenPlant : ExtendePlant
             spriteColors.Add(sr.color);
             sr.color = transparent;
         }
+        
+        light = gameObject.GetComponentInChildren<Light2D>();
+        light.intensity = 0;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
@@ -79,12 +86,14 @@ public class HiddenPlant : ExtendePlant
 
     private void MakeVisible()
     {
+        light.intensity = 1;
         for (int i = 0; i < spriteRenderers.Length; i++)
             spriteRenderers[i].color = spriteColors[i];
     }
 
     private void MakeInvisible()
     {
+        light.intensity = 0;
         foreach (var sr in spriteRenderers)
             sr.color = transparent;
     }
