@@ -12,7 +12,6 @@ public class LightUpCampfire : MonoBehaviour
     [SerializeField] private float timeInterval = 0.1f;
     
     private bool isTriggered = false;
-    private Coroutine growRoutine;
 
     void Start()
     {
@@ -34,7 +33,7 @@ public class LightUpCampfire : MonoBehaviour
             isTriggered = true;
             fireLight.enabled = true;
             
-            growRoutine = StartCoroutine(GrowFire());
+            StartCoroutine(GrowFire());
         }
     }
 

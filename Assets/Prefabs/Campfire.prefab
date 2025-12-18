@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00775f8fa9627c541a2a3e64688104fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightUpCampfire
-  scaleGroweth: 0.3
+  scaleGrowth: 0.2
   timeInterval: 0.05
 --- !u!61 &3342651705495999466
 BoxCollider2D:

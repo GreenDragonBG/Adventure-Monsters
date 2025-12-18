@@ -45,6 +45,5 @@ public class ParticleDamage : MonoBehaviour
         particleSystem = GetComponent<ParticleSystem>();
         particleCollision = particleSystem.collision;
         particleCollision.type = ParticleSystemCollisionType.World;
-        particleSystem.Stop();
     }
 }

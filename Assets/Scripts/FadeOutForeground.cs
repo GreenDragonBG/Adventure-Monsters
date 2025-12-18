@@ -6,12 +6,17 @@ using UnityEngine.Tilemaps;
 public class FadeOutForeground : MonoBehaviour
 {
     [SerializeField]private float timeToFadeOut;
+    [SerializeField]private bool startFadedOut;
     private Coroutine currentFade;
     private Tilemap tilemap;
     
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
+        if (startFadedOut)
+        {
+            tilemap.color = new Color(tilemap.color.r, tilemap.color.g, tilemap.color.b, 0f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

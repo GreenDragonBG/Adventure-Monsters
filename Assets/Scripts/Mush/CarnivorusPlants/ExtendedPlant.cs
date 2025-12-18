@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ExtendePlant : MonoBehaviour
+public class ExtendedPlant : MonoBehaviour
 {
     [Header("Attack Settings")]
     protected bool CanAttack = true;
@@ -47,7 +47,7 @@ public class ExtendePlant : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator Attack()
+    public IEnumerator Attack()
     {
         animator.SetTrigger("Attack");
         CanAttack = false;

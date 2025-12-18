@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallaxLayer : MonoBehaviour
 {
     
-    public float parallaxFactor;
+    [SerializeField]public float parallaxFactor;
     
     public void Move(float delta)
     {

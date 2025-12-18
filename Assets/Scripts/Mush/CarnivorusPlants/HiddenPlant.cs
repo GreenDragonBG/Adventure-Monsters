@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class HiddenPlant : ExtendePlant
+public class HiddenPlant : ExtendedPlant
 {
     [Header("Position")]
     private Vector3 attackPos;
@@ -52,11 +52,6 @@ public class HiddenPlant : ExtendePlant
                 StartCoroutine(Attack()); 
             }
         }
-    }
-
-    protected override IEnumerator Attack()
-    {
-        yield return base.Attack(); // plays animation & disables canAttack
     }
 
     // ========== Movement + Visibility ==========
