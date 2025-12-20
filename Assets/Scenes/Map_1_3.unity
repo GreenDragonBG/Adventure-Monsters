@@ -6005,7 +6005,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -377332871
+  m_SortingLayerID: 1919633947
   m_SortingLayer: -2
   m_SortingOrder: -12
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -79722,7 +79722,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -377332871
+  m_SortingLayerID: 1919633947
   m_SortingLayer: -2
   m_SortingOrder: -20
   m_Sprite: {fileID: -6832479131846305379, guid: 7d6677284ffedf249aea5ef07103bda2, type: 3}
@@ -86391,7 +86391,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -377332871
+  m_SortingLayerID: 1919633947
   m_SortingLayer: -2
   m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}

@@ -23,7 +23,12 @@ public class Chomper : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkDistance = 0.15f;
-
+    
+    [Header("Attack")]
+    private SeedLauncher seedLauncher;
+    private CameraShake camShake;
+    private ChompWave chompWave;
+        
     private bool groundAhead;
     private bool wallAhead;
     private bool isRoaming = false;
@@ -34,7 +39,10 @@ public class Chomper : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        camShake = Camera.main?.GetComponent<CameraShake>();
+        
         previousScaleX = transform.localScale.x;
+        seedLauncher = GetComponentInChildren<SeedLauncher>();
         StartCoroutine(RoamRoutine());
     }
 
@@ -144,5 +152,23 @@ public class Chomper : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    
+    
+    public void SeedAttack()
+    {
+        seedLauncher.LaunchSeed();
+    }
+
+    public void WaveAttack()
+    {
+        chompWave.WaveAttack();
+    }
+
+    public void ScreamShake()
+    {
+        if (camShake != null)
+            StartCoroutine(camShake.Shake(0.6f, 0.2f));
     }
 }

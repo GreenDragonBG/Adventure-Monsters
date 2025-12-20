@@ -8,7 +8,6 @@ public class SeedLauncher : MonoBehaviour
     private GameObject seed;
     private Rigidbody2D seedRb;
     
-    private bool isLaunched = false;
     void Start()
     {
         seedRb = GetComponentInChildren<Rigidbody2D>();
@@ -16,17 +15,8 @@ public class SeedLauncher : MonoBehaviour
         seedRb.bodyType = RigidbodyType2D.Kinematic;
         seed.SetActive(false);
     }
-
-    void Update()
-    {
-        if (Time.time >= 3f && !isLaunched)
-        {
-            Launch();
-            isLaunched = true;
-        }
-    }
     
-    private void Launch()
+    public void LaunchSeed()
     {
         Vector2 endPos = playerPosition.position;
         Vector2 startPos = seedRb.transform.position;
