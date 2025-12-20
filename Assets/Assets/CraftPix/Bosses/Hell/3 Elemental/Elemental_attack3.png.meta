@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: b77e2e8f9e9078b43b052bb8deebb221
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3228467988377802395
+    second: Elemental_attack3_0
+  - first:
+      213: 8328686557125394612
+    second: Elemental_attack3_1
+  - first:
+      213: 6070094649220422488
+    second: Elemental_attack3_2
+  - first:
+      213: -8016820944283253898
+    second: Elemental_attack3_3
+  - first:
+      213: -6160172332531676463
+    second: Elemental_attack3_4
+  - first:
+      213: 1356797839919274862
+    second: Elemental_attack3_5
+  - first:
+      213: -2318947316347586728
+    second: Elemental_attack3_6
+  - first:
+      213: 3397858234973969813
+    second: Elemental_attack3_7
+  - first:
+      213: -317945567778944012
+    second: Elemental_attack3_8
+  - first:
+      213: -6815741492049972474
+    second: Elemental_attack3_9
+  - first:
+      213: 3239366084510594471
+    second: Elemental_attack3_10
+  - first:
+      213: -989429932965298458
+    second: Elemental_attack3_11
+  - first:
+      213: 5551587209750973491
+    second: Elemental_attack3_12
+  - first:
+      213: 1429739304278311939
+    second: Elemental_attack3_13
+  - first:
+      213: -6359293572078817169
+    second: Elemental_attack3_14
+  - first:
+      213: 1730237251415592682
+    second: Elemental_attack3_15
+  - first:
+      213: 1745691565602004924
+    second: Elemental_attack3_16
+  - first:
+      213: -6184209173441601687
+    second: Elemental_attack3_17
+  - first:
+      213: -8909111445741735439
+    second: Elemental_attack3_18
+  - first:
+      213: -3159938057683214598
+    second: Elemental_attack3_19
+  - first:
+      213: 6180248820486517961
+    second: Elemental_attack3_20
+  - first:
+      213: -1611129190851721070
+    second: Elemental_attack3_21
+  - first:
+      213: 8916019941389664744
+    second: Elemental_attack3_22
+  - first:
+      213: -6827360096278770827
+    second: Elemental_attack3_23
+  - first:
+      213: 3931953052222120264
+    second: Elemental_attack3_24
+  - first:
+      213: 6663631571326888486
+    second: Elemental_attack3_25
+  - first:
+      213: -5777971825567067111
+    second: Elemental_attack3_26
+  - first:
+      213: 668879370512630648
+    second: Elemental_attack3_27
+  - first:
+      213: 7807275261323219172
+    second: Elemental_attack3_28
+  - first:
+      213: 2931132325450367004
+    second: Elemental_attack3_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Elemental_attack3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5696500487d2233d0800000000000000
+      internalID: -3228467988377802395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elemental_attack3_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0c703eb40759370800000000000000
+      internalID: 8328686557125394612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elemental_attack3_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85b58c73cee4d3450800000000000000
+      internalID: 6070094649220422488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elemental_attack3_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673c51c73d78eb090800000000000000
+      internalID: -8016820944283253898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elemental_attack3_4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1da824cc6eba28aa0800000000000000
+      internalID: -6160172332531676463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elemental_attack3_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6bd760627054d210800000000000000
+      internalID: 1356797839919274862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 537fa2edb6355dc44990a2a0d342a7bb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":72.0,"y":72.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Elemental_attack3_0: -3228467988377802395
+      Elemental_attack3_1: 8328686557125394612
+      Elemental_attack3_2: 6070094649220422488
+      Elemental_attack3_3: -8016820944283253898
+      Elemental_attack3_4: -6160172332531676463
+      Elemental_attack3_5: 1356797839919274862
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

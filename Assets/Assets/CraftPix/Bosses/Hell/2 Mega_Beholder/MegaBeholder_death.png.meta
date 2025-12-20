@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: fc469d9000de2214ba1d618b66ed9151
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6301391087299181960
+    second: MegaBeholder_death_0
+  - first:
+      213: -3542287882106547507
+    second: MegaBeholder_death_1
+  - first:
+      213: -4221511862736606073
+    second: MegaBeholder_death_2
+  - first:
+      213: 5564761664372653580
+    second: MegaBeholder_death_3
+  - first:
+      213: -4859764639626654981
+    second: MegaBeholder_death_4
+  - first:
+      213: 5495610515539049357
+    second: MegaBeholder_death_5
+  - first:
+      213: 851510804376457020
+    second: MegaBeholder_death_6
+  - first:
+      213: 5382588662596464473
+    second: MegaBeholder_death_7
+  - first:
+      213: 9183115190448804734
+    second: MegaBeholder_death_8
+  - first:
+      213: -3668722563350747329
+    second: MegaBeholder_death_9
+  - first:
+      213: 598853177525164191
+    second: MegaBeholder_death_10
+  - first:
+      213: -7643370489297276257
+    second: MegaBeholder_death_11
+  - first:
+      213: -3455096594334138967
+    second: MegaBeholder_death_12
+  - first:
+      213: -9096530135974789575
+    second: MegaBeholder_death_13
+  - first:
+      213: 8589155316845269228
+    second: MegaBeholder_death_14
+  - first:
+      213: 1039950288421067963
+    second: MegaBeholder_death_15
+  - first:
+      213: -477484431983894492
+    second: MegaBeholder_death_16
+  - first:
+      213: -5360255586348831411
+    second: MegaBeholder_death_17
+  - first:
+      213: 4500596616348142993
+    second: MegaBeholder_death_18
+  - first:
+      213: 4509335007721872572
+    second: MegaBeholder_death_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MegaBeholder_death_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 4
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87248ba3136fc88a0800000000000000
+      internalID: -6301391087299181960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc25ed660f347dec0800000000000000
+      internalID: -3542287882106547507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 55
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78cac7ec35d2a65c0800000000000000
+      internalID: -4221511862736606073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 55
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0eb4a810410a3d40800000000000000
+      internalID: 5564761664372653580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 41
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfa8c03fec5ae8cb0800000000000000
+      internalID: -4859764639626654981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_5
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 48
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b3b9a95a4544c40800000000000000
+      internalID: 5495610515539049357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 46
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3f0449a09c21db00800000000000000
+      internalID: 851510804376457020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_7
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 50
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f6b16dedbc2ba40800000000000000
+      internalID: 5382588662596464473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_8
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 7
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e73d13a8c9af07f70800000000000000
+      internalID: 9183115190448804734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_9
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 44
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f37a4003444161dc0800000000000000
+      internalID: -3668722563350747329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_10
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 40
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f985007cacd8f4800800000000000000
+      internalID: 598853177525164191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_11
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 27
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f927bba490b4de590800000000000000
+      internalID: -7643370489297276257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_12
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 0
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad3d0e04f70d00d0800000000000000
+      internalID: -3455096594334138967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_13
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 0
+        width: 45
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e369c6902a2c180800000000000000
+      internalID: -9096530135974789575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_14
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 31
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0583dd04fc23770800000000000000
+      internalID: 8589155316845269228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_15
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 0
+        width: 45
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc17650745ae6e00800000000000000
+      internalID: 1039950288421067963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_16
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42022dd5072af59f0800000000000000
+      internalID: -477484431983894492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_17
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4def5ea1fb8c95b0800000000000000
+      internalID: -5360255586348831411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19d81c207c4557e30800000000000000
+      internalID: 4500596616348142993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MegaBeholder_death_19
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbcde7c4c40649e30800000000000000
+      internalID: 4509335007721872572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MegaBeholder_death_0: -6301391087299181960
+      MegaBeholder_death_1: -3542287882106547507
+      MegaBeholder_death_10: 598853177525164191
+      MegaBeholder_death_11: -7643370489297276257
+      MegaBeholder_death_12: -3455096594334138967
+      MegaBeholder_death_13: -9096530135974789575
+      MegaBeholder_death_14: 8589155316845269228
+      MegaBeholder_death_15: 1039950288421067963
+      MegaBeholder_death_16: -477484431983894492
+      MegaBeholder_death_17: -5360255586348831411
+      MegaBeholder_death_18: 4500596616348142993
+      MegaBeholder_death_19: 4509335007721872572
+      MegaBeholder_death_2: -4221511862736606073
+      MegaBeholder_death_3: 5564761664372653580
+      MegaBeholder_death_4: -4859764639626654981
+      MegaBeholder_death_5: 5495610515539049357
+      MegaBeholder_death_6: 851510804376457020
+      MegaBeholder_death_7: 5382588662596464473
+      MegaBeholder_death_8: 9183115190448804734
+      MegaBeholder_death_9: -3668722563350747329
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
