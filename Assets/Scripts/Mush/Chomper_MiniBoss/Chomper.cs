@@ -11,8 +11,8 @@ public class Chomper : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
     [SerializeField] private float stopDistance = 0.4f;
-    [SerializeField] private float slowDistance = 1f; // start slowing when close
-    [SerializeField] private float viewRange = 5f; // how far the enemy can see
+    [SerializeField] private float slowDistance = 1f;
+    [SerializeField] private float viewRange = 5f;
 
     [Header("Roaming")]
     [SerializeField] private float roamTimeMin = 1f;
@@ -23,26 +23,54 @@ public class Chomper : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkDistance = 0.15f;
+
+    [Header("Charge Attack")]
+    [SerializeField] private float chargeSpeed = 10f;
+    [SerializeField] private float chargeDuration = 2f;
+    [SerializeField] private float stunDuration = 1.5f;
+    [SerializeField] private float chargeMinDistance = 2.5f;
+
+    [Header("Attacks")]
+    [SerializeField] private float closeDistance = 1.5f;
+    [SerializeField] private float midDistance = 7f;
+    [SerializeField] private float longDistance = 15f;
     
-    [Header("Attack")]
     private SeedLauncher seedLauncher;
     private CameraShake camShake;
     private ChompWave chompWave;
-        
+
+    private AttackStates attackState;
+    private enum AttackStates
+    {
+        None,
+        Bite,
+        Seeds,
+        Wave,
+        Charge
+    }
+
     private bool groundAhead;
     private bool wallAhead;
-    private bool isRoaming = false;
+
+    private bool isRoaming;
     private int roamDirection = 1;
+
+    private bool isCharging;
+    private bool isStunned;
+    private int chargeDirection;
+
     private float previousScaleX;
+    
+    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         camShake = Camera.main?.GetComponent<CameraShake>();
-        
-        previousScaleX = transform.localScale.x;
         seedLauncher = GetComponentInChildren<SeedLauncher>();
+
+        previousScaleX = transform.localScale.x;
         StartCoroutine(RoamRoutine());
     }
 
@@ -51,6 +79,19 @@ public class Chomper : MonoBehaviour
         if (!player) return;
 
         UpdateChecks();
+
+        if (isStunned)
+        {
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            return;
+        }
+
+        if (isCharging)
+        {
+            ChargeMove();
+            return;
+        }
+
         Move();
     }
 
@@ -75,13 +116,12 @@ public class Chomper : MonoBehaviour
     {
         float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
 
-        // Player in view → chase
+        // PLAYER IN VIEW → CHASE
         if (distanceToPlayer <= viewRange)
         {
             isRoaming = false;
 
             float direction = Mathf.Sign(player.position.x - transform.position.x);
-
             FlipWithOffset(direction);
 
             if (distanceToPlayer <= stopDistance || wallAhead || !groundAhead)
@@ -102,7 +142,7 @@ public class Chomper : MonoBehaviour
             return;
         }
 
-        // Player out of view → roam
+        // PLAYER OUT OF VIEW → ROAM
         isRoaming = true;
         RoamMove();
     }
@@ -110,28 +150,62 @@ public class Chomper : MonoBehaviour
     private void RoamMove()
     {
         if (wallAhead || !groundAhead)
-        {
-            roamDirection *= -1; // flip direction
-        }
+            roamDirection *= -1;
 
         rb.linearVelocity = new Vector2(roamDirection * speed, rb.linearVelocity.y);
         FlipWithOffset(roamDirection);
         anim.SetBool("isWalking", true);
     }
 
+    private void ChargeMove()
+    {
+        rb.linearVelocity = new Vector2(chargeDirection * chargeSpeed, rb.linearVelocity.y);
+
+        if (wallAhead)
+        {
+            StartCoroutine(StunRoutine());
+        }
+    }
+
+    private IEnumerator ChargeRoutine()
+    {
+        isCharging = true;
+
+        chargeDirection = (int)Mathf.Sign(player.position.x - transform.position.x);
+        FlipWithOffset(chargeDirection);
+
+        anim.SetTrigger("charge");
+
+        float timer = 0f;
+        while (timer < chargeDuration)
+        {
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        isCharging = false;
+    }
+
+    private IEnumerator StunRoutine()
+    {
+        isCharging = false;
+        isStunned = true;
+
+        rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(stunDuration);
+
+        isStunned = false;
+    }
+
     private void FlipWithOffset(float direction)
     {
         float newScaleX = -Mathf.Abs(transform.localScale.x) * direction;
 
-        // Check for flip
         if (previousScaleX > 0 && newScaleX < 0)
-        {
             transform.position += new Vector3(1.12f, 0f, 0f);
-        }
         else if (previousScaleX < 0 && newScaleX > 0)
-        {
             transform.position += new Vector3(-1.12f, 0f, 0f);
-        }
 
         transform.localScale = new Vector3(newScaleX, transform.localScale.y, transform.localScale.z);
         previousScaleX = newScaleX;
@@ -144,8 +218,7 @@ public class Chomper : MonoBehaviour
             if (isRoaming)
             {
                 roamDirection = Random.value < 0.5f ? -1 : 1;
-                float roamTime = Random.Range(roamTimeMin, roamTimeMax);
-                yield return new WaitForSeconds(roamTime);
+                yield return new WaitForSeconds(Random.Range(roamTimeMin, roamTimeMax));
             }
             else
             {
@@ -154,21 +227,53 @@ public class Chomper : MonoBehaviour
         }
     }
 
-    
-    
     public void SeedAttack()
     {
-        seedLauncher.LaunchSeed();
+        seedLauncher?.LaunchSeed();
     }
 
     public void WaveAttack()
     {
-        chompWave.WaveAttack();
+        chompWave?.WaveAttack();
     }
 
     public void ScreamShake()
     {
         if (camShake != null)
             StartCoroutine(camShake.Shake(0.6f, 0.2f));
+    }
+
+    private void CalcAttack()
+    {
+        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
+        int randResult = Random.Range(0, 10);
+        
+        if (distanceToPlayer<closeDistance) //Bite
+        {
+            attackState = AttackStates.Bite;
+        }
+        else if (distanceToPlayer<midDistance) //Seed + Wave
+        {
+            attackState = randResult switch
+            {
+                < 5 => AttackStates.Seeds,
+                < 8 => AttackStates.Wave,
+                _ => AttackStates.None
+            };
+        }
+        else if (distanceToPlayer<longDistance) //Wave + Seed + Charge
+        {
+            attackState = randResult switch
+            {
+                < 3 => AttackStates.Wave,
+                < 5 => AttackStates.Seeds,
+                < 6 => AttackStates.Charge,
+                _ => AttackStates.None
+            };
+        }
+        else //Charge
+        {
+            attackState = randResult<6 ? AttackStates.Charge : AttackStates.None;
+        }
     }
 }
