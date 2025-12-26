@@ -15,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Fire
-  - 
-  - 
+  - Enemy
+  - Projectile
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1919633947
     locked: 0
+  - name: Background (Front)
+    uniqueID: 3917634425
+    locked: 0
   - name: Fire
     uniqueID: 4062152003
     locked: 0
@@ -55,9 +58,6 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 4211329781
-    locked: 0
-  - name: Background (Front)
-    uniqueID: 3917634425
     locked: 0
   m_RenderingLayers:
   - Default
