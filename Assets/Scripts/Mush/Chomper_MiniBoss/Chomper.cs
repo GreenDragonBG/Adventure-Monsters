@@ -1,12 +1,29 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class Chomper : MonoBehaviour
 {
+    [Header("Animation Variables")]
+    private static readonly int LaunchSeed = Animator.StringToHash("launchSeed");
+    private static readonly int WaveScream = Animator.StringToHash("waveScream");
+    private static readonly int IsStunned = Animator.StringToHash("isStunned");
+    private static readonly int IsCharging = Animator.StringToHash("isCharging");
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    private static readonly int LeftChomp = Animator.StringToHash("leftChomp");
+    private static readonly int RightChomp = Animator.StringToHash("rightChomp");
+
     [Header("References")]
     [SerializeField] private Transform player;
     private Rigidbody2D rb;
     private Animator anim;
+    
+    [Header("BossHealth")]
+    [SerializeField ]private GameObject bossBar;
+    private BossBar bossBarScript;
+    private float bossHealth = 80f;
 
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
@@ -33,10 +50,15 @@ public class Chomper : MonoBehaviour
     [SerializeField] private float chargeSpeed = 10f;
     [SerializeField] private float chargeDuration = 2f;
     [SerializeField] private float stunDuration = 1.5f;
-    [SerializeField] private float chargeMinDistance = 2.5f;
     private bool isCharging;
     private bool isStunned;
     private int chargeDirection;
+    [SerializeField] private float retreatDuration = 2f;
+    private bool isRetreating;
+    private int retreatDirection;
+
+    [Header("Chomp Attack")] 
+    private bool playerInsideChompRange;
 
     [Header("Attacks")] 
     [SerializeField] private GameObject attacksParent;
@@ -48,9 +70,10 @@ public class Chomper : MonoBehaviour
     private CameraShake camShake;
 
     [Header("Attack Timer")]
-    private float attackTimer = 0f;
+    private float attackTimer;
     [SerializeField] private float attackDelay = 2f;
-    private bool isAttacking = false;
+    private float activeAttackDelay;
+    private bool isAttacking;
 
     private void Start()
     {
@@ -59,13 +82,23 @@ public class Chomper : MonoBehaviour
         camShake = Camera.main?.GetComponent<CameraShake>();
         seedLauncher = attacksParent.GetComponentInChildren<SeedLauncher>();
         chompWave = attacksParent.GetComponentInChildren<ChompWave>();
+        
+        //gets the boss bar script and sets  health
+        bossBar.SetActive(true);
+        bossBarScript = bossBar.GetComponent<BossBar>();
+        bossBarScript.maxHealth = 100f;
+        bossBarScript.currentHealth = bossHealth;
 
+        activeAttackDelay = attackDelay;
+        
         previousScaleX = transform.localScale.x;
         StartCoroutine(RoamRoutine());
     }
 
     private void FixedUpdate()
     {
+        HealthChange();
+        
         if (!player) return;
 
         UpdateChecks();
@@ -75,6 +108,13 @@ public class Chomper : MonoBehaviour
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             return;
         }
+        
+        if (isRetreating)
+        {
+            rb.linearVelocity = new Vector2(retreatDirection * speed, rb.linearVelocity.y);
+            return;
+        }
+
 
         if (isCharging)//Charge moveing
         {
@@ -105,9 +145,19 @@ public class Chomper : MonoBehaviour
         if ((state.IsName("Idle") || state.IsName("Walk")) && !isAttacking)
         {
             attackTimer += Time.fixedDeltaTime;
-            if (attackTimer >= attackDelay)
+            float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
+            if (distanceToPlayer < closeDistance && attackTimer>=0.3f)
             {
-                CalcAttack();
+                FacePlayer();
+                isAttacking = true;
+                int result = Random.Range(0, 2);
+                anim.SetTrigger(result == 0 ? LeftChomp : RightChomp);
+
+                attackTimer = 0f;
+            }
+            else if (attackTimer >= activeAttackDelay)
+            {
+                CalcAttack(distanceToPlayer);
                 attackTimer = 0f;
             }
         }
@@ -116,7 +166,19 @@ public class Chomper : MonoBehaviour
             attackTimer = 0f;
         }
     }
-
+    
+    private void HealthChange()
+    {
+        if (bossBarScript.currentHealth<=0)
+        {
+            bossBar.SetActive(false);
+        }
+        else
+        {
+            bossBarScript.currentHealth = bossHealth;
+        }
+    }
+    
     private void UpdateChecks()//Checks if there is a wall or ground
     {
         groundAhead = Physics2D.Raycast(
@@ -151,7 +213,7 @@ public class Chomper : MonoBehaviour
             if (distanceToPlayer <= stopDistance || wallAhead || !groundAhead)
             {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-                anim.SetBool("isWalking", false);
+                anim.SetBool(IsWalking, false);
                 return;
             }
 
@@ -160,7 +222,7 @@ public class Chomper : MonoBehaviour
                 moveSpeed *= distanceToPlayer / slowDistance;
 
             rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
-            anim.SetBool("isWalking", true);
+            anim.SetBool(IsWalking, true);
         }
         else
         {
@@ -178,7 +240,7 @@ public class Chomper : MonoBehaviour
 
         rb.linearVelocity = new Vector2(roamDirection * speed, rb.linearVelocity.y);
         FlipWithOffset(roamDirection);
-        anim.SetBool("isWalking", true);
+        anim.SetBool(IsWalking, true);
     }
 
     private IEnumerator RoamRoutine()//randomly goes around searching for the player
@@ -218,7 +280,7 @@ public class Chomper : MonoBehaviour
         chargeDirection = (int)Mathf.Sign(player.position.x - transform.position.x);
         FlipWithOffset(chargeDirection);
 
-        anim.SetBool("isCharging", true);
+        anim.SetBool(IsCharging, true);
 
         float startTime = Time.time;
 
@@ -226,7 +288,7 @@ public class Chomper : MonoBehaviour
             yield return new WaitForFixedUpdate();
 
         isCharging = false;
-        anim.SetBool("isCharging", false);
+        anim.SetBool(IsCharging, false);
     }
 
     private void ChargeMove()//moving during charge attack
@@ -242,20 +304,42 @@ public class Chomper : MonoBehaviour
         isCharging = false;
         isStunned = true;
 
-        anim.SetBool("isStunned", true);
-        anim.SetBool("isCharging", false);
+        anim.SetBool(IsStunned, true);
+        anim.SetBool(IsCharging, false);
 
         rb.linearVelocity = Vector2.zero;
 
         yield return new WaitForSeconds(stunDuration);
 
-        anim.SetBool("isStunned", false);
+        anim.SetBool(IsStunned, false);
         isStunned = false;
+    }
+
+    private IEnumerator RetreatFromPlayer()//After charge if hit player step back to give player space
+    {
+        isCharging = false;
+        isAttacking = false;
+        // Move AWAY from player
+        retreatDirection = -(int)Mathf.Sign(player.position.x - transform.position.x);
+        FlipWithOffset(retreatDirection);
+        isRetreating = true;
+        
+        float elapsed = 0f;
+
+        while (elapsed < retreatDuration)
+        {
+            rb.linearVelocity = new Vector2(retreatDirection * speed, rb.linearVelocity.y);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        isRetreating = false;
     }
 
     private void FlipWithOffset(float direction)//flip the chomper but with offset as its asset is not centered
     {
-        if (isCharging) return;
+        if (isCharging || isRetreating) return;
 
         float newScaleX = -Mathf.Abs(transform.localScale.x) * direction;
 
@@ -266,78 +350,6 @@ public class Chomper : MonoBehaviour
 
         transform.localScale = new Vector3(newScaleX, transform.localScale.y, transform.localScale.z);
         previousScaleX = newScaleX;
-    }
-
-//Called by animations
-    public void SeedAttack()
-    {
-        seedLauncher?.LaunchSeed();
-    }
-
-    public void WaveAttack()
-    {
-        chompWave?.WaveAttack();
-    }
-
-    public void ScreamShake()
-    {
-        if (camShake != null)
-            StartCoroutine(camShake.Shake(0.6f, 0.2f));
-    }
-
-    private void CalcAttack() //The logic behind what attack gets used (based on distance and chance)
-    {
-        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
-        int randResult = Random.Range(0, 10);
-
-        if (distanceToPlayer < closeDistance)
-        {
-            FacePlayer();
-            isAttacking = true;
-            anim.SetTrigger("chomp");
-        }
-        else if (distanceToPlayer < midDistance)
-        {
-            if (randResult < 5)
-            {
-                FacePlayer();
-                isAttacking = true;
-                anim.SetTrigger("launchSeed");
-            }
-            else if (randResult < 8)
-            {
-                FacePlayer();
-                isAttacking = true;
-                anim.SetTrigger("waveScream");
-            }
-        }
-        else if (distanceToPlayer < longDistance)
-        {
-            if (randResult < 3)
-            {
-                FacePlayer();
-                isAttacking = true;
-                anim.SetTrigger("waveScream");
-            }
-            else if (randResult < 5)
-            {
-                FacePlayer();
-                isAttacking = true;
-                anim.SetTrigger("launchSeed");
-            }
-            else if (randResult < 6)
-            {
-                StartCoroutine(Charge());
-            }
-        }
-        else
-        {
-            if (randResult < 6)
-            {
-                StartCoroutine(Charge());
-            }
-        }
-
     }
     
     private void FacePlayer(bool allowDuringAttack = true)
@@ -359,4 +371,117 @@ public class Chomper : MonoBehaviour
     }
 
 
+//Called by animations
+    public void SeedAttack()
+    {
+        seedLauncher?.LaunchSeed();
+    }
+
+    public void WaveAttack()
+    {
+        chompWave?.WaveAttack();
+    }
+
+    public void ScreamShake()
+    {
+        if (camShake != null)
+            StartCoroutine(camShake.Shake(0.6f, 0.2f));
+    }
+
+    public void ChompDamageCheck()
+    {
+        if (playerInsideChompRange)
+        {
+            player.GetComponent<Animator>()?.SetTrigger("Damage");
+            DoDamage.DealDamage();
+        }
+    }
+
+    private void CalcAttack(float distanceToPlayer) //The logic behind what attack gets used (based on distance and chance)
+    {
+        int randResult = Random.Range(0, 10);
+        
+        activeAttackDelay = attackDelay;//sets to normal delay
+        
+        if (distanceToPlayer < midDistance)
+        {
+            if (randResult < 5)
+            {
+                FacePlayer();
+                if (attackDelay<4f)//long enough to fully play
+                {
+                    activeAttackDelay = 4f;
+                }
+                isAttacking = true;
+                anim.SetTrigger(WaveScream);
+            }
+            else if (randResult < 8)
+            {
+                FacePlayer();
+                isAttacking = true;
+                anim.SetTrigger(LaunchSeed);
+            }
+        }
+        else if (distanceToPlayer < longDistance)
+        {
+            if (randResult < 3)
+            {
+                FacePlayer();
+                isAttacking = true;
+                anim.SetTrigger(LaunchSeed);
+            }
+            else if (randResult < 5)
+            {
+                FacePlayer();
+                if (attackDelay<4f)//long enough to fully play
+                {
+                    activeAttackDelay = 4f;
+                }
+                isAttacking = true;
+                anim.SetTrigger(WaveScream);
+            }
+            else if (randResult < 6)
+            {
+                StartCoroutine(Charge());
+            }
+        }
+        else
+        {
+            if (randResult < 7)
+            {
+                StartCoroutine(Charge());
+            }
+        }
+
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (isCharging && other.gameObject.CompareTag("Player"))
+        {
+            isCharging = false;
+            anim.SetBool(IsCharging, false);
+
+            player.gameObject.GetComponent<Animator>()?.SetTrigger("Damage");
+            DoDamage.DealDamage();
+            
+            StartCoroutine(RetreatFromPlayer());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInsideChompRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInsideChompRange = false;
+        }
+    }
 }

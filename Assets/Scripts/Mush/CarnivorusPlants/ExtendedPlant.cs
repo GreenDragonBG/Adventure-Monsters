@@ -12,7 +12,7 @@ public class ExtendedPlant : MonoBehaviour
         
     [Header("Animation")]
     private Animator animator;
-    protected Animator PlayerAnimator;
+    protected Animator playerAnimator;
 
     protected virtual void Start()
     {
@@ -40,7 +40,7 @@ public class ExtendedPlant : MonoBehaviour
         {   
             if (CanAttack)
             {
-                PlayerAnimator = other.GetComponent<Animator>();
+                playerAnimator = other.GetComponent<Animator>();
                 StartCoroutine(Attack());
                 CanAttack = true;
             }
@@ -58,7 +58,7 @@ public class ExtendedPlant : MonoBehaviour
     {
         if (_canDamage)
         {
-            PlayerAnimator.SetTrigger("Damage");
+            playerAnimator.SetTrigger("Damage");
             DoDamage.DealDamage();
             _canDamage = false;
         }

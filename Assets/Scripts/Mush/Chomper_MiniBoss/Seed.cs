@@ -18,8 +18,6 @@ public class Seed : MonoBehaviour
     { 
         if (other.name == "SpikeSurface")
         {
-            Debug.Log("Triggered");
-
             Vector2 impactPos = rb2d.transform.position;
 
             GameObject spike =Instantiate(thornePrefab, impactPos, Quaternion.identity);

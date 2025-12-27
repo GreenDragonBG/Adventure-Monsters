@@ -18,7 +18,6 @@ namespace Mush
 
         [Header("Close Attack")]
         [SerializeField] private float hitDelay = 1f;
-        [SerializeField] private float returnDelay = 0.12f;
         [SerializeField] private float attackCooldown = 4f;
         private float timeEnteredInRange = -Mathf.Infinity;
         private int timesHit = 0;

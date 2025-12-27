@@ -5,8 +5,8 @@ using UnityEngine;
 public class ParticleDamage : MonoBehaviour
 {
     [SerializeField] public bool willTeleport;
-    private ParticleSystem particleSystem;
-    private static float _damageCooldown = 4f;
+    private new ParticleSystem particleSystem;
+    private static readonly float DamageCooldown = 4f;
     
     private ParticleSystem.CollisionModule particleCollision;
 
@@ -19,7 +19,7 @@ public class ParticleDamage : MonoBehaviour
         {
             particleCollision.enabled = false;
             // Check if cooldown has passed
-            if (Time.time - _lastDamageTime >= _damageCooldown)
+            if (Time.time - _lastDamageTime >= DamageCooldown)
             {
                 _lastDamageTime = Time.time;
 

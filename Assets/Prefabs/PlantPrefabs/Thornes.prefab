@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Thorne
   minDistanceBetween: 0.75
-  timeItLasts: 20
+  timeItLasts: 7
 --- !u!60 &3960415339226455693
 PolygonCollider2D:
   m_ObjectHideFlags: 0

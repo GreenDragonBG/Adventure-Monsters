@@ -15,7 +15,7 @@ public class HiddenPlant : ExtendedPlant
     private readonly Color transparent = new Color(0, 0, 0, 0);
 
     [Header("Lighting")] 
-    private Light2D light;
+    private new Light2D light;
 
     protected override void Start()
     {
@@ -44,7 +44,7 @@ public class HiddenPlant : ExtendedPlant
         { 
             if (CanAttack)
             {
-                PlayerAnimator = other.GetComponent<Animator>();
+                playerAnimator = other.GetComponent<Animator>();
 
                 MakeVisible();
 

@@ -10,7 +10,7 @@ public class BossGate : MonoBehaviour
     [SerializeField] private float lightSpeed;
     [SerializeField] private Tilemap gate;
     [SerializeField] private GameObject layer;
-    [SerializeField] private MushBoss boss;
+    [SerializeField] private MonoBehaviour boss;
     private bool startMoving = false;
     private List<Light2D> lights;
 

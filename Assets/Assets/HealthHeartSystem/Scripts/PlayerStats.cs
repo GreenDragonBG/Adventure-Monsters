@@ -2,6 +2,7 @@
  *  Author: ariel oliveira [o.arielg@gmail.com]
  */
 
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
