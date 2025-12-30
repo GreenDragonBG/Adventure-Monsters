@@ -12,25 +12,31 @@ public class BossGate : MonoBehaviour
     [SerializeField] private GameObject layer;
     [SerializeField] private MonoBehaviour boss;
     private bool startMoving = false;
+    private bool lightsExist;
     private List<Light2D> lights;
 
     //Makes the boss not active , turns the lights off and make their intensity to 0 
     private void Start()
     {
         boss.enabled = false;
-        lights = new List<Light2D>();
-        for (int i =0; i<layer.transform.childCount; i++)
+        if (layer!=null)
         {
-            Light2D item = layer.transform.GetChild(i).GetComponent<Light2D>();
-            lights.Add(item);
-        }
-
-        foreach (Light2D item in lights)
-        {
-            item.intensity = 0f;
+            lightsExist = true;
+            lights = new List<Light2D>();
+            for (int i =0; i<layer.transform.childCount; i++)
+            {
+                Light2D item = layer.transform.GetChild(i).GetComponent<Light2D>();
+                lights.Add(item);
+            }
+            
+            foreach (Light2D item in lights)
+            {
+                item.intensity = 0f;
+            }
+            
+            layer.SetActive(false);
         }
         
-        layer.SetActive(false);
     }
 
     void Update()
@@ -43,7 +49,7 @@ public class BossGate : MonoBehaviour
         }
         
         //slowly rises the light's intensity
-        if (startMoving && lights[0].intensity < 1 )
+        if (lightsExist && startMoving && lights[0].intensity < 1 )
         {
             foreach (Light2D item in lights)
             {
@@ -56,8 +62,11 @@ public class BossGate : MonoBehaviour
     //registers that we have triggered the zone and turns the boss script on
     private void OnTriggerEnter2D(Collider2D other)
     {
-        boss.enabled = true;
-        startMoving = true;
+        if (other.CompareTag("Player"))
+        {
+            boss.enabled = true;
+            startMoving = true;
+        }
     }
 
     //moves the gate
