@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class BossBar : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float currentHealth = 100;
+    [NonSerialized]public float maxHealth;
+    [NonSerialized]public float currentHealth;
     private Slider slider;
 
-    private void Awake()
+    private void Start()
     {
         slider = GetComponent<Slider>();
-        slider.maxValue = maxHealth;
     }
 
     private void Update()
     {
+        slider.maxValue = maxHealth;
         slider.value = currentHealth;
     }
 }

@@ -14,6 +14,7 @@ public class Chomper : MonoBehaviour
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
     private static readonly int LeftChomp = Animator.StringToHash("leftChomp");
     private static readonly int RightChomp = Animator.StringToHash("rightChomp");
+    private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
 
     [Header("References")]
     [SerializeField] private Transform player;
@@ -23,7 +24,7 @@ public class Chomper : MonoBehaviour
     [Header("BossHealth")]
     [SerializeField ]private GameObject bossBar;
     private BossBar bossBarScript;
-    private float bossHealth = 80f;
+    private int bossHealth = 1680;
 
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
@@ -74,6 +75,7 @@ public class Chomper : MonoBehaviour
     [SerializeField] private float attackDelay = 2f;
     private float activeAttackDelay;
     private bool isAttacking;
+    private bool takenDamage;
 
     private void Start()
     {
@@ -86,7 +88,7 @@ public class Chomper : MonoBehaviour
         //gets the boss bar script and sets  health
         bossBar.SetActive(true);
         bossBarScript = bossBar.GetComponent<BossBar>();
-        bossBarScript.maxHealth = 100f;
+        bossBarScript.maxHealth = bossHealth;
         bossBarScript.currentHealth = bossHealth;
 
         activeAttackDelay = attackDelay;
@@ -98,7 +100,13 @@ public class Chomper : MonoBehaviour
     private void FixedUpdate()
     {
         HealthChange();
+        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
         
+        if (!state.IsName("Hurt"))
+        {
+            takenDamage = false;
+        }
+
         if (!player) return;
 
         UpdateChecks();
@@ -122,8 +130,6 @@ public class Chomper : MonoBehaviour
             return;
         }
 
-        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
-
         // Stop movement during attack animations (except charge)
         if (state.IsTag("Attack"))
         {
@@ -141,8 +147,8 @@ public class Chomper : MonoBehaviour
         if (!isAttacking)
             Move();
 
-        // Trigger attack after attackDelay and Idle/Walk animation
-        if ((state.IsName("Idle") || state.IsName("Walk")) && !isAttacking)
+        // Trigger attack after attackDelay and Non-Attack animations
+        if ((!state.IsTag("Attack") && !isAttacking))
         {
             attackTimer += Time.fixedDeltaTime;
             float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
@@ -152,8 +158,6 @@ public class Chomper : MonoBehaviour
                 isAttacking = true;
                 int result = Random.Range(0, 2);
                 anim.SetTrigger(result == 0 ? LeftChomp : RightChomp);
-
-                attackTimer = 0f;
             }
             else if (attackTimer >= activeAttackDelay)
             {
@@ -166,12 +170,15 @@ public class Chomper : MonoBehaviour
             attackTimer = 0f;
         }
     }
-    
+        
     private void HealthChange()
     {
         if (bossBarScript.currentHealth<=0)
         {
             bossBar.SetActive(false);
+             anim.SetTrigger("Death");
+            
+             enabled = false;
         }
         else
         {
@@ -198,7 +205,7 @@ public class Chomper : MonoBehaviour
 
     private void Move()//if not attacking go after player if close enough or roam freely searching for player
     {
-        if (isAttacking) return;
+        if (isAttacking || takenDamage) return;
 
         float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
 
@@ -233,7 +240,7 @@ public class Chomper : MonoBehaviour
 
     private void RoamMove()//the roams movement
     {
-        if (isAttacking) return;
+        if (isAttacking || takenDamage) return;
 
         if (wallAhead || !groundAhead)
             roamDirection *= -1;
@@ -471,7 +478,13 @@ public class Chomper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Attack") && !isAttacking)
+        {
+            bossHealth -= 30;
+            anim.SetTrigger(DamageTaken);
+            takenDamage = true;
+        } 
+        else if (other.CompareTag("Player"))
         {
             playerInsideChompRange = true;
         }
@@ -482,6 +495,16 @@ public class Chomper : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideChompRange = false;
+        }
+    }
+
+    private void HasDied()
+    {
+        anim.SetBool("isDeath",true);
+        rb.bodyType = RigidbodyType2D.Static;
+        foreach (Collider2D coll in GetComponentsInChildren<Collider2D>())
+        {
+            coll.enabled = false;
         }
     }
 }

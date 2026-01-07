@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Ground
   - Weapon
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Fire
     uniqueID: 4062152003
+    locked: 0
+  - name: Vines
+    uniqueID: 2498224433
     locked: 0
   - name: Default
     uniqueID: 0

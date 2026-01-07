@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -8,16 +9,17 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour {
     [Header("Main Settings")]
     private Rigidbody2D rb2d;
+    public int playerHealth = 90;
     private Animator animator;
     private Camera cam;
     private CameraController camController;
     private CameraShake camShake;
     public bool canMove = true; 
-    private bool comboQueued;
     public float speed;
-
-    public int playerHealth = 90;
     
+    [Header("Attack")]
+    public int attackDamage = 30;
+    private Collider2D attackRange;
     
     [Header("Horizontal Movement")]
     public float horizontalmoveInput = 0f;
@@ -44,8 +46,20 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         cam = Camera.main;
-        camController = cam.GetComponent<CameraController>();
-        camShake = cam.GetComponent<CameraShake>();
+        if (cam != null)
+        {
+            camController = cam.GetComponent<CameraController>();
+            camShake = cam.GetComponent<CameraShake>();
+        }
+
+        foreach (Collider2D coll in GetComponentsInChildren<Collider2D>())
+        {
+            if (coll.gameObject.CompareTag("Attack"))
+            {
+                attackRange = coll;
+                attackRange.enabled = false;
+            }
+        }
     }
 
     void Update()
@@ -122,32 +136,10 @@ public class PlayerController : MonoBehaviour {
 
     private void CheckAttack()
     {  
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
-                {
-                    comboQueued = true;
-                }
-                else if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
-                {
-                    // Start first attack if not attacking
-                    animator.SetTrigger("Attack");
-                    comboQueued = false;
-                }
+            if (Input.GetKeyDown(KeyCode.Z) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            { 
+                animator.SetTrigger("Attack");
             }
-    }
-
-    public void CheckCombo()
-    {
-        if (comboQueued)
-        {
-            animator.SetBool("Combo", true);
-            comboQueued = false;
-        }
-        else
-        {
-            animator.SetBool("Combo", false);
-        }
     }
     
     
@@ -255,5 +247,16 @@ public class PlayerController : MonoBehaviour {
     {
         //player dies and resets the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //Sets the trigger to be enabled so its able to hit, Its called by the animation
+    private void SetAttackRangeOn()
+    {
+        attackRange.enabled = true;
+    }
+
+    private void SetAttackRangeOff()
+    {
+        attackRange.enabled = false;
     }
 }

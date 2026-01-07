@@ -669,8 +669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7c04c3b0288374b9974c2c5a7be571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
 --- !u!1 &241828604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,7 +3029,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1919633947
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: -11
   m_Sprite: {fileID: 12474994312637559, guid: 762be0c62ab14564bbfba646bb9225b5, type: 3}
   m_Color: {r: 1, g: 0.3019608, b: 0.8627451, a: 1}
@@ -3485,11 +3483,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1ab024f3e101945a5b30b9d6913b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.015
-  lightSpeed: 0.0005
-  gate: {fileID: 561635333}
-  layer: {fileID: 1715586520}
   boss: {fileID: 1357392731}
+  finalYPosition: 0
+  gate: {fileID: 561635333}
+  moveSpeed: 0.015
+  lightsExist: 1
+  lightsLayer: {fileID: 1715586520}
+  lightSpeed: 0.0005
 --- !u!61 &1095976354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7171,7 +7171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -377332871
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: -10
   m_Sprite: {fileID: 6399330195908510344, guid: 762be0c62ab14564bbfba646bb9225b5, type: 3}
   m_Color: {r: 1, g: 0.3019608, b: 0.8627451, a: 1}

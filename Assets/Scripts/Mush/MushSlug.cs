@@ -1,10 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MushSlug : MonoBehaviour
 {
+    private int health = 60;
+    private Animator anim;
+    private bool isDeath;
     private const float Speed = 1f;
     private float direction = -1;
+    
+    private CapsuleCollider2D deathCollider;
     
     // Layer mask for ground
     private int groundLayerMask;
@@ -18,10 +24,23 @@ public class MushSlug : MonoBehaviour
     private void Start()
     {
         direction= transform.localScale.x>0 ? -1 : 1;
+        anim = GetComponent<Animator>();
+        deathCollider = GetComponent<CapsuleCollider2D>();
+        deathCollider.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (!isDeath && health<=0)
+        {
+            StartCoroutine(Death());
+        }
     }
 
     void FixedUpdate()
     {
+        if(isDeath) return; //Doesnt continue if the slug is death
+        
         // Position where DOWN ray ends
         Vector2 downRayOrigin = transform.position + transform.TransformDirection(new Vector2(0, -0.2f));
 
@@ -64,14 +83,31 @@ public class MushSlug : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(isDeath) return; //Doesnt continue if the slug is death
+
         if (other.CompareTag("Ground"))
         {
             transform.Rotate(0, 0,  direction == -1 ? -90f : 90f);
+        }
+        else if (other.CompareTag("Attack"))
+        {
+            health -= other.transform.parent.GetComponent<PlayerController>().attackDamage;
+            anim.SetTrigger("damaged");
         }
         else if (other.CompareTag("Player"))
         {
             other.GetComponent<Animator>().SetTrigger("Damage");
             DoDamage.DealDamage();
         }
+    }
+
+    private IEnumerator Death()
+    {
+        isDeath = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        deathCollider.enabled = true;
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+        
     }
 }
