@@ -525,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 888267971239452390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.02425, y: 0.29064727, z: 0.024859648}
+  m_LocalPosition: {x: 7.9, y: 0.2, z: 0.024859648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12067,7 +12067,7 @@ Transform:
   m_GameObject: {fileID: 3851175341218221254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5326576, y: 0.325006, z: 0.009109968}
+  m_LocalPosition: {x: 0.4, y: 0.2, z: 0.009109968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32943,7 +32943,6 @@ MonoBehaviour:
   animator: {fileID: 854750698615649984}
   canAttack: 0
   hitDelay: 0.5
-  returnDelay: 0.12
   attackCooldown: 2
   lastAttackTime: 0
   firstWaveTime: 4
@@ -33270,6 +33269,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossBar: {fileID: 0}
+  bossHealth: 120
+  heartPrefab: {fileID: 6947219878970635097, guid: c5d9d3ac9b2bd0346b9a2ea5e6542000, type: 3}
+  heartYAxis: 0.9
+  heartMinSpawnX: 34.7
+  heartMaxSpawnX: 57.4
+  heartMaxCooldown: 14
   attackInterval: 8
   isAttacking: 0
   sizeChangerValue: 0.003

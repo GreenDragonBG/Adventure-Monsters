@@ -1,18 +1,30 @@
 using System;
+using System.Collections;
 using Mush;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MushBoss : MonoBehaviour
 {
     [Header("BossHealth")]
     [SerializeField ]private GameObject bossBar;
+    private Animator anim;
     private BossBar bossBarScript;
-    private float bossHealth = 80f;
+    public int bossHealth = 120;
+    private Coroutine colorCoroutine;
+    private SpriteRenderer spriteRenderer;
+    private Color defaultColor;
     
-    
+    [Header("Heart")]
+    private GameObject heartObject;
+    [SerializeField]private GameObject heartPrefab;
+    [SerializeField]private float heartYAxis;
+    [SerializeField]private float heartMinSpawnX;
+    [SerializeField]private float heartMaxSpawnX;
+    [SerializeField]private float heartMaxCooldown;
+    private float heartTimeDestroyed = -Mathf.Infinity;
+    private float heartCurrentCooldown;
+    private bool heartWasDestroyed = true;
     
     //Orb vars
     [Header("Orbs")]
@@ -52,16 +64,22 @@ public class MushBoss : MonoBehaviour
         //gets the boss bar script and sets  health
         bossBar.SetActive(true);
         bossBarScript = bossBar.GetComponent<BossBar>();
-        bossBarScript.maxHealth = 100f;
+        bossBarScript.maxHealth = bossHealth;
         bossBarScript.currentHealth = bossHealth;
         
         //sets the attack time for headHit
         headHit.enabled = true;
+        
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultColor = spriteRenderer.color;
     }
 
     //Constantly keeps track of the size and attacks on every time intreval
     private void Update()
     {
+        HeartSpawner();
+        
         ChangeCanHeadHit();        
 
         HealthChange();
@@ -101,6 +119,16 @@ public class MushBoss : MonoBehaviour
         if (bossBarScript.currentHealth<=0)
         {
             bossBar.SetActive(false);
+            headHit.enabled = false;
+            foreach (MushOrb orb in orbs)
+            {
+                orb.enabled = false;
+            }
+            if (heartObject!=null)
+            {
+                Destroy(heartObject);
+            }
+            enabled = false;
         }
         else
         {
@@ -148,5 +176,51 @@ public class MushBoss : MonoBehaviour
             headHit.canAttack = true;
             headHit.lastAttackTime = Time.time;
         }
+    }
+
+    private void HeartSpawner()
+    {
+        if (heartWasDestroyed)
+        {
+            heartTimeDestroyed =  Time.time;
+            heartCurrentCooldown = Random.Range(0, heartMaxCooldown);
+            
+            heartWasDestroyed = false;
+            
+        }else if (!float.IsNegativeInfinity(heartTimeDestroyed) && Time.time - heartTimeDestroyed >= heartCurrentCooldown)
+        {
+            Vector2 newPosition = new Vector2(Random.Range(heartMinSpawnX,heartMaxSpawnX),heartYAxis);
+            heartObject =Instantiate(heartPrefab, newPosition, Quaternion.identity);
+            heartObject.transform.parent = transform.parent;
+            
+            heartTimeDestroyed = -Mathf.Infinity;
+        }
+        
+    }
+    
+    private IEnumerator ReturnColorOverTime(float duration)
+    {
+        float t = 0f;
+        Color startColor = spriteRenderer.color;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            spriteRenderer.color = Color.Lerp(startColor, defaultColor, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = defaultColor;
+    }
+
+    public void ReturnColor(float duration)
+    {
+        if (colorCoroutine != null) StopCoroutine(colorCoroutine);
+        colorCoroutine = StartCoroutine(ReturnColorOverTime(duration));
+    }
+
+    public void HeartWasDestroyed()
+    {
+        heartWasDestroyed = true;
     }
 }

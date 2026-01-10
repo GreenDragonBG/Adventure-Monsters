@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: BezierSolution.Runtime::BezierSolution.BezierWalkerWithSpeed
   spline: {fileID: 0}
   travelMode: 0
-  speed: 5
+  speed: 5.2
   m_normalizedT: 0
   rotationLerpModifier: 0
   lookAt: 3

@@ -11,6 +11,7 @@ public class BossGate : MonoBehaviour
     
     [Header("Gate")]
     [SerializeField] private float finalYPosition;
+    private float startYPosition;
     [SerializeField] private Tilemap gate;
     [SerializeField] private float moveSpeed;
     CameraShake cameraShake;
@@ -45,11 +46,18 @@ public class BossGate : MonoBehaviour
         }
             
         lightsLayer.SetActive(false);
-
+        
+        startYPosition = gate.transform.localPosition.y;
     }
 
     void Update()
     {
+        if (!boss.enabled && gate.transform.localPosition.y > startYPosition)
+        { 
+            Debug.Log(gate.transform.localPosition.y);
+            MoveBack(gate);
+        }
+
         if(hasFinished) return;
         //moves the gate
         if (startMoving && gate.transform.localPosition.y < finalYPosition)
@@ -89,6 +97,14 @@ public class BossGate : MonoBehaviour
     {
         Vector3 newPos = tilemap.transform.localPosition;
         newPos.y += moveSpeed;
+ 
+        tilemap.transform.localPosition = newPos;
+    }
+
+    private void MoveBack(Tilemap tilemap)
+    {
+        Vector3 newPos = tilemap.transform.localPosition;
+        newPos.y -= moveSpeed;
  
         tilemap.transform.localPosition = newPos;
     }
