@@ -7,8 +7,8 @@ public class ChompWave : MonoBehaviour
     private BossPlants[] plantScripts;
 
     [Header("Wave Settings")]
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float delayBetweenPlants = 0.1f;
+    [SerializeField] public float moveSpeed = 1f;
+    [SerializeField] public float delayBetweenPlants = 0.1f;
     [SerializeField] private float startingOffset = -0.5f;
 
     [Header("Ceiling Check")]

@@ -15,6 +15,8 @@ public class Chomper : MonoBehaviour
     private static readonly int LeftChomp = Animator.StringToHash("leftChomp");
     private static readonly int RightChomp = Animator.StringToHash("rightChomp");
     private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
+    private static readonly int IsDeath = Animator.StringToHash("isDeath");
+    private static readonly int Death = Animator.StringToHash("Death");
 
     [Header("References")]
     [SerializeField] private Transform player;
@@ -24,7 +26,7 @@ public class Chomper : MonoBehaviour
     [Header("BossHealth")]
     [SerializeField ]private GameObject bossBar;
     private BossBar bossBarScript;
-    private int bossHealth = 1680;
+    private int bossHealth=120;
 
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
@@ -63,7 +65,7 @@ public class Chomper : MonoBehaviour
 
     [Header("Attacks")] 
     [SerializeField] private GameObject attacksParent;
-    [SerializeField] private float closeDistance = 1.5f;
+    [SerializeField] private float closeDistance = 1f;
     [SerializeField] private float midDistance = 7f;
     [SerializeField] private float longDistance = 15f;
     private SeedLauncher seedLauncher;
@@ -99,6 +101,8 @@ public class Chomper : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (anim.GetBool(IsDeath)) return;
+
         HealthChange();
         AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
         
@@ -154,10 +158,13 @@ public class Chomper : MonoBehaviour
             float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
             if (distanceToPlayer < closeDistance && attackTimer>=0.3f)
             {
-                FacePlayer();
-                isAttacking = true;
-                int result = Random.Range(0, 2);
-                anim.SetTrigger(result == 0 ? LeftChomp : RightChomp);
+                if ( Random.Range(0, 2)==0)
+                {
+                    FacePlayer();
+                    isAttacking = true;
+                    int result = Random.Range(0, 2);
+                    anim.SetTrigger(result == 0 ? LeftChomp : RightChomp);
+                }
             }
             else if (attackTimer >= activeAttackDelay)
             {
@@ -176,7 +183,7 @@ public class Chomper : MonoBehaviour
         if (bossBarScript.currentHealth<=0)
         {
             bossBar.SetActive(false);
-             anim.SetTrigger("Death");
+             anim.SetTrigger(Death);
             
              enabled = false;
         }
@@ -252,7 +259,7 @@ public class Chomper : MonoBehaviour
 
     private IEnumerator RoamRoutine()//randomly goes around searching for the player
     {
-        while (true)
+        while (!anim.GetBool(IsDeath))
         {
             if (isRoaming)
             {
@@ -407,8 +414,9 @@ public class Chomper : MonoBehaviour
     private void CalcAttack(float distanceToPlayer) //The logic behind what attack gets used (based on distance and chance)
     {
         int randResult = Random.Range(0, 10);
-        
-        activeAttackDelay = attackDelay;//sets to normal delay
+
+        //sets to normal delay
+        activeAttackDelay = attackDelay;
         
         if (distanceToPlayer < midDistance)
         {
@@ -417,7 +425,7 @@ public class Chomper : MonoBehaviour
                 FacePlayer();
                 if (attackDelay<4f)//long enough to fully play
                 {
-                    activeAttackDelay = 4f;
+                    activeAttackDelay = 3f;
                 }
                 isAttacking = true;
                 anim.SetTrigger(WaveScream);
@@ -442,7 +450,7 @@ public class Chomper : MonoBehaviour
                 FacePlayer();
                 if (attackDelay<4f)//long enough to fully play
                 {
-                    activeAttackDelay = 4f;
+                    activeAttackDelay = 3f;
                 }
                 isAttacking = true;
                 anim.SetTrigger(WaveScream);
@@ -500,7 +508,7 @@ public class Chomper : MonoBehaviour
 
     private void HasDied()
     {
-        anim.SetBool("isDeath",true);
+        anim.SetBool(IsDeath,true);
         rb.bodyType = RigidbodyType2D.Static;
         foreach (Collider2D coll in GetComponentsInChildren<Collider2D>())
         {

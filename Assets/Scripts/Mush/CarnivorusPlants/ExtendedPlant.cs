@@ -7,7 +7,7 @@ public class ExtendedPlant : MonoBehaviour
     [Header("Attack Settings")]
     protected bool CanAttack = true;
     private static bool _canDamage = true;
-    private const float DamageCooldown = 0.2f;
+    private const float DamageCooldown = 0.5f;
     private static float _lastTimeDamaged = -Mathf.Infinity;
         
     [Header("Animation")]

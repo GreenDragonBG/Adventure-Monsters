@@ -8,6 +8,7 @@ public class BossGate : MonoBehaviour
 {
     [Header("Boss")]
     [SerializeField] private MonoBehaviour boss;
+    [SerializeField] private BossBar bossBar;
     
     [Header("Gate")]
     [SerializeField] private float finalYPosition;
@@ -63,6 +64,7 @@ public class BossGate : MonoBehaviour
         if (startMoving && gate.transform.localPosition.y < finalYPosition)
         {
             Move(gate);
+            bossBar.gameObject.SetActive(true);
             if(lightsExist) lightsLayer.SetActive(true);
         }else if (startMoving)
         {
