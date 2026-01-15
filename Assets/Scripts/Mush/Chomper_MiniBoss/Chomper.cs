@@ -78,6 +78,13 @@ public class Chomper : MonoBehaviour
     private float activeAttackDelay;
     private bool isAttacking;
     private bool takenDamage;
+    
+    [Header("Vines")]
+    [SerializeField] private GameObject vineObject;
+    private VineTouchSensor  vineTouchSensor;
+    private SpriteRenderer[] vines;
+    private Color transparentColor;
+    private bool isBeingDestroyed = false;
 
     private void Start()
     {
@@ -97,6 +104,18 @@ public class Chomper : MonoBehaviour
         
         previousScaleX = transform.localScale.x;
         StartCoroutine(RoamRoutine());
+        
+        //Vines
+        vines = vineObject.GetComponentsInChildren<SpriteRenderer>();
+        vineTouchSensor = vineObject.transform.parent.GetComponentInChildren<VineTouchSensor>();
+            
+        Array.Reverse(vines);
+        if (vines.Length > 0)
+        {
+            transparentColor = new Color(vines[0].color.r, vines[0].color.g, vines[0].color.b, 0f);
+        }
+
+        LoadState();
     }
 
     private void FixedUpdate()
@@ -183,9 +202,16 @@ public class Chomper : MonoBehaviour
         if (bossBarScript.currentHealth<=0)
         {
             bossBar.SetActive(false);
-             anim.SetTrigger(Death);
+            anim.SetTrigger(Death);
+            enabled = false;
+            SaveDeathState();
             
-             enabled = false;
+            if (vines != null && vines.Length > 0)
+            {
+                vineTouchSensor.WhenDestroyed();
+                StartCoroutine(DestroyVines());
+                return;
+            }
         }
         else
         {
@@ -513,6 +539,73 @@ public class Chomper : MonoBehaviour
         foreach (Collider2D coll in GetComponentsInChildren<Collider2D>())
         {
             coll.enabled = false;
+        }
+    }
+    
+    private IEnumerator DestroyVines()
+    {
+        if (vines != null)
+        {
+            foreach (var vine in vines)
+            {
+                if (vine != null)
+                    yield return StartCoroutine(VineFade(0.7f, vine));
+            }
+        }
+    }
+    private IEnumerator VineFade(float duration, SpriteRenderer vine)
+    {
+        if (vine == null) yield break; // Safety check
+
+        float t = 0f;
+        Color startColor = vine.color;
+
+        while (t < 1f)
+        {
+            if (vine == null) yield break; // Stop if destroyed elsewhere
+            t += Time.deltaTime / duration;
+            vine.color = Color.Lerp(startColor, transparentColor, t);
+            yield return null;
+        }
+
+        if (vine != null)
+        {
+            vine.color = transparentColor;
+            Destroy(vine.gameObject);
+        }
+    }
+    
+    private void SaveDeathState()
+    {
+        if (!Application.isPlaying)
+            return;
+        PlayerPrefs.SetInt("ChomperDeath",1);
+        PlayerPrefs.SetFloat("ChomperX", transform.localPosition.x);
+        PlayerPrefs.SetFloat("ChomperY", transform.localPosition.y);
+        PlayerPrefs.SetFloat("ChomperZ", transform.localPosition.z);
+    }
+
+    private void LoadState()
+    {
+        if (!PlayerPrefs.HasKey("ChomperDeath") || !Application.isPlaying)
+            return;
+        
+        if (PlayerPrefs.GetInt("ChomperDeath") == 1)
+        {
+            bossHealth = 0;
+            bossBar.SetActive(false);
+            anim.SetTrigger(Death);
+            enabled = false;
+            transform.localPosition = new Vector3(
+                PlayerPrefs.GetFloat("ChomperX"),
+                PlayerPrefs.GetFloat("ChomperY"),
+                PlayerPrefs.GetFloat("ChomperZ")
+            );
+            vineTouchSensor.GetComponent<Collider2D>().enabled = false;
+            foreach (var vine in vines)
+            {
+                Destroy(vine.gameObject);
+            }
         }
     }
 }

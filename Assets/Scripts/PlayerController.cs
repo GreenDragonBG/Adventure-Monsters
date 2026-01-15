@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Main Settings")]
     private Rigidbody2D rb2d;
     public int playerHealth = 90;
+    private PlayerSave playerSave;
     private Animator animator;
     private Camera cam;
     private CameraController camController;
@@ -42,9 +43,10 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
-        canMove = true;
-        rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        canMove= true;
+        rb2d= GetComponent<Rigidbody2D>();
+        animator= GetComponent<Animator>();
+        playerSave= GetComponent<PlayerSave>();
         cam = Camera.main;
         if (cam != null)
         {
@@ -64,6 +66,12 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+        //SHOULD BE REMOVED AFTER// for reseting the saves
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.D))
+        {
+            playerSave.RemoveSaves();
+        }
+
         //Methods that dont need for the player to move
         CheckIfGrounded(); 
         HandleFallingDistance();
@@ -246,7 +254,7 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         //player dies and resets the scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        playerSave.LoadCheckpoint();
     }
 
     //Sets the trigger to be enabled so its able to hit, Its called by the animation

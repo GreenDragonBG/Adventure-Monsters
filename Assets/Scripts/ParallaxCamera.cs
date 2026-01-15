@@ -10,25 +10,42 @@ public class ParallaxCamera : MonoBehaviour
 
     private void Awake()
     {
-        // capture the position as early as possible
-        oldPosition = transform.position.x;
-    }
-
-    private void Start()
-    {
-        // If some other Start() moved the camera before this Start(), detect it now:
-        float current = transform.position.x;
-        if (!Mathf.Approximately(current, oldPosition))
+        // Never restore camera position outside Play Mode
+        if (!Application.isPlaying)
         {
-            float delta = oldPosition - current;
-            OnCameraTranslate?.Invoke(delta);
-            // update oldPosition so following frames compute deltas correctly
-            oldPosition = current;
+            oldPosition = transform.position.x;
+            return;
         }
+
+        // Only restore if a camera save exists
+        if (PlayerPrefs.HasKey("CameraPosX"))
+        {
+            float sceneStartX = transform.position.x;
+
+            Vector3 savedPos = new Vector3(
+                PlayerPrefs.GetFloat("CameraPosX"),
+                PlayerPrefs.GetFloat("CameraPosY"),
+                PlayerPrefs.GetFloat("CameraPosZ")
+            );
+
+            transform.position = savedPos;
+
+            // Force ONE parallax update
+            float delta = sceneStartX - savedPos.x;
+            if (!Mathf.Approximately(delta, 0f))
+            {
+                OnCameraTranslate?.Invoke(delta);
+            }
+        }
+
+        oldPosition = transform.position.x;
     }
 
     private void Update()
     {
+        if (!Application.isPlaying)
+            return;
+
         float current = transform.position.x;
         if (!Mathf.Approximately(current, oldPosition))
         {

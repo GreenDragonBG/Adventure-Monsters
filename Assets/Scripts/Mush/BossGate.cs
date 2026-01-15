@@ -6,6 +6,9 @@ using UnityEngine.Rendering.Universal;
 using System.Collections.Generic;
 public class BossGate : MonoBehaviour
 {
+    [Header("ID")]
+    [SerializeField] private int gateID = 1;
+    
     [Header("Boss")]
     [SerializeField] private MonoBehaviour boss;
     [SerializeField] private BossBar bossBar;
@@ -28,9 +31,12 @@ public class BossGate : MonoBehaviour
     //Makes the boss not active , turns the lights off and make their intensity to 0 
     private void Start()
     {
+        LoadState();
+        
         if (Camera.main != null) cameraShake = Camera.main.GetComponent<CameraShake>();
-
-        boss.enabled = false;
+        
+        if(!hasFinished)
+         boss.enabled = false;
         
         if (!lightsExist) return;
         
@@ -55,8 +61,11 @@ public class BossGate : MonoBehaviour
     {
         if (!boss.enabled && gate.transform.localPosition.y > startYPosition)
         { 
-            Debug.Log(gate.transform.localPosition.y);
             MoveBack(gate);
+            if (hasFinished)
+            {
+                SaveFinishedState();
+            }
         }
 
         if(hasFinished) return;
@@ -87,7 +96,7 @@ public class BossGate : MonoBehaviour
     //registers that we have triggered the zone and turns the boss script on
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!hasFinished && other.CompareTag("Player"))
         {
             boss.enabled = true;
             startMoving = true;
@@ -109,5 +118,24 @@ public class BossGate : MonoBehaviour
         newPos.y -= moveSpeed;
  
         tilemap.transform.localPosition = newPos;
+    }
+    
+    private void SaveFinishedState()
+    {
+        if (!Application.isPlaying)
+            return;
+        
+        PlayerPrefs.SetInt("GateClosed_"+ gateID,1);
+    }
+
+    private void LoadState()
+    {
+        if (!PlayerPrefs.HasKey("GateClosed_"+ gateID) || !Application.isPlaying)
+            return;
+        
+        if (PlayerPrefs.GetInt("GateClosed_"+ gateID) == 1)
+        {
+            hasFinished = true;
+        }
     }
 }

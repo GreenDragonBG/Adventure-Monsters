@@ -5,6 +5,9 @@ using UnityEngine.Rendering.Universal;
 
 public class Heart : MonoBehaviour
 {
+    [Header("ID")]
+    [SerializeField] private string heartID;
+    
     [Header("Health")]
     [SerializeField] private int health = 60;
     private Animator anim;
@@ -20,7 +23,7 @@ public class Heart : MonoBehaviour
     [Header("Connected To Vines")]
     [SerializeField] private bool isConnectedToVines;
     [SerializeField] private GameObject vineObject;
-    [SerializeField] private VineTouchSensor  vineTouchSensor;
+    private VineTouchSensor  vineTouchSensor;
     private SpriteRenderer[] vines;
     private SpriteRenderer heartSpriteRenderer;
     private Light2D heartLight2D;
@@ -62,7 +65,10 @@ public class Heart : MonoBehaviour
             
             Array.Reverse(vines);
             if (vines.Length > 0)
+            {
                 transparentColor = new Color(vines[0].color.r, vines[0].color.g, vines[0].color.b, 0f);
+            }
+            LoadState();
         }
     }
 
@@ -131,6 +137,7 @@ public class Heart : MonoBehaviour
     // Coroutine to fade all vines and then destroy the heart
     private IEnumerator DestroyHeartAndVines()
     {
+        SaveDestroyedState();
         if (vines != null)
         {
             foreach (var vine in vines)
@@ -139,7 +146,6 @@ public class Heart : MonoBehaviour
                     yield return StartCoroutine(VineFade(0.45f, vine));
             }
         }
-
         Destroy(gameObject);
     }
 
@@ -163,6 +169,30 @@ public class Heart : MonoBehaviour
         {
             vine.color = transparentColor;
             Destroy(vine.gameObject);
+        }
+    }
+
+    private void SaveDestroyedState()
+    {
+        if (!Application.isPlaying)
+            return;
+
+        PlayerPrefs.SetInt("VineHeart_" + heartID, 0);
+    }
+
+    private void LoadState()
+    {
+        if (!Application.isPlaying || !PlayerPrefs.HasKey("VineHeart_" + heartID))
+            return;
+
+        if (PlayerPrefs.GetInt("VineHeart_" + heartID) == 0)
+        {
+            vineTouchSensor.GetComponent<Collider2D>().enabled = false;
+            foreach (var vine in vines)
+            {
+                Destroy(vine.gameObject);
+            }
+            Destroy(gameObject);
         }
     }
 }
