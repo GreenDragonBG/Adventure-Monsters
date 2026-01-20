@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour {
     [Header("Main Settings")]
     private Rigidbody2D rb2d;
     public int playerHealth = 90;
-    private PlayerSave playerSave;
     private Animator animator;
     private Camera cam;
     private CameraController camController;
     private CameraShake camShake;
     public bool canMove = true; 
     public float speed;
+    public static bool ShouldTeleportToSave = true;
+    
     
     [Header("Attack")]
     public int attackDamage = 30;
@@ -39,14 +40,29 @@ public class PlayerController : MonoBehaviour {
     private bool wasFalling = false;
     private bool hasEnteredThreshold = false;
     private float fallStartY = 0f;
-    
 
+    private void Awake()
+    {
+        SaveSystem.LoadFromFile();
+        if (ShouldTeleportToSave && !SaveSystem.CurrentData.isNewGame && SceneManager.GetActiveScene().name == SaveSystem.CurrentData.lastScene)
+        {
+                StartCoroutine(TeleportToSave());
+                ShouldTeleportToSave = false; 
+        }
+    }
+    
+    private IEnumerator TeleportToSave()
+    {
+        // Wait for the physics engine to settle
+        yield return new WaitForEndOfFrame();
+        transform.position = SaveSystem.CurrentData.playerPos;
+    }
+    
     void Start()
     {
         canMove= true;
         rb2d= GetComponent<Rigidbody2D>();
         animator= GetComponent<Animator>();
-        playerSave= GetComponent<PlayerSave>();
         cam = Camera.main;
         if (cam != null)
         {
@@ -66,10 +82,10 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        //SHOULD BE REMOVED AFTER// for reseting the saves
-        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.D))
+
+        if (Input.GetKey(KeyCode.LeftAlt)  && Input.GetKeyDown(KeyCode.D))
         {
-            playerSave.RemoveSaves();
+            SaveSystem.ClearSave();
         }
 
         //Methods that dont need for the player to move
@@ -253,8 +269,9 @@ public class PlayerController : MonoBehaviour {
     
     public void Death()
     {
-        //player dies and resets the scene
-        playerSave.LoadCheckpoint();
+        ShouldTeleportToSave = true; 
+        animator.enabled = false;
+        SaveSystem.ReloadToLastSave();
     }
 
     //Sets the trigger to be enabled so its able to hit, Its called by the animation

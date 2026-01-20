@@ -6,7 +6,7 @@ public class ParticleDamage : MonoBehaviour
 {
     [SerializeField] public bool willTeleport;
     private new ParticleSystem particleSystem;
-    private static readonly float DamageCooldown = 4f;
+    private static readonly float DamageCooldown = 1f;
     
     private ParticleSystem.CollisionModule particleCollision;
 

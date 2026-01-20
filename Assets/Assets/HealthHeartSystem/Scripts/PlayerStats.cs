@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<PlayerStats>();
+                _instance = FindFirstObjectByType<PlayerStats>();
             return _instance;
         }
     }

@@ -8,12 +8,10 @@ public class ParallaxLayer : MonoBehaviour
     [Header("Parallax")]
     [SerializeField] public float parallaxFactor;
 
-    private void Awake()
+    private void Start()
     {
-        if (!Application.isPlaying)
-            return;
-
-        LoadState();
+        if (!Application.isPlaying) return;
+       // LoadState();
     }
 
     public void Move(float delta)
@@ -25,24 +23,30 @@ public class ParallaxLayer : MonoBehaviour
 
     public void SaveState()
     {
-        if (!Application.isPlaying)
-            return;
+        string key = "ParallaxLayer_" + layerID;
+        int index = SaveSystem.CurrentData.parallaxKeys.IndexOf(key);
 
-        PlayerPrefs.SetFloat("ParallaxLayerX_" + layerID, transform.localPosition.x);
-        PlayerPrefs.SetFloat("ParallaxLayerY_" + layerID, transform.localPosition.y);
-        PlayerPrefs.SetFloat("ParallaxLayerZ_" + layerID, transform.localPosition.z);
+        if (index != -1)
+        {
+            // Update existing entry
+            SaveSystem.CurrentData.parallaxValues[index] = transform.position;
+        }
+        else
+        {
+            // Add new entry
+            SaveSystem.CurrentData.parallaxKeys.Add(key);
+            SaveSystem.CurrentData.parallaxValues.Add(transform.position);
+        }
     }
 
     private void LoadState()
     {
-        string keyX = "ParallaxLayerX_" + layerID;
-        if (!PlayerPrefs.HasKey(keyX))
-            return;
+        string key = "ParallaxLayer_" + layerID;
+        int index = SaveSystem.CurrentData.parallaxKeys.IndexOf(key);
 
-        transform.localPosition = new Vector3(
-            PlayerPrefs.GetFloat(keyX),
-            PlayerPrefs.GetFloat("ParallaxLayerY_" + layerID),
-            PlayerPrefs.GetFloat("ParallaxLayerZ_" + layerID)
-        );
+        if (index != -1 && PlayerController.ShouldTeleportToSave)
+        {
+            transform.position = SaveSystem.CurrentData.parallaxValues[index];
+        }
     }
 }

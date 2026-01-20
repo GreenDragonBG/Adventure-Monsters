@@ -577,30 +577,19 @@ public class Chomper : MonoBehaviour
     
     private void SaveDeathState()
     {
-        if (!Application.isPlaying)
-            return;
-        PlayerPrefs.SetInt("ChomperDeath",1);
-        PlayerPrefs.SetFloat("ChomperX", transform.localPosition.x);
-        PlayerPrefs.SetFloat("ChomperY", transform.localPosition.y);
-        PlayerPrefs.SetFloat("ChomperZ", transform.localPosition.z);
+        SaveSystem.CurrentData.chomperDead = true;
+        SaveSystem.CurrentData.chomperPos = transform.position;
     }
 
     private void LoadState()
     {
-        if (!PlayerPrefs.HasKey("ChomperDeath") || !Application.isPlaying)
-            return;
-        
-        if (PlayerPrefs.GetInt("ChomperDeath") == 1)
+        if (SaveSystem.CurrentData.chomperDead)
         {
             bossHealth = 0;
             bossBar.SetActive(false);
             anim.SetTrigger(Death);
             enabled = false;
-            transform.localPosition = new Vector3(
-                PlayerPrefs.GetFloat("ChomperX"),
-                PlayerPrefs.GetFloat("ChomperY"),
-                PlayerPrefs.GetFloat("ChomperZ")
-            );
+            transform.position =  SaveSystem.CurrentData.chomperPos;
             vineTouchSensor.GetComponent<Collider2D>().enabled = false;
             foreach (var vine in vines)
             {

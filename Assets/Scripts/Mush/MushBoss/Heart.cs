@@ -174,18 +174,12 @@ public class Heart : MonoBehaviour
 
     private void SaveDestroyedState()
     {
-        if (!Application.isPlaying)
-            return;
-
-        PlayerPrefs.SetInt("VineHeart_" + heartID, 0);
+        SaveSystem.CurrentData.destroyedHearts.Add("VineHeart_" + heartID);
     }
 
     private void LoadState()
     {
-        if (!Application.isPlaying || !PlayerPrefs.HasKey("VineHeart_" + heartID))
-            return;
-
-        if (PlayerPrefs.GetInt("VineHeart_" + heartID) == 0)
+        if (SaveSystem.CurrentData.destroyedHearts.Contains("VineHeart_" + heartID))
         {
             vineTouchSensor.GetComponent<Collider2D>().enabled = false;
             foreach (var vine in vines)

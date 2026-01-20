@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_18
   parallaxFactor: 0.7
 --- !u!212 &60108561
 SpriteRenderer:
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_16
   parallaxFactor: 0.9
 --- !u!212 &137358602
 SpriteRenderer:
@@ -420,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_19
   parallaxFactor: 0.4
 --- !u!212 &183670690
 SpriteRenderer:
@@ -766,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_20
   parallaxFactor: 0
 --- !u!212 &281834145
 SpriteRenderer:
@@ -870,6 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_12
   parallaxFactor: 0.8
 --- !u!212 &295031785
 SpriteRenderer:
@@ -929,6 +934,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &378987993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 378987995}
+  - component: {fileID: 378987994}
+  m_Layer: 0
+  m_Name: Global Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &378987994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378987993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
+  m_ComponentVersion: 2
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 1b4a6b72795b82e943851ff231e1e7940000000093b225c4f5ca03fbf9083ca5
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &378987995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378987993}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.93999994, y: 0.37999988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385867250
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_15
   parallaxFactor: 0
 --- !u!212 &385867253
 SpriteRenderer:
@@ -1063,6 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_7
   parallaxFactor: 0.8
 --- !u!212 &389779696
 SpriteRenderer:
@@ -1375,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ce72b59723344498719ca178c004d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 851015831}
+  target: {fileID: 1786378879}
   smoothValue: 2
   posY: 1
 --- !u!1 &548656784
@@ -1469,6 +1560,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &694623229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203733571696912301, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5979172522630051997, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
+      propertyPath: m_Name
+      value: Campfire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87734b3fbee4c2742b13ea2a2bf115b4, type: 3}
 --- !u!1 &732529282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_10
   parallaxFactor: 0
 --- !u!212 &732529284
 SpriteRenderer:
@@ -2161,11 +2310,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &851015831 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1836938509727669864, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
-  m_PrefabInstance: {fileID: 89332021197716484}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &926210902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_14
   parallaxFactor: 0.4
 --- !u!212 &1010331007
 SpriteRenderer:
@@ -2418,6 +2563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_3
   parallaxFactor: 0.7
 --- !u!1 &1166990306
 GameObject:
@@ -2522,6 +2668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_5
   parallaxFactor: 0
 --- !u!1 &1217143512
 GameObject:
@@ -2716,6 +2863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_2
   parallaxFactor: 0.8
 --- !u!1 &1323340864
 GameObject:
@@ -2747,6 +2895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_8
   parallaxFactor: 0.7
 --- !u!212 &1323340866
 SpriteRenderer:
@@ -2858,7 +3007,7 @@ MonoBehaviour:
   heart3: {fileID: 1651305264}
   fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
   emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
-  player: {fileID: 851015831}
+  player: {fileID: 1786378879}
 --- !u!114 &1484702239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3060,7 +3209,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -7992,6 +8141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_4
   parallaxFactor: 0.4
 --- !u!1 &1576856132
 GameObject:
@@ -8098,6 +8248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_9
   parallaxFactor: 0.4
 --- !u!212 &1631473423
 SpriteRenderer:
@@ -8330,6 +8481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_13
   parallaxFactor: 0.7
 --- !u!212 &1713720819
 SpriteRenderer:
@@ -8667,6 +8819,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1786378879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6989845619953983607, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
+  m_PrefabInstance: {fileID: 89332021197716484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1893842201
 GameObject:
   m_ObjectHideFlags: 0
@@ -8697,6 +8854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_6
   parallaxFactor: 0.9
 --- !u!212 &1893842203
 SpriteRenderer:
@@ -8895,6 +9053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_11
   parallaxFactor: 0.9
 --- !u!212 &2037226606
 SpriteRenderer:
@@ -9064,6 +9223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_17
   parallaxFactor: 0.8
 --- !u!212 &2072262766
 SpriteRenderer:
@@ -9226,6 +9386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3362f1263c4717b4f30d01a7110c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerID: 1_1_1
   parallaxFactor: 0.9
 --- !u!1001 &89332021197716484
 PrefabInstance:
@@ -9235,9 +9396,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1140404854189847154, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140404854189847154, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1836938509727669864, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039852399193487013, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731600482411810269, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9421,3 +9594,5 @@ SceneRoots:
   - {fileID: 926210904}
   - {fileID: 2514242548445417652}
   - {fileID: 548656787}
+  - {fileID: 378987995}
+  - {fileID: 694623229}

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Campfire : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class Campfire : MonoBehaviour
 
     private void LoadState()
     {
-        if (PlayerPrefs.GetInt("Campfire_" + campfireID, 0) == 1)
+        // Check our JSON list instead of PlayerPrefs
+        if (SaveSystem.CurrentData.activatedCampfires.Contains(campfireID))
         {
             fireLight.enabled = true;
             fire.localScale = Vector3.one * 3f;
@@ -47,16 +49,37 @@ public class Campfire : MonoBehaviour
     {
         fireLight.enabled = true;
 
-        PlayerPrefs.SetInt("Campfire_" + campfireID, 1);
-        player.GetComponent<PlayerController>().playerHealth = 90;
-        player.GetComponent<PlayerSave>().SaveCheckpoint(
-            new Vector3(
-                player.transform.position.x,
-                player.transform.position.y,
-                player.transform.position.z
-            )
-        );
+        // 1. Update Player & Scene Data in RAM
+        SaveSystem.CurrentData.lastScene = SceneManager.GetActiveScene().name;
+        SaveSystem.CurrentData.playerPos = player.transform.position;
+    
+        // 2. Update Camera Data in RAM
+        if (Camera.main != null)
+        {
+            SaveSystem.CurrentData.cameraPos = Camera.main.transform.position;
+        }
 
+        // 3. Collect Parallax Data
+        // We find all layers and tell them to update the lists in SaveSystem.CurrentData
+        ParallaxLayer[] layers = FindObjectsByType<ParallaxLayer>(sortMode:FindObjectsSortMode.InstanceID);
+        foreach (ParallaxLayer layer in layers)
+        {
+            layer.SaveState();
+        }
+
+        // 4. Update this specific campfire's status
+        if (!SaveSystem.CurrentData.activatedCampfires.Contains(campfireID))
+        {
+            SaveSystem.CurrentData.activatedCampfires.Add(campfireID);
+        }
+
+        // 5. COMMIT EVERYTHING TO JSON
+        // This is the only time the file on your hard drive changes
+        SaveSystem.CurrentData.isNewGame = false;
+        SaveSystem.SaveToFile();
+
+        // Visuals/Gameplay
+        player.GetComponent<PlayerController>().playerHealth = 90;
         StartCoroutine(GrowFire());
     }
 
