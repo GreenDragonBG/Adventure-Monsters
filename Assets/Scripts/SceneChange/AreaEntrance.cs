@@ -25,7 +25,6 @@ namespace SceneChange
 
         private void DisableEntrance()
         {
-            Debug.Log("Switching Scene State: Enabling Exits, Disabling Entrances");
             cam.enabled = true;
 
             // Enable all exits in the scene

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ParallaxLayer : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ParallaxLayer : MonoBehaviour
     private void Start()
     {
         if (!Application.isPlaying) return;
-       // LoadState();
+        //LoadState();
     }
 
     public void Move(float delta)
@@ -41,12 +42,19 @@ public class ParallaxLayer : MonoBehaviour
 
     private void LoadState()
     {
-        string key = "ParallaxLayer_" + layerID;
-        int index = SaveSystem.CurrentData.parallaxKeys.IndexOf(key);
-
-        if (index != -1 && PlayerController.ShouldTeleportToSave)
+        bool isLoadingSave = SaveSystem.CurrentData != null && 
+                             !SaveSystem.CurrentData.isNewGame && 
+                             SceneManager.GetActiveScene().name == SaveSystem.CurrentData.lastScene;
+        if (isLoadingSave)
         {
-            transform.position = SaveSystem.CurrentData.parallaxValues[index];
+            string key = "ParallaxLayer_" + layerID;
+            int index = SaveSystem.CurrentData.parallaxKeys.IndexOf(key);
+
+            if (index != -1)
+            {
+                transform.position = SaveSystem.CurrentData.parallaxValues[index];
+                Debug.Log($"Loaded parallax position for {layerID}");
+            }
         }
     }
 }

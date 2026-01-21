@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour {
         if (ShouldTeleportToSave && !SaveSystem.CurrentData.isNewGame && SceneManager.GetActiveScene().name == SaveSystem.CurrentData.lastScene)
         {
                 StartCoroutine(TeleportToSave());
-                ShouldTeleportToSave = false; 
         }
     }
     
@@ -56,6 +55,7 @@ public class PlayerController : MonoBehaviour {
         // Wait for the physics engine to settle
         yield return new WaitForEndOfFrame();
         transform.position = SaveSystem.CurrentData.playerPos;
+        ShouldTeleportToSave = false;
     }
     
     void Start()

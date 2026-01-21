@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class BossGate : MonoBehaviour
 {
     [Header("ID")]
-    [SerializeField] private string gateID; // Changed to string for the list
+    [SerializeField] private string gateID;
     
     [Header("Boss")]
     [SerializeField] private MonoBehaviour boss;
@@ -25,42 +25,40 @@ public class BossGate : MonoBehaviour
     [SerializeField] private bool lightsExist;
     [SerializeField] private GameObject lightsLayer;
     [SerializeField] private float lightSpeed;
-    private List<Light2D> lights;
+    private List<Light2D> lights = new List<Light2D>();
 
     private void Start()
     {
-        // 1. Load data from JSON
         LoadState();
         
         if (Camera.main != null) cameraShake = Camera.main.GetComponent<CameraShake>();
         startYPosition = gate.transform.localPosition.y;
 
-        // Initialize lights list if they exist
-        if (lightsExist)
+        // Better way to find all lights even if nested
+        if (lightsExist && lightsLayer != null)
         {
-            lights = new List<Light2D>();
-            for (int i = 0; i < lightsLayer.transform.childCount; i++)
-            {
-                Light2D item = lightsLayer.transform.GetChild(i).GetComponent<Light2D>();
-                if (item != null) lights.Add(item);
-            }
+            lights.AddRange(lightsLayer.GetComponentsInChildren<Light2D>(true));
         }
 
-        // 2. If already finished, snap the gate and setup state
         if (hasFinished)
         {
+            // Snap gate to final position
+            Vector3 finalPos = gate.transform.localPosition;
+            finalPos.y = finalYPosition;
+            gate.transform.localPosition = finalPos;
+
+            // Enable boss logic
+            boss.enabled = true;
+
+            // Prepare lights to fade in (don't snap intensity to 1)
             if (lightsExist)
             {
+                foreach (Light2D item in lights) item.intensity = 0f;
                 lightsLayer.SetActive(true);
-                foreach (Light2D item in lights) item.intensity = 1f;
             }
-            // If the gate is finished, the boss should probably be active 
-            // (or dead, which the boss script handles itself)
-            boss.enabled = true; 
         }
         else
         {
-            // Fresh state for a gate not yet triggered
             boss.enabled = false;
             if (lightsExist)
             {
@@ -72,16 +70,18 @@ public class BossGate : MonoBehaviour
 
     void Update()
     {
-        // If boss is disabled (player died/lost), move gate back
-        // We only save this if it's the "closing" logic you intended
+        // 1. LIGHT LOGIC (Outside of the return so it runs even if hasFinished is true)
+        HandleLightFading();
+
+        // 2. GATE RETRACTION (If player dies)
         if (!boss.enabled && gate.transform.localPosition.y > startYPosition)
         { 
             MoveBack(gate);
         }
 
+        // 3. GATE MOVEMENT LOGIC
         if (hasFinished) return;
 
-        // Moves the gate UP when triggered
         if (startMoving && gate.transform.localPosition.y < finalYPosition)
         {
             Move(gate);
@@ -91,17 +91,26 @@ public class BossGate : MonoBehaviour
         else if (startMoving)
         {
             hasFinished = true;
-            SaveFinishedState(); // SAVE TO RAM
+            SaveFinishedState();
             if (cameraShake != null)
                 StartCoroutine(cameraShake.Shake(0.3f, 0.1f));
         }
+    }
 
-        // Slowly rises the light's intensity
-        if (lightsExist && startMoving && lights.Count > 0 && lights[0].intensity < 1)
+    private void HandleLightFading()
+    {
+        // If the lights should be visible (gate is moving OR gate is already finished)
+        bool shouldBeOn = (startMoving || hasFinished);
+
+        if (lightsExist && shouldBeOn && lights.Count > 0)
         {
             foreach (Light2D item in lights)
             {
-                item.intensity += lightSpeed * Time.deltaTime; // Added Time.deltaTime for smoothness
+                if (item.intensity < 2f)
+                {
+                    // Using MoveTowards for a clean, non-frame-rate-dependent transition
+                    item.intensity = Mathf.MoveTowards(item.intensity, 2f, lightSpeed * Time.deltaTime);
+                }
             }
         }
     }
@@ -118,7 +127,7 @@ public class BossGate : MonoBehaviour
     private void Move(Tilemap tilemap)
     {
         Vector3 newPos = tilemap.transform.localPosition;
-        newPos.y += moveSpeed * Time.deltaTime; // Use deltaTime so speed is consistent
+        newPos.y += moveSpeed * Time.deltaTime;
         tilemap.transform.localPosition = newPos;
     }
 
@@ -134,7 +143,6 @@ public class BossGate : MonoBehaviour
         if (!SaveSystem.CurrentData.finishedGates.Contains("BossGate_"+gateID))
         {
             SaveSystem.CurrentData.finishedGates.Add("BossGate_"+gateID);
-            // Note: We don't call SaveToFile here because we wait for the Campfire!
         }
     }
 

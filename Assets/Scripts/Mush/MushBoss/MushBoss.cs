@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Mush;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 public class MushBoss : MonoBehaviour
@@ -120,14 +121,21 @@ public class MushBoss : MonoBehaviour
         {
             bossBar.SetActive(false);
             headHit.enabled = false;
+            foreach (ParticleSystem ps in spores.GetComponentsInChildren<ParticleSystem>())
+            {
+               ps.Stop();
+            }
+            spores.enabled = false;
             foreach (MushOrb orb in orbs)
             {
-                orb.enabled = false;
+                Destroy(orb.gameObject);
             }
             if (heartObject!=null)
             {
                 Destroy(heartObject);
             }
+
+            StartCoroutine(DeadSizeChange(4));
             enabled = false;
         }
         else
@@ -222,5 +230,30 @@ public class MushBoss : MonoBehaviour
     public void HeartWasDestroyed()
     {
         heartWasDestroyed = true;
+    }
+
+
+    private IEnumerator DeadSizeChange(float duration)
+    {
+        Vector3 initialScale = transform.localScale;
+        Vector3 targetScale = new Vector3(0.01f, 0.01f, initialScale.z);
+        Light2D[] lights =  GetComponentsInChildren<Light2D>();
+        float initialIntensity = lights[0].intensity;
+        float targetIntensity = 0f;
+        
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float t = currentTime / duration;
+            transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+            foreach (Light2D l in lights)
+            {
+                l.intensity =  Mathf.Lerp(initialIntensity, targetIntensity, t);
+            }
+            yield return null;
+        }
+        transform.localScale = targetScale;
     }
 }
