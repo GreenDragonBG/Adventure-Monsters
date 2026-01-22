@@ -23,7 +23,7 @@ namespace SceneChange
             // Only move the player if this transition is active and camera is disabled
             if (isActive && !cam.enabled)
             {
-                player.horizontalmoveInput = toMoveLeft ? -1 : 1;
+                player.horizontalMoveInput = toMoveLeft ? -1 : 1;
                 OnCameraDisabled();
             }
         }

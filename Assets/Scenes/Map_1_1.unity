@@ -1531,7 +1531,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.7414274, y: 3.0210555}
+  m_Size: {x: 4, y: 6}
   m_EdgeRadius: 0
 --- !u!114 &548656786
 MonoBehaviour:
@@ -1554,7 +1554,7 @@ Transform:
   m_GameObject: {fileID: 548656784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.244, y: 0.48, z: -0.04746599}
+  m_LocalPosition: {x: 18.37, y: 0.28, z: -0.04746599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9408,6 +9408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2943091624790254239, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
+      propertyPath: canDash
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5039852399193487013, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9465,17 +9469,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5685825253724736926, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685825253724736926, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6567237812741816647, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_Name
       value: Checkpoint_1
       objectReference: {fileID: 0}
     - target: {fileID: 8505887563285762921, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.16
+      value: 9.89
       objectReference: {fileID: 0}
     - target: {fileID: 8505887563285762921, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 8505887563285762921, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_LocalPosition.z

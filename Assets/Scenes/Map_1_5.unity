@@ -879,11 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd61ecc0e2519e478c8a900f65c459a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SqueezeEscape
-  escapeSpeed: 10
-  detectionBuffer: 0.1
-  groundLayer:
-    m_Bits: 8
-  boxCollider: {fileID: 0}
 --- !u!1 &377402337
 GameObject:
   m_ObjectHideFlags: 0
@@ -16006,6 +16001,10 @@ PrefabInstance:
       propertyPath: bossBar
       value: 
       objectReference: {fileID: 209554582}
+    - target: {fileID: 1875462522552185328, guid: 0e30b2382c80587469da391fd1c43947, type: 3}
+      propertyPath: alePrefab
+      value: 
+      objectReference: {fileID: 7215580542792651467, guid: c0cd3ddbdc8d6fe42af045cecbc5779a, type: 3}
     - target: {fileID: 3366202525006665589, guid: 0e30b2382c80587469da391fd1c43947, type: 3}
       propertyPath: m_RenderMode
       value: 4

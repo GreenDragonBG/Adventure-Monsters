@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour {
     [Header("Main Settings")]
@@ -24,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     private Collider2D attackRange;
     
     [Header("Horizontal Movement")]
-    public float horizontalmoveInput = 0f;
+    public float horizontalMoveInput = 0f;
     
     
     [Header("Jump Settings")]
@@ -40,6 +37,12 @@ public class PlayerController : MonoBehaviour {
     private bool wasFalling = false;
     private bool hasEnteredThreshold = false;
     private float fallStartY = 0f;
+
+
+    [Header("Abilities")] 
+    public bool canDash = true;
+    [SerializeField]private float dashCooldown = 10f;
+    private float lastTimeDashed = -Mathf.Infinity;
 
     private void Awake()
     {
@@ -82,7 +85,6 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-
         if (Input.GetKey(KeyCode.LeftAlt)  && Input.GetKeyDown(KeyCode.D))
         {
             SaveSystem.ClearSave();
@@ -97,23 +99,25 @@ public class PlayerController : MonoBehaviour {
         CheckAttack();
         HandleJump();
         HandleHorizontalMovement();
+        //Abilities
+        HandleDash();
     }
     private void HandleHorizontalMovement()
     {
 
-        if (horizontalmoveInput == 0)
+        if (horizontalMoveInput == 0)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                horizontalmoveInput = -1f;
+                horizontalMoveInput = -1f;
             } else if (Input.GetKey(KeyCode.RightArrow))
             {
-                horizontalmoveInput = 1f;
+                horizontalMoveInput = 1f;
             }
         }
 
         // Apply movement
-        rb2d.linearVelocity = new Vector2(horizontalmoveInput * speed, rb2d.linearVelocity.y);
+        rb2d.linearVelocity = new Vector2(horizontalMoveInput * speed, rb2d.linearVelocity.y);
         if (rb2d.linearVelocity.x > 0.1 || rb2d.linearVelocity.x < -0.1)
         {
             animator.SetBool("IsRunning", true);
@@ -124,14 +128,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Flip the character sprite based on direction
-        if (horizontalmoveInput > 0) {
+        if (horizontalMoveInput > 0) {
          transform.localScale = new Vector3(5, 5, 1);
-        }else if (horizontalmoveInput < 0)
+        }else if (horizontalMoveInput < 0)
         {
          transform.localScale = new Vector3(-5, 5, 1);
         }
 
-        horizontalmoveInput = 0f;
+        horizontalMoveInput = 0f;
     }
 
     private void HandleJump()
@@ -216,7 +220,7 @@ public class PlayerController : MonoBehaviour {
     private IEnumerator MovementImpactAfterLongFall()
     {
         animator.SetTrigger("HeavyLanding");
-        horizontalmoveInput = 0;
+        horizontalMoveInput = 0;
         rb2d.linearVelocity= Vector2.zero;
         canMove = false;
         yield return new WaitForSeconds(1.5f);
@@ -266,7 +270,31 @@ public class PlayerController : MonoBehaviour {
             hasEnteredThreshold = false;
         }
     }
-    
+
+    private void HandleDash()
+    {
+        if (canDash && Input.GetKeyDown(KeyCode.A) && Time.time- lastTimeDashed >= dashCooldown)
+        {
+            lastTimeDashed =  Time.time;
+
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, 
+                (transform.localScale.x/Math.Abs(transform.localScale.x))>0 ? Vector2.right : Vector2.left,
+                4f, groundLayer);
+
+            if (!hit2D.collider)
+            {
+                transform.position = new Vector3(transform.position.x+4*(transform.localScale.x/Math.Abs(transform.localScale.x)), transform.position.y);
+            }
+            else
+            {
+                transform.position =hit2D.point;
+            }
+
+
+        }
+    }
+
+
     public void Death()
     {
         ShouldTeleportToSave = true; 

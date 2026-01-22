@@ -15,6 +15,9 @@ public class MushBoss : MonoBehaviour
     private Coroutine colorCoroutine;
     private SpriteRenderer spriteRenderer;
     private Color defaultColor;
+
+    [Header("Ale")] 
+    [SerializeField] private GameObject alePrefab;
     
     [Header("Heart")]
     private GameObject heartObject;
@@ -119,6 +122,7 @@ public class MushBoss : MonoBehaviour
     {
         if (bossBarScript.currentHealth<=0)
         {
+            Instantiate(alePrefab, new Vector3(transform.position.x,transform.position.y+5), Quaternion.identity);
             bossBar.SetActive(false);
             headHit.enabled = false;
             foreach (ParticleSystem ps in spores.GetComponentsInChildren<ParticleSystem>())
