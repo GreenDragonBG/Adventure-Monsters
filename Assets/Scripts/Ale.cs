@@ -39,8 +39,7 @@ public class Ale : MonoBehaviour
             HandleHovering();
         }
 
-        // Optional: Keep the light rotating regardless of state
-        if (light2D != null)
+        if (light2D)
         {
             light2D.transform.Rotate(Vector3.forward * (rotationSpeed * Time.deltaTime));
         }
@@ -49,7 +48,7 @@ public class Ale : MonoBehaviour
     private void HandleFalling()
     {
         // 1. Move Down
-        transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
 
         // 2. Raycast Check
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer);
@@ -57,7 +56,7 @@ public class Ale : MonoBehaviour
         // Debug line to see the ray in the Scene view
         Debug.DrawRay(transform.position, Vector2.down * rayDistance, Color.red);
 
-        if (hit.collider != null)
+        if (hit.collider)
         {
             // Set the "anchor" point for the hover animation to the current spot
             startPosition = transform.position;

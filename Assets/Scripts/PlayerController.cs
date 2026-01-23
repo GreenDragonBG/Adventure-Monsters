@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour {
     public bool canMove = true; 
     public float speed;
     public static bool ShouldTeleportToSave = true;
-    
-    
+   
+
+
     [Header("Attack")]
     public int attackDamage = 30;
     private Collider2D attackRange;
@@ -41,8 +42,8 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Abilities")] 
     public bool canDash = true;
-    [SerializeField]private float dashCooldown = 10f;
-    private float lastTimeDashed = -Mathf.Infinity;
+    [SerializeField]private CooldownUI dashCooldownUI;
+    [SerializeField]private GameObject dashPrefab;
 
     private void Awake()
     {
@@ -273,10 +274,10 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleDash()
     {
-        if (canDash && Input.GetKeyDown(KeyCode.A) && Time.time- lastTimeDashed >= dashCooldown)
+        if (canDash && Input.GetKeyDown(KeyCode.A) && !dashCooldownUI.isActiveAndEnabled)
         {
-            lastTimeDashed =  Time.time;
-
+            Instantiate(dashPrefab,new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z),
+                (transform.localScale.x/Math.Abs(transform.localScale.x))>0 ? new Quaternion(0,0,0,0):new Quaternion(0,180,0,0)); //transform.rotation)
             RaycastHit2D hit2D = Physics2D.Raycast(transform.position, 
                 (transform.localScale.x/Math.Abs(transform.localScale.x))>0 ? Vector2.right : Vector2.left,
                 4f, groundLayer);
@@ -290,7 +291,7 @@ public class PlayerController : MonoBehaviour {
                 transform.position =hit2D.point;
             }
 
-
+            dashCooldownUI.gameObject.SetActive(true);
         }
     }
 
