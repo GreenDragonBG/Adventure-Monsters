@@ -16,7 +16,6 @@ namespace SceneChange
 
         protected override void OnCameraDisabled()
         {
-            Debug.Log(returnStartPos);
             PlayerSpawnScript.SpawnPos = returnStartPos;
             CameraController.SpawnPos = camPos;
             base.OnCameraDisabled();

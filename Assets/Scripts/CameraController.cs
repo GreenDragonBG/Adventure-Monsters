@@ -8,17 +8,23 @@ public class CameraController : MonoBehaviour
     public float smoothValue = 2;
     public float posY = 1;
 
-    public static Vector3 SpawnPos;
-    
+    public static Vector3 SpawnPos = Vector3.zero; // Use this for EVERYTHING
+
     private void Awake()
     {
-        if (PlayerController.ShouldTeleportToSave && SaveSystem.CurrentData != null && !SaveSystem.CurrentData.isNewGame)
-        {
-            StartCoroutine(TeleportAndSyncParallax(SaveSystem.CurrentData.cameraPos));
-        }else if (SpawnPos != Vector3.zero)
+        // 1. Check our unified static variable
+        if (SpawnPos != Vector3.zero)
         {
             StartCoroutine(TeleportAndSyncParallax(SpawnPos));
+            
+            // CRITICAL: Reset it to zero immediately so the NEXT scene 
+            // doesn't accidentally use this same position!
             SpawnPos = Vector3.zero; 
+        }
+        // 2. Only load save if we didn't have a transition spawn
+        else if (PlayerController.ShouldTeleportToSave && SaveSystem.CurrentData != null && !SaveSystem.CurrentData.isNewGame)
+        {
+            StartCoroutine(TeleportAndSyncParallax(SaveSystem.CurrentData.cameraPos));
         }
     }
 

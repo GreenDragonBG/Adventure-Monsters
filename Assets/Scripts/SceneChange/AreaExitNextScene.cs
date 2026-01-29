@@ -14,7 +14,8 @@ namespace SceneChange
         protected override void OnCameraDisabled()
         {
             PlayerSpawnScript.SpawnPos = nextStartPos;
-            CameraController.SpawnPos= Vector3.zero;
+            CameraController.SpawnPos = Vector3.zero;
+            PlayerController.ShouldTeleportToSave = false;
             base.OnCameraDisabled();
         }
     }

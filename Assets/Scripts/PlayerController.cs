@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour {
         if (ShouldTeleportToSave && !SaveSystem.CurrentData.isNewGame && SceneManager.GetActiveScene().name == SaveSystem.CurrentData.lastScene)
         {
                 StartCoroutine(TeleportToSave());
+                canDash = SaveSystem.CurrentData.hasUnlockedDash;
         }
     }
     

@@ -77,6 +77,8 @@ public class MushBoss : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
+        
+        LoadState();
     }
 
     //Constantly keeps track of the size and attacks on every time intreval
@@ -122,7 +124,8 @@ public class MushBoss : MonoBehaviour
     {
         if (bossBarScript.currentHealth<=0)
         {
-            Instantiate(alePrefab, new Vector3(transform.position.x,transform.position.y+5), Quaternion.identity);
+            SaveDeathState();
+            Instantiate(alePrefab, new Vector3(transform.position.x,transform.position.y+8), Quaternion.identity);
             bossBar.SetActive(false);
             headHit.enabled = false;
             foreach (ParticleSystem ps in spores.GetComponentsInChildren<ParticleSystem>())
@@ -259,5 +262,37 @@ public class MushBoss : MonoBehaviour
             yield return null;
         }
         transform.localScale = targetScale;
+        gameObject.SetActive(false);
+    }
+    
+    private void SaveDeathState()
+    {
+        SaveSystem.CurrentData.mushIsDead = true;
+    }
+
+    private void LoadState()
+    {
+        if (SaveSystem.CurrentData.mushIsDead)
+        {
+            bossHealth = 0;
+            bossBar.SetActive(false);
+            bossBar.SetActive(false);
+            headHit.enabled = false;
+            foreach (ParticleSystem ps in spores.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Stop();
+            }
+            spores.enabled = false;
+            foreach (MushOrb orb in orbs)
+            {
+                Destroy(orb.gameObject);
+            }
+            if (heartObject!=null)
+            {
+                Destroy(heartObject);
+            }
+            gameObject.SetActive(false);
+            enabled = false;
+        }
     }
 }

@@ -26,7 +26,13 @@ namespace SceneChange
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     PlayerSpawnScript.SpawnPos = travelPosition;
-                    PlayerSpawnScript.CameraSpawnPos = cameraPosition;
+    
+                    // Use the CameraController's static variable instead
+                    CameraController.SpawnPos = cameraPosition; 
+    
+                    // Ensure we don't trigger a save-load teleport
+                    PlayerController.ShouldTeleportToSave = false;
+
                     SceneManager.LoadScene(sceneToLoad);
                 }
             }

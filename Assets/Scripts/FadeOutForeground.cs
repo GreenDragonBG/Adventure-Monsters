@@ -40,7 +40,14 @@ public class FadeOutForeground : MonoBehaviour
         if (currentFade != null)
             StopCoroutine(currentFade);
 
-        currentFade = StartCoroutine(fadeRoutine);
+        try
+        {
+            currentFade = StartCoroutine(fadeRoutine);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[Coroutine Failed to Start]: {e.Message}");
+        }
     }
 
     private IEnumerator FadeOut()
