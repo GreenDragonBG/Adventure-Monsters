@@ -42,9 +42,7 @@ public class SaveSystem : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
-
-    // --- NEW METHOD ---
+    
     public static void ClearSave()
     {
         if (File.Exists(SavePath))
@@ -55,5 +53,10 @@ public class SaveSystem : MonoBehaviour
 
         // Reset the data in RAM so the current session starts fresh
         CurrentData = new GameData();
+    }
+
+    public static bool SaveExists()
+    {
+        return File.Exists(SavePath);
     }
 }
