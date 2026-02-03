@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartMenue : MonoBehaviour
 {
@@ -70,5 +71,25 @@ public class StartMenue : MonoBehaviour
             }
             yield return new WaitForSeconds(0.04f);
         }
+    }
+    
+    public void NewGameButton()
+    {
+        SaveSystem.CreateNewGameSave();
+        SceneManager.LoadScene(1);
+    }
+
+    public void ContinueButton()
+    {
+        SaveSystem.LoadToTheLastSave();
+        SaveSystem.LoadFromFile();
+        SceneManager.LoadScene(SaveSystem.CurrentData.lastScene);
+    }
+    
+    public void LoadButton()
+    {
+        SaveSystem.LoadSpecificSave(0);
+        SaveSystem.LoadFromFile();
+        SceneManager.LoadScene(SaveSystem.CurrentData.lastScene);
     }
 }

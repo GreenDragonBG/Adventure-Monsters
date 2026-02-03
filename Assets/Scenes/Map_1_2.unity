@@ -2859,7 +2859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8677130043345756654, guid: afad2d6301cd2494ea7bb629c515d46e, type: 3}
       propertyPath: sceneToLoad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8677130043345756654, guid: afad2d6301cd2494ea7bb629c515d46e, type: 3}
       propertyPath: cameraPosition.x

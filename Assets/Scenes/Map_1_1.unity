@@ -9551,6 +9551,10 @@ PrefabInstance:
       value: CaveEntrance
       objectReference: {fileID: 0}
     - target: {fileID: 8677130043345756654, guid: afad2d6301cd2494ea7bb629c515d46e, type: 3}
+      propertyPath: sceneToLoad
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677130043345756654, guid: afad2d6301cd2494ea7bb629c515d46e, type: 3}
       propertyPath: cameraPosition.x
       value: -0.3
       objectReference: {fileID: 0}
