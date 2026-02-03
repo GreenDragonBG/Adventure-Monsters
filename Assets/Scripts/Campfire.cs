@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -72,6 +73,16 @@ public class Campfire : MonoBehaviour
         {
             SaveSystem.CurrentData.activatedCampfires.Add(campfireID);
         }
+        
+        string folderPath = Path.Combine(Application.persistentDataPath, "Screenshots");
+        string screenshotPath = Path.Combine( folderPath,"Screenshot_"+ Path.GetFileNameWithoutExtension(SaveSystem.SavePath) + ".png");
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        ScreenCapture.CaptureScreenshot(screenshotPath);
 
         // 5. COMMIT EVERYTHING TO JSON
         // This is the only time the file on your hard drive changes

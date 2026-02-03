@@ -6,6 +6,7 @@ public class StartMenue : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuNoSaves;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject loadMenu;
 
     [Header("Cloud Layers")]
     [SerializeField] private CloudSettings layer1;
@@ -32,6 +33,7 @@ public class StartMenue : MonoBehaviour
         } else {
             mainMenuNoSaves.SetActive(true);
         }
+        loadMenu.SetActive(false);
     }
 
     private void Start()
@@ -88,8 +90,6 @@ public class StartMenue : MonoBehaviour
     
     public void LoadButton()
     {
-        SaveSystem.LoadSpecificSave(0);
-        SaveSystem.LoadFromFile();
-        SceneManager.LoadScene(SaveSystem.CurrentData.lastScene);
+        loadMenu.SetActive(true);
     }
 }

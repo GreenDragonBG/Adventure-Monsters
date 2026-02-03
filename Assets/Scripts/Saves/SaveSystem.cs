@@ -6,7 +6,7 @@ using System.Linq;
 
 public class SaveSystem : MonoBehaviour
 {
-    private static string _savePath;
+    public static string SavePath;
     public static GameData CurrentData = new GameData();
 
     public static void SaveToFile()
@@ -14,17 +14,17 @@ public class SaveSystem : MonoBehaviour
         SafetyCheck();
         
         string json = JsonUtility.ToJson(CurrentData, true);
-        File.WriteAllText(_savePath, json);
-        Debug.Log("Game Saved to: " + _savePath);
+        File.WriteAllText(SavePath, json);
+        Debug.Log("Game Saved to: " + SavePath);
     }
     
     public static void LoadFromFile()
     {
         SafetyCheck();
 
-        if (File.Exists(_savePath))
+        if (File.Exists(SavePath))
         {
-            string json = File.ReadAllText(_savePath);
+            string json = File.ReadAllText(SavePath);
             CurrentData = JsonUtility.FromJson<GameData>(json);
         }
         else
@@ -37,9 +37,9 @@ public class SaveSystem : MonoBehaviour
     {
         SafetyCheck();
         
-        if (File.Exists(_savePath))
+        if (File.Exists(SavePath))
         {
-            string json = File.ReadAllText(_savePath);
+            string json = File.ReadAllText(SavePath);
             CurrentData = JsonUtility.FromJson<GameData>(json);
 
             // Reload the current scene
@@ -79,11 +79,11 @@ public class SaveSystem : MonoBehaviour
         saves =saves.OrderByDescending(File.GetLastWriteTime).ToArray();
         if (saves.Length != 0)
         {
-            _savePath =  saves[0];
+            SavePath =  saves[0];
         }
         else
         {
-            _savePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
         }
     }
 
@@ -95,12 +95,12 @@ public class SaveSystem : MonoBehaviour
         {
             if (i == index)
             {
-                _savePath = saves[i];
+                SavePath = saves[i];
                 return;
             }
         }
 
-        _savePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+        SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
     }
 
     public static void CreateNewGameSave()
@@ -109,19 +109,19 @@ public class SaveSystem : MonoBehaviour
 
         if (saves.Length != 0)
         {
-            _savePath = Path.Combine(Application.persistentDataPath, $"gamesave_{saves.Length}.json");
+            SavePath = Path.Combine(Application.persistentDataPath, $"gamesave_{saves.Length}.json");
         }
         else
         {
-            _savePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
         }
     }
 
     public static void SafetyCheck()
     {
-        if (_savePath ==null)
+        if (SavePath ==null)
         {
-            _savePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
         }
     }
 }
