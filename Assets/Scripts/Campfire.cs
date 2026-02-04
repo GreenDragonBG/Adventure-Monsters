@@ -74,18 +74,18 @@ public class Campfire : MonoBehaviour
             SaveSystem.CurrentData.activatedCampfires.Add(campfireID);
         }
         
-        string folderPath = Path.Combine(Application.persistentDataPath, "Screenshots");
-        string screenshotPath = Path.Combine( folderPath,"Screenshot_"+ Path.GetFileNameWithoutExtension(SaveSystem.SavePath) + ".png");
-
+        string folderPath = Path.GetDirectoryName(SaveSystem.SavePath);
+        string saveName = Path.GetFileNameWithoutExtension(SaveSystem.SavePath);
+        
         if (!Directory.Exists(folderPath))
         {
             Directory.CreateDirectory(folderPath);
         }
-
+        
+        string screenshotPath = Path.Combine(folderPath, saveName + ".png");
+        
         ScreenCapture.CaptureScreenshot(screenshotPath);
-
-        // 5. COMMIT EVERYTHING TO JSON
-        // This is the only time the file on your hard drive changes
+        
         SaveSystem.CurrentData.isNewGame = false;
         SaveSystem.SaveToFile();
 

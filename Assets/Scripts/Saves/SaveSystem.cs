@@ -4,24 +4,34 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 
-public class SaveSystem : MonoBehaviour
+public static class SaveSystem
 {
     public static string SavePath;
     public static GameData CurrentData = new GameData();
+
+    // Helper to get the folder containing the current JSON
+    public static string GetCurrentSaveDirectory()
+    {
+        SafetyCheck();
+        return Path.GetDirectoryName(SavePath);
+    }
 
     public static void SaveToFile()
     {
         SafetyCheck();
         
+        // Ensure the specific folder for this save exists
+        string folder = Path.GetDirectoryName(SavePath);
+        if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
         string json = JsonUtility.ToJson(CurrentData, true);
         File.WriteAllText(SavePath, json);
         Debug.Log("Game Saved to: " + SavePath);
     }
-    
+
     public static void LoadFromFile()
     {
         SafetyCheck();
-
         if (File.Exists(SavePath))
         {
             string json = File.ReadAllText(SavePath);
@@ -33,95 +43,118 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    public static void ReloadToLastSave()
+    // New logic: Look for folders instead of loose files
+    public static string[] GetSaveFolders()
     {
-        SafetyCheck();
+        if (!Directory.Exists(Application.persistentDataPath)) return new string[0];
         
-        if (File.Exists(SavePath))
-        {
-            string json = File.ReadAllText(SavePath);
-            CurrentData = JsonUtility.FromJson<GameData>(json);
-
-            // Reload the current scene
-            SceneManager.LoadScene(CurrentData.lastScene);
-        }
-        else
-        {
-            SceneManager.LoadScene(1);
-        }
-    }
-
-    public static void ClearSave()
-    {
-        string[] saves =  Directory.GetFiles(Application.persistentDataPath, "*.json");
-        foreach (string s in saves)
-        {
-            File.Delete(s);
-        }
-        Debug.Log("Save file deleted.");
-        
-        CurrentData = new GameData();
-    }
-
-    public static bool SaveExists()
-    {
-        string[] saves =  Directory.GetFiles(Application.persistentDataPath, "*.json");
-        if (saves.Length != 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static void LoadToTheLastSave()
-    {
-        string[] saves = Directory.GetFiles(Application.persistentDataPath, "*.json");
-        saves =saves.OrderByDescending(File.GetLastWriteTime).ToArray();
-        if (saves.Length != 0)
-        {
-            SavePath =  saves[0];
-        }
-        else
-        {
-            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
-        }
-    }
-
-    public static void LoadSpecificSave(int index)
-    {
-        string[] saves = Directory.GetFiles(Application.persistentDataPath, "*.json");
-
-        for (int i =0; i < saves.Length; i++)
-        {
-            if (i == index)
-            {
-                SavePath = saves[i];
-                return;
-            }
-        }
-
-        SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+        // We look for directories that contain a .json file inside them
+        return Directory.GetDirectories(Application.persistentDataPath)
+            .OrderByDescending(d => Directory.GetLastWriteTime(d))
+            .ToArray();
     }
 
     public static void CreateNewGameSave()
     {
-        string[] saves = Directory.GetFiles(Application.persistentDataPath, "*.json");
+        int saveCount = GetSaveFolders().Length;
+        string saveName = $"gamesave_{saveCount}";
+        // Path: .../persistentDataPath/gamesave_0/gamesave_0.json
+        string folderPath = Path.Combine(Application.persistentDataPath, saveName);
+        SavePath = Path.Combine(folderPath, saveName + ".json");
+    }
 
-        if (saves.Length != 0)
+    public static void LoadSpecificSave(int index)
+    {
+        string[] folders = GetSaveFolders();
+        if (index >= 0 && index < folders.Length)
         {
-            SavePath = Path.Combine(Application.persistentDataPath, $"gamesave_{saves.Length}.json");
+            string folderName = Path.GetFileName(folders[index]);
+            SavePath = Path.Combine(folders[index], folderName + ".json");
         }
         else
         {
-            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+            CreateNewGameSave();
         }
     }
 
+    public static void LoadToTheLastSave()
+    {
+        string[] folders = GetSaveFolders();
+        if (folders.Length > 0)
+        {
+            string folderName = Path.GetFileName(folders[0]); // Most recent folder
+            SavePath = Path.Combine(folders[0], folderName + ".json");
+        }
+        else
+        {
+            CreateNewGameSave();
+        }
+    }
+    
+    public static void ClearSave()
+    {
+        // Get all directories in the persistent data path
+        string[] saveFolders = Directory.GetDirectories(Application.persistentDataPath);
+
+        foreach (string folder in saveFolders)
+        {
+            try 
+            {
+                // The 'true' parameter tells Unity to delete the folder 
+                // AND everything inside it (JSON and PNG).
+                Directory.Delete(folder, true);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Failed to delete folder {folder}: {e.Message}");
+            }
+        }
+
+        Debug.Log("All save folders and screenshots deleted.");
+    
+        // Reset data to defaults
+        CurrentData = new GameData();
+        SavePath = null;
+    }
+    
+    public static void ReloadToLastSave()
+    {
+        // 1. Refresh SavePath to point to the most recent folder/file
+        LoadToTheLastSave();
+    
+        // 2. Check if that file actually exists
+        if (File.Exists(SavePath))
+        {
+            // 3. Read the JSON
+            string json = File.ReadAllText(SavePath);
+            CurrentData = JsonUtility.FromJson<GameData>(json);
+
+            // 4. Move the player back to the last saved scene
+            if (!string.IsNullOrEmpty(CurrentData.lastScene))
+            {
+                SceneManager.LoadScene(CurrentData.lastScene);
+            }
+            else
+            {
+                // Fallback if scene name is missing
+                SceneManager.LoadScene(1);
+            }
+        }
+        else
+        {
+            // If no saves exist at all, go to the first level
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    public static bool SaveExists() => GetSaveFolders().Length > 0;
+
     public static void SafetyCheck()
     {
-        if (SavePath ==null)
+        if (string.IsNullOrEmpty(SavePath))
         {
-            SavePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
+            string folderPath = Path.Combine(Application.persistentDataPath, "gamesave");
+            SavePath = Path.Combine(folderPath, "gamesave.json");
         }
     }
 }

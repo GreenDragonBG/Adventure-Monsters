@@ -24,16 +24,7 @@ public class StartMenue : MonoBehaviour
 
     private void Awake()
     {
-        mainMenuNoSaves.SetActive(false);
-        mainMenu.SetActive(false);
-
-        // Check if a save file actually exists on the disk
-        if (SaveSystem.SaveExists()) {
-            mainMenu.SetActive(true);
-        } else {
-            mainMenuNoSaves.SetActive(true);
-        }
-        loadMenu.SetActive(false);
+        MainMenuSetUp();
     }
 
     private void Start()
@@ -74,7 +65,21 @@ public class StartMenue : MonoBehaviour
             yield return new WaitForSeconds(0.04f);
         }
     }
-    
+
+    public void MainMenuSetUp()
+    {
+        mainMenuNoSaves.SetActive(false);
+        mainMenu.SetActive(false);
+
+        // Check if a save file actually exists on the disk
+        if (SaveSystem.SaveExists()) {
+            mainMenu.SetActive(true);
+        } else {
+            mainMenuNoSaves.SetActive(true);
+        }
+        loadMenu.SetActive(false);
+    }
+
     public void NewGameButton()
     {
         SaveSystem.CreateNewGameSave();
