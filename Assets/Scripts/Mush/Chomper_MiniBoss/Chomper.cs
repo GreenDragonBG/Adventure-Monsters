@@ -84,7 +84,6 @@ public class Chomper : MonoBehaviour
     private VineTouchSensor  vineTouchSensor;
     private SpriteRenderer[] vines;
     private Color transparentColor;
-    private bool isBeingDestroyed = false;
 
     private void Start()
     {

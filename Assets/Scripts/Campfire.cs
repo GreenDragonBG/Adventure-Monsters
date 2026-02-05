@@ -40,7 +40,7 @@ public class Campfire : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             ActivateCampfire(other);
         }

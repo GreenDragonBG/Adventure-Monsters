@@ -46,11 +46,11 @@ public static class SaveSystem
     // New logic: Look for folders instead of loose files
     public static string[] GetSaveFolders()
     {
-        if (!Directory.Exists(Application.persistentDataPath)) return new string[0];
+        if (!Directory.Exists(Application.persistentDataPath)) return Array.Empty<string>();
         
         // We look for directories that contain a .json file inside them
         return Directory.GetDirectories(Application.persistentDataPath)
-            .OrderByDescending(d => Directory.GetLastWriteTime(d))
+            .OrderByDescending(Directory.GetLastWriteTime)
             .ToArray();
     }
 
@@ -58,7 +58,6 @@ public static class SaveSystem
     {
         int saveCount = GetSaveFolders().Length;
         string saveName = $"gamesave_{saveCount}";
-        // Path: .../persistentDataPath/gamesave_0/gamesave_0.json
         string folderPath = Path.Combine(Application.persistentDataPath, saveName);
         SavePath = Path.Combine(folderPath, saveName + ".json");
     }

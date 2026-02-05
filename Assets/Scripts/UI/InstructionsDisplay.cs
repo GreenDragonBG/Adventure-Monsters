@@ -7,19 +7,16 @@ public class InstructionsDisplay : MonoBehaviour
 {
     
     [SerializeField] private TextMeshProUGUI continueText;
-    private PlayerController player;
     private void Start()
     {
-        player= FindAnyObjectByType<PlayerController>();
         continueText.gameObject.SetActive(false);
-        player.canMove = false;
-        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        Time.timeScale = 0f;
         StartCoroutine(PopUp());
     }
     
     private IEnumerator PopUp()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSecondsRealtime(5);
         
         continueText.gameObject.SetActive(true);
     }
@@ -29,7 +26,7 @@ public class InstructionsDisplay : MonoBehaviour
         if (continueText.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.SetActive(false);
-            player.canMove = true;
+            Time.timeScale = 1f;
         }
     }
 }

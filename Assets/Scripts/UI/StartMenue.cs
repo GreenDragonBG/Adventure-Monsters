@@ -7,6 +7,7 @@ public class StartMenue : MonoBehaviour
     [SerializeField] private GameObject mainMenuNoSaves;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject loadMenu;
+    [SerializeField] private GameObject optionsMenu;
 
     [Header("Cloud Layers")]
     [SerializeField] private CloudSettings layer1;
@@ -29,6 +30,7 @@ public class StartMenue : MonoBehaviour
 
     private void Start()
     {
+        PlayerController.ShouldTeleportToSave = true;
         // Initialize and start all three layers
         SetupAndStartLayer(layer1);
         SetupAndStartLayer(layer2);
@@ -48,14 +50,11 @@ public class StartMenue : MonoBehaviour
         {
             foreach (Transform cloud in layer.transforms)
             {
-                // IMPORTANT: Skip the parent transform
-                // Moving the parent would move all clouds twice!
                 if (cloud == layer.parent.transform) continue;
 
                 Vector3 pos = cloud.position;
                 pos.x -= layer.speed;
-
-                // Wrap around when reaching the edge
+                
                 if (pos.x < layer.minX) {
                     pos.x = layer.maxX;
                 }
@@ -70,8 +69,7 @@ public class StartMenue : MonoBehaviour
     {
         mainMenuNoSaves.SetActive(false);
         mainMenu.SetActive(false);
-
-        // Check if a save file actually exists on the disk
+        
         if (SaveSystem.SaveExists()) {
             mainMenu.SetActive(true);
         } else {
@@ -96,5 +94,15 @@ public class StartMenue : MonoBehaviour
     public void LoadButton()
     {
         loadMenu.SetActive(true);
+    }
+
+    public void OptionsButton()
+    {
+        optionsMenu.SetActive(true);
+    }
+
+    public void ExitButton()
+    {
+        Application.Quit();
     }
 }

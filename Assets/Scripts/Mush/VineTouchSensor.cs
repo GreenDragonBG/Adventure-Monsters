@@ -5,7 +5,7 @@ using UnityEngine;
 public class VineTouchSensor : MonoBehaviour
 {
    private BezierSpline spline;
-   private Collider2D collider2D;
+   private  new Collider2D collider2D;
    [SerializeField]public GameObject lightPrefab;
 
    private void Start()
