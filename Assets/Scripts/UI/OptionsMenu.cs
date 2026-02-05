@@ -39,13 +39,41 @@ public class OptionsMenu : MonoBehaviour
         
         cameraShake.onValueChanged.AddListener(delegate { OptionsSave.Data.CameraShake = cameraShake.isOn; OptionsSave.SaveOptions(); });
         
-        videoResolution.onValueChanged.AddListener(delegate { OptionsSave.Data.VideoResolution = videoResolution.value; OptionsSave.SaveOptions(); });
+        videoResolution.onValueChanged.AddListener(delegate { OptionsSave.Data.VideoResolution = videoResolution.value; OptionsSave.SaveOptions(); SetScreenResolution();});
         vSync.onValueChanged.AddListener(delegate { OptionsSave.Data.VSync = vSync.isOn; OptionsSave.SaveOptions(); });
-        fullscreen.onValueChanged.AddListener(delegate { OptionsSave.Data.Fullscreen = vSync.isOn; OptionsSave.SaveOptions(); });
+        fullscreen.onValueChanged.AddListener(delegate { OptionsSave.Data.Fullscreen = vSync.isOn; OptionsSave.SaveOptions(); SetScreenResolution(); });
     }
-    
+
+    private void SetScreenResolution()
+    {
+        switch (videoResolution.value)
+        {
+           case 0:
+               Screen.SetResolution(3840, 2160, fullscreen.isOn);
+               break;
+           case 1: 
+               Screen.SetResolution(2560, 1440, fullscreen.isOn);
+               break;
+           case 2:
+               Screen.SetResolution(1920, 1080, fullscreen.isOn);
+               break;
+           case 3:
+               Screen.SetResolution(1600, 900, fullscreen.isOn);
+               break;
+           case 4:
+               Screen.SetResolution(1280, 720, fullscreen.isOn);
+               break;
+           case 5:
+               Screen.SetResolution(960, 540, fullscreen.isOn);
+               break;
+        }
+        
+        Debug.Log("Screen resolution set to " + Screen.currentResolution+ " Fullscreen set to " + fullscreen.isOn);
+    }
+
     public void ExitButton()
     {
         gameObject.SetActive(false);
     }
+    
 }

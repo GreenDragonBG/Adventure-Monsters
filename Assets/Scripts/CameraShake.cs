@@ -1,10 +1,13 @@
 using System.Collections;
+using Saves;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
     public IEnumerator Shake(float duration, float magnitude)
     {
+        if (!OptionsSave.Data.CameraShake) yield break;
+
         Vector3 originalPos = transform.localPosition;
 
         float elapsed = 0.0f;
