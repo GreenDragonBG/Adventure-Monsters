@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
@@ -9,66 +10,116 @@ public class Campfire : MonoBehaviour
     [Header("ID")]
     [SerializeField] private string campfireID;
 
-    private Transform fire;
-    private Light2D fireLight;
+    private Transform _fire;
+    private Light2D _fireLight;
+    private Transform _player;
+    private bool _isMoving;
 
     [SerializeField] private float scaleGrowth = 0.001f;
     [SerializeField] private float timeInterval = 0.1f;
 
     void Start()
     {
-        fireLight = GetComponentInChildren<Light2D>();
-        fire = fireLight.transform.parent;
+        _fireLight = GetComponentInChildren<Light2D>();
+        _fire = _fireLight.transform.parent;
 
-        fire.localScale = new Vector3(0.1f, 0.1f, 1f);
-        fireLight.enabled = false;
-
+        _fire.localScale = new Vector3(0.1f, 0.1f, 1f);
+        _fireLight.enabled = false;
+        
         LoadState();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && !_isMoving && _player != null)
+        {
+            StartCoroutine(MovePlayerToOffset());
+        }
     }
 
     private void LoadState()
     {
-        // Check our JSON list instead of PlayerPrefs
         if (SaveSystem.CurrentData.activatedCampfires.Contains(campfireID))
         {
-            fireLight.enabled = true;
-            fire.localScale = Vector3.one * 3f;
+            _fireLight.enabled = true;
+            _fire.localScale = Vector3.one * 3f;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (other.CompareTag("Player")) _player = other.transform;
+    }
 
-        if (Input.GetKeyDown(KeyCode.C))
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) _player = null;
+    }
+
+    private IEnumerator MovePlayerToOffset()
+    {
+        
+        Animator playerAnim = _player.GetComponent<Animator>();
+        Rigidbody2D playerRb = _player.GetComponent<Rigidbody2D>();
+        PlayerController playerController = _player.GetComponent<PlayerController>();
+        if (playerAnim.GetBool("isResting"))
         {
-            ActivateCampfire(other);
+            playerAnim.SetBool("isResting", false);
+            playerController.canMove = true;
+            yield break;
         }
+
+        _isMoving = true;
+        playerController.canMove = false;
+        float directionToPlayer = _player.position.x > transform.position.x ? 1.0f : -1.0f;
+        float targetX = transform.position.x + directionToPlayer;
+
+        playerAnim.SetBool("IsRunning", true);
+
+        float stopThreshold = 0.05f;
+
+        // 2. Movement Loop
+        while (Mathf.Abs(_player.position.x - targetX) > stopThreshold)
+        {
+            // Determine direction to the TARGET point
+            float moveDir = _player.position.x > targetX ? -1f : 1f;
+            playerRb.linearVelocity = new Vector2(moveDir * playerController.speed, playerRb.linearVelocity.y);
+
+            _player.transform.localScale = moveDir>0 ? 
+                new Vector2(Math.Abs(_player.transform.localScale.x), _player.transform.localScale.y) : 
+                new Vector2(-Math.Abs(_player.transform.localScale.x), _player.transform.localScale.y);
+
+            yield return null;
+        }
+
+        // 3. Cleanup & Snap
+        playerRb.linearVelocity = Vector2.zero;
+        _player.position = new Vector3(targetX, _player.position.y, _player.position.z);
+        playerAnim.SetBool("IsRunning", false);
+
+        playerAnim.SetBool("isResting", true);
+        ActivateCampfire(_player.GetComponent<Collider2D>());
+        _isMoving = false;
     }
 
     private void ActivateCampfire(Collider2D player)
     {
-        fireLight.enabled = true;
+        _fireLight.enabled = true;
 
-        // 1. Update Player & Scene Data in RAM
         SaveSystem.CurrentData.lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.CurrentData.playerPos = player.transform.position;
     
-        // 2. Update Camera Data in RAM
         if (Camera.main != null)
         {
             SaveSystem.CurrentData.cameraPos = Camera.main.transform.position;
         }
 
-        // 3. Collect Parallax Data
-        // We find all layers and tell them to update the lists in SaveSystem.CurrentData
         ParallaxLayer[] layers = FindObjectsByType<ParallaxLayer>(sortMode:FindObjectsSortMode.InstanceID);
         foreach (ParallaxLayer layer in layers)
         {
             layer.SaveState();
         }
 
-        // 4. Update this specific campfire's status
         if (!SaveSystem.CurrentData.activatedCampfires.Contains(campfireID))
         {
             SaveSystem.CurrentData.activatedCampfires.Add(campfireID);
@@ -77,28 +128,23 @@ public class Campfire : MonoBehaviour
         string folderPath = Path.GetDirectoryName(SaveSystem.SavePath);
         string saveName = Path.GetFileNameWithoutExtension(SaveSystem.SavePath);
         
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-        }
+        if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
         
         string screenshotPath = Path.Combine(folderPath, saveName + ".png");
-        
         ScreenCapture.CaptureScreenshot(screenshotPath);
         
         SaveSystem.CurrentData.isNewGame = false;
         SaveSystem.SaveToFile();
 
-        // Visuals/Gameplay
         player.GetComponent<PlayerController>().playerHealth = 90;
         StartCoroutine(GrowFire());
     }
 
     private IEnumerator GrowFire()
     {
-        while (fire.localScale.x < 3f)
+        while (_fire.localScale.x < 3f)
         {
-            fire.localScale += Vector3.one * scaleGrowth;
+            _fire.localScale += Vector3.one * scaleGrowth;
             yield return new WaitForSeconds(timeInterval);
         }
     }
