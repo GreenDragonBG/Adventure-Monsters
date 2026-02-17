@@ -26,7 +26,6 @@ public static class SaveSystem
 
         string json = JsonUtility.ToJson(CurrentData, true);
         File.WriteAllText(SavePath, json);
-        Debug.Log("Game Saved to: " + SavePath);
     }
 
     public static void LoadFromFile()
@@ -99,17 +98,13 @@ public static class SaveSystem
         {
             try 
             {
-                // The 'true' parameter tells Unity to delete the folder 
-                // AND everything inside it (JSON and PNG).
                 Directory.Delete(folder, true);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Debug.LogError($"Failed to delete folder {folder}: {e.Message}");
             }
         }
-
-        Debug.Log("All save folders and screenshots deleted.");
     
         // Reset data to defaults
         CurrentData = new GameData();

@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f036465018605a9439cff0161bd36a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  escapeMenu: {fileID: 0}
   playerHealth: 90
   canMove: 1
   speed: 6
@@ -777,8 +778,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.005026147, y: 0.010270934}
-  m_Size: {x: 0.07368995, y: 0.17945826}
+  m_Offset: {x: 0.005026147, y: 0.0107}
+  m_Size: {x: 0.07368995, y: 0.177}
   m_Direction: 0
 --- !u!1 &7131102956826903380
 GameObject:
