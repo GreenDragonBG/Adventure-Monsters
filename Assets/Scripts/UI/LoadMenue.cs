@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class LoadMenue : MonoBehaviour
 {
-    [SerializeField] public StartMenue startMenu;
     [SerializeField] public GameObject loadButtonPrefab;
     [SerializeField] public Transform contentParent;
 
@@ -44,7 +43,7 @@ public class LoadMenue : MonoBehaviour
                     // Note: Ensure your Rect values match your UI needs
                     newButton.GetComponentsInChildren<Image>()[^1].sprite = Sprite.Create(
                         tex, 
-                        new Rect(702, 320, tex.width / 3.5f, tex.height / 3.5f),
+                        new Rect(tex.width/3f, tex.height/3f, tex.width / 3.5f, tex.height / 3.5f),
                         new Vector2(0.5f, 0.5f)
                     );
                 }

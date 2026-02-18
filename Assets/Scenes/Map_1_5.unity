@@ -3689,7 +3689,7 @@ PrefabInstance:
       objectReference: {fileID: 241905304}
     - target: {fileID: 2943091624790254239, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
       propertyPath: playerHealth
-      value: 30
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6989845619953983607, guid: c5b67f0646cfde84b8a9be1d6bd1867d, type: 3}
       propertyPath: m_Name
@@ -14469,7 +14469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8505887563285762921, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8505887563285762921, guid: a70bab3a78104d94dbb1f2a64f1fa6db, type: 3}
       propertyPath: m_LocalPosition.z

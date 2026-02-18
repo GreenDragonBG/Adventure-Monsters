@@ -14,7 +14,7 @@ public class Campfire : MonoBehaviour
     [SerializeField] private string campfireID;
     [SerializeField] private float targetFireScale = 3f;
     [SerializeField] private float scaleGrowthSpeed = 2f;
-    [SerializeField] private float stopThreshold = 0.05f;
+    private float _stopThreshold = 0.2f;
     [SerializeField] private TextMeshProUGUI savedText;
 
     [Header("Fire")]
@@ -167,7 +167,7 @@ public class Campfire : MonoBehaviour
 
         _playerAnim.SetBool(IsRunning, true);
 
-        while (Mathf.Abs(_playerTransform.position.x - targetX) > stopThreshold)
+        while (Mathf.Abs(_playerTransform.position.x - targetX) > _stopThreshold)
         {
             float moveDir = _playerTransform.position.x > targetX ? -1f : 1f;
             _playerRb.linearVelocity = new Vector2(moveDir * _playerController.speed, _playerRb.linearVelocity.y);

@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -118,12 +118,12 @@ TextureImporter:
       name: Big_Mushroom_walk_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 0
         y: 0
-        width: 26
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -140,12 +140,12 @@ TextureImporter:
       name: Big_Mushroom_walk_1
       rect:
         serializedVersion: 2
-        x: 57
+        x: 42
         y: 0
-        width: 26
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Big_Mushroom_walk_2
       rect:
         serializedVersion: 2
-        x: 99
+        x: 84
         y: 0
-        width: 26
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: Big_Mushroom_walk_3
       rect:
         serializedVersion: 2
-        x: 141
+        x: 126
         y: 0
-        width: 26
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,12 +206,12 @@ TextureImporter:
       name: Big_Mushroom_walk_4
       rect:
         serializedVersion: 2
-        x: 183
+        x: 168
         y: 0
-        width: 26
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,12 +228,12 @@ TextureImporter:
       name: Big_Mushroom_walk_5
       rect:
         serializedVersion: 2
-        x: 223
+        x: 210
         y: 0
-        width: 28
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e52d298180d4a654e8f4e0c42c050518
     internalID: 0
     vertices: []
     indices: 
@@ -258,7 +258,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":42.0,"y":42.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Big_Mushroom_walk_0: -5974991009983980239
       Big_Mushroom_walk_1: 2402210167645047688

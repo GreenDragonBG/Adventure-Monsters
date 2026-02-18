@@ -35,7 +35,8 @@ public class ParticleDamage : MonoBehaviour
 
     private void Update()
     {
-        if(!particleSystem.isPlaying){
+        if (! particleCollision.enabled && Time.time - _lastDamageTime >= DamageCooldown)
+        {
             particleCollision.enabled = true;
         }
     }

@@ -41,7 +41,7 @@ namespace UI
             cameraShake.onValueChanged.AddListener(delegate { OptionsSave.Data.CameraShake = cameraShake.isOn; OptionsSave.SaveOptions(); });
         
             videoResolution.onValueChanged.AddListener(delegate { OptionsSave.Data.VideoResolution = videoResolution.value; OptionsSave.SaveOptions(); SetScreenResolution();});
-            vSync.onValueChanged.AddListener(delegate { OptionsSave.Data.VSync = vSync.isOn; OptionsSave.SaveOptions(); });
+            vSync.onValueChanged.AddListener(delegate { OptionsSave.Data.VSync = vSync.isOn; OptionsSave.SaveOptions(); SetVSync();});
             fullscreen.onValueChanged.AddListener(delegate { OptionsSave.Data.Fullscreen = fullscreen.isOn; OptionsSave.SaveOptions(); SetScreenResolution(); });
         }
 
@@ -71,9 +71,21 @@ namespace UI
                     Screen.SetResolution(1920, 1080, fullscreen.isOn);
                     break;
             }
-        
-            Debug.Log($"Resolution set to {Screen.width}x{Screen.height}, Fullscreen: {fullscreen.isOn}");
         }
+        
+        private void SetVSync()
+            {
+                if (vSync.isOn)
+                {
+                    QualitySettings.vSyncCount = 1;
+                }
+                else
+                {
+                    QualitySettings.vSyncCount = 0;
+                    Application.targetFrameRate = 60; 
+                }
+
+            }
 
         public void ExitButton()
         {
