@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class BigMushroom : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform player;
+    private Transform _player;
     private Rigidbody2D _rb;
     private Animator _anim;
 
     [Header("Health")] 
-    private int _health = 60;
+    public int health = 60;
 
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
@@ -35,6 +36,7 @@ public class BigMushroom : MonoBehaviour
     
     [Header("Attack")]
     private float _lastTimeAttacked = -Mathf.Infinity;
+    [SerializeField]private float rangeToAttack = 1f;
     private bool _isInAttackRange;
 
     [Header("Damaged")]
@@ -48,15 +50,15 @@ public class BigMushroom : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
 
-        if (player == null) 
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (_player == null) 
+            _player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         StartCoroutine(RoamRoutine());
     }
 
     void FixedUpdate()
     {
-        if (!player) return;
+        if (!_player) return;
 
         UpdateChecks();
         Move();
@@ -71,13 +73,13 @@ public class BigMushroom : MonoBehaviour
 
     private void Move()
     {
-        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
+        float distanceToPlayer = Mathf.Abs(_player.position.x - transform.position.x);
 
         if (distanceToPlayer <= viewRange)
         {
             _isRoaming = false;
 
-            float direction = Mathf.Sign(player.position.x - transform.position.x);
+            float direction = Mathf.Sign(_player.position.x - transform.position.x);
             
             Flip(direction);
 
@@ -145,8 +147,8 @@ public class BigMushroom : MonoBehaviour
 
     private void TriggerAttack()
     {
-        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x);
-        if (distanceToPlayer <= 1f && Time.time-_lastTimeAttacked>2f)
+        float distanceToPlayer = Mathf.Abs(_player.position.x - transform.position.x);
+        if (distanceToPlayer <= rangeToAttack && Time.time-_lastTimeAttacked>2f)
         {
             _lastTimeAttacked =  Time.time;
             _anim.SetTrigger("Attack");
@@ -161,12 +163,16 @@ public class BigMushroom : MonoBehaviour
         } else if (other.CompareTag("Attack") && Time.time-_lastTimeDamaged>0.5f)
         {
             _lastTimeDamaged = Time.time;
-            _health -= other.transform.parent.GetComponent<PlayerController>().attackDamage;
+            health -= other.transform.parent.GetComponent<PlayerController>().attackDamage;
             _anim.SetTrigger("Hurt");
-            if (_health<=0)
+            if (health<=0)
             {
                 _anim.SetTrigger("Death");
             }
+        }else if (other.CompareTag("EnemyAreaEdge"))
+        {
+            _roamDirection *= -1;
+            Flip(_roamDirection);
         }
     }
 
@@ -182,7 +188,7 @@ public class BigMushroom : MonoBehaviour
     {
         if(!_isInAttackRange) return;
         
-        player.gameObject.GetComponent<Animator>()?.SetTrigger("Damage");
+        _player.gameObject.GetComponent<Animator>()?.SetTrigger("Damage");
         DoDamage.DealDamage();
     }
 
@@ -191,10 +197,37 @@ public class BigMushroom : MonoBehaviour
         _anim.SetBool("isDead", true);
         enabled = false;
         _rb.linearVelocity = Vector2.zero;
-        _rb.isKinematic = true;
-        foreach (Collider2D collider2D in GetComponents<Collider2D>())
+        _rb.bodyType = RigidbodyType2D.Kinematic;
+        foreach (Collider2D c2D in GetComponents<Collider2D>())
         {
-            collider2D.enabled = false;
+            c2D.enabled = false;
         }
+    }
+
+    private void AfterDeath()
+    {
+        StartCoroutine(AfterDeathCoroutine());
+    }
+
+    private IEnumerator AfterDeathCoroutine()
+    {
+        Vector3 startScale = transform.localScale;
+        float direction = Mathf.Sign(startScale.x);
+        float currentAbsScale = Mathf.Abs(startScale.x);
+
+        while (currentAbsScale > 0.1f)
+        {
+            currentAbsScale -= 0.1f;
+            
+            transform.localScale = new Vector3(
+                currentAbsScale * direction, 
+                currentAbsScale, 
+                startScale.z
+            );
+        
+            yield return new WaitForSeconds(0.05f);
+        }
+    
+        Destroy(gameObject);
     }
 }
