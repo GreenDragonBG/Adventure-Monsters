@@ -27,7 +27,6 @@ public class SeedLauncher : MonoBehaviour
         float vx = distance.x / timeTillLand;
         float vy = ( distance.y / timeTillLand) + (0.5f * Mathf.Abs(Physics2D.gravity.y)  * timeTillLand);
         
-        Debug.Log(vy);
         seed.SetActive(true);
         seedRb.bodyType = RigidbodyType2D.Dynamic;
         seedRb.linearVelocity = new Vector2(vx,vy);
