@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Weapon
   - Attack
+  - NPCAreaEdge
   layers:
   - Default
   - TransparentFX
@@ -18,10 +19,10 @@ TagManager:
   - Fire
   - Enemy
   - Projectile
-  - 
-  - 
-  - 
-  - 
+  - RoamingAreaEdge
+  - NPC
+  - Player
+  - PlayerWallOff
   - 
   - 
   - 

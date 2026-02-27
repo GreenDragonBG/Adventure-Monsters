@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3920682600751513560}
   - component: {fileID: 3649798338344894360}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Attack
   m_TagString: Attack
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284206906841796062}
   - component: {fileID: 7856474634448605868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLight_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 969975341697185448}
   - component: {fileID: 4024061242186611753}
   - component: {fileID: 2586018277217442249}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LandEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,6 +202,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4024061242186611753
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -247,6 +248,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 661e79096482e6842a120d026ab7eff5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -256,7 +258,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2586018277217442249
 Animator:
@@ -292,7 +293,7 @@ GameObject:
   - component: {fileID: 2786369730191889551}
   - component: {fileID: 5146937119425784083}
   - component: {fileID: 2564106346133235891}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2947984232136741616}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324092118734067632}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2284445968004838104}
   - component: {fileID: 7590862175221060591}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLight_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2887067914708248717}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +569,7 @@ GameObject:
   - component: {fileID: 3464313381243415040}
   - component: {fileID: 5211819084185731672}
   - component: {fileID: 6302045899601529055}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -597,6 +598,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6640331308127932175
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -642,6 +644,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 1551791314, guid: 27fece2979bfdde429f1a3c5a7ed2750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -651,7 +654,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1756303456811113387
 MonoBehaviour:
@@ -791,7 +793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5278100344400430438}
   - component: {fileID: 2331179856538048902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLight_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596446579518170091}
   - component: {fileID: 7525367068921835416}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AxeLight 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951690005126575884}
   - component: {fileID: 7294172892627653482}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLight_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1047,7 @@ GameObject:
   - component: {fileID: 591307617635820022}
   - component: {fileID: 6030606734571634795}
   - component: {fileID: 1105860888299584338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cooldowns_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6698078688503237204}
   - component: {fileID: 130501662338882525}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLight_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
