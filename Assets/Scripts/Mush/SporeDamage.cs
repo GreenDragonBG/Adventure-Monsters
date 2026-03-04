@@ -1,14 +1,12 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ParticleDamage : MonoBehaviour
 {
     [SerializeField] public bool willTeleport;
-    private new ParticleSystem particleSystem;
+    private ParticleSystem _particleSystem;
     private static readonly float DamageCooldown = 1f;
     
-    private ParticleSystem.CollisionModule particleCollision;
+    private ParticleSystem.CollisionModule _particleCollision;
 
     private static float _lastDamageTime = -Mathf.Infinity;
 
@@ -17,7 +15,7 @@ public class ParticleDamage : MonoBehaviour
         // Only damage the player
         if (other.CompareTag("Player"))
         {
-            particleCollision.enabled = false;
+            _particleCollision.enabled = false;
             // Check if cooldown has passed
             if (Time.time - _lastDamageTime >= DamageCooldown)
             {
@@ -35,16 +33,16 @@ public class ParticleDamage : MonoBehaviour
 
     private void Update()
     {
-        if (! particleCollision.enabled && Time.time - _lastDamageTime >= DamageCooldown)
+        if (!_particleCollision.enabled && Time.time - _lastDamageTime >= DamageCooldown)
         {
-            particleCollision.enabled = true;
+            _particleCollision.enabled = true;
         }
     }
 
     void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
-        particleCollision = particleSystem.collision;
-        particleCollision.type = ParticleSystemCollisionType.World;
+        _particleSystem = GetComponent<ParticleSystem>();
+        _particleCollision = _particleSystem.collision;
+        _particleCollision.type = ParticleSystemCollisionType.World;
     }
 }

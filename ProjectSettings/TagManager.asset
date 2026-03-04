@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Attack
   - NPCAreaEdge
+  - EnemyAreaEdge
   layers:
   - Default
   - TransparentFX
