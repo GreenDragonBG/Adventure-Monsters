@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
@@ -10,12 +12,20 @@ public class NPC : MonoBehaviour
 
     [Header("Interaction Logic")]
     [SerializeField] private bool isInteractable = true;
+    [SerializeField] private GameObject DialogBox;
+    private bool _boxIsMoving;
+	private TextMeshProUGUI _dialogText;
+	private Image _dialogIcon;
+	[SerializeField] private Sprite icon;
+    [SerializeField] private string dialog;
+    private string[] _dialogLines;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 2f;
     [SerializeField] private float stopDistance = 0.6f;
     [SerializeField] private float slowDistance = 1f;
     [SerializeField] private float viewRange = 5f;
+    [SerializeField] private float rotationOffset = 0.345f;
     private float _previousScaleX; // Tracked for offset logic
 
     [Header("Roaming Settings")]
@@ -45,6 +55,11 @@ public class NPC : MonoBehaviour
 
         _previousScaleX = transform.localScale.x; // Initialize scale tracker
         StartCoroutine(RoamRoutine());
+
+        if (isInteractable)
+        {
+            _dialogLines = dialog.Split("\\");
+        }
     }
 
     void FixedUpdate()
@@ -64,7 +79,7 @@ public class NPC : MonoBehaviour
 
     private void HandleBehavior()
     {
-        if (_player == null) return;
+        if (!_player) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, _player.position);
 
@@ -88,6 +103,7 @@ public class NPC : MonoBehaviour
         {
             _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
             _anim.SetBool(IsWalking, false);
+            StartCoroutine(Interact(distanceToPlayer));
             return;
         }
 
@@ -151,16 +167,59 @@ public class NPC : MonoBehaviour
         if (_previousScaleX > 0 && newScaleX < 0)
         {
             // Flipped from Right to Left
-            transform.position += new Vector3(-0.345f, 0f, 0f);
+            transform.position += new Vector3(-rotationOffset, 0f, 0f);
         }
         else if (_previousScaleX < 0 && newScaleX > 0)
         {
             // Flipped from Left to Right
-            transform.position += new Vector3(0.345f, 0f, 0f);
+            transform.position += new Vector3(rotationOffset, 0f, 0f);
         }
 
         // Apply the scale and save for the next check
         transform.localScale = new Vector3(newScaleX, transform.localScale.y, transform.localScale.z);
         _previousScaleX = newScaleX;
+    }
+
+    private IEnumerator Interact(float distanceToPlayer)
+    {
+        if(!isInteractable) yield return null;
+
+        if (distanceToPlayer <= stopDistance && Input.GetKeyDown(KeyCode.Space))
+        {
+            _boxIsMoving = true;
+            StartCoroutine(MoveDialogBoxUp());
+            while (_boxIsMoving)
+            {
+                yield return null;
+            }
+            foreach (string dialogLine in _dialogLines)
+            {
+                _dialogText.text = dialogLine;
+                yield return new WaitForSeconds((float)dialogLine.Length /2);
+            }
+            _dialogText.text = string.Empty;
+            _dialogIcon.sprite = null;
+            DialogBox.SetActive(false);
+        }
+    }
+
+    private IEnumerator MoveDialogBoxUp()
+    {
+        DialogBox.SetActive(true);
+        _dialogText = DialogBox.GetComponentInChildren<TextMeshProUGUI>();
+        _dialogIcon = DialogBox.GetComponentsInChildren<Image>()[1];
+        _dialogIcon.sprite = icon;
+
+        float tempY = DialogBox.transform.position.y;
+
+        while (DialogBox.transform.position.y < 0)
+        {
+            tempY += 0.2f;
+            DialogBox.transform.position = new Vector2(DialogBox.transform.position.x,tempY);
+            
+            yield return new WaitForSeconds(0.0001f);
+        }
+
+        _boxIsMoving = false;
     }
 }
