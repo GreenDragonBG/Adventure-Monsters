@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   isInteractable: 0
+  dialogBox: {fileID: 0}
+  icon: {fileID: 0}
+  dialog: 
   speed: 1.5
   stopDistance: 0.6
   slowDistance: 1

@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
@@ -12,7 +13,8 @@ public class NPC : MonoBehaviour
 
     [Header("Interaction Logic")]
     [SerializeField] private bool isInteractable = true;
-    [SerializeField] private GameObject DialogBox;
+    private bool _hasBeenInteractedWith;
+    [SerializeField] private GameObject dialogBox;
     private bool _boxIsMoving;
 	private TextMeshProUGUI _dialogText;
 	private Image _dialogIcon;
@@ -184,38 +186,72 @@ public class NPC : MonoBehaviour
     {
         if(!isInteractable) yield return null;
 
-        if (distanceToPlayer <= stopDistance && Input.GetKeyDown(KeyCode.Space))
+        if (distanceToPlayer <= stopDistance && Input.GetKeyDown(KeyCode.Space) && !_hasBeenInteractedWith)
         {
+            _hasBeenInteractedWith = true;
+            //Move Up
             _boxIsMoving = true;
             StartCoroutine(MoveDialogBoxUp());
             while (_boxIsMoving)
             {
                 yield return null;
             }
+            
+            //Dialog
             foreach (string dialogLine in _dialogLines)
             {
                 _dialogText.text = dialogLine;
                 yield return new WaitForSeconds((float)dialogLine.Length /2);
             }
+            
+            //Move Down
+            _boxIsMoving = true;
+            StartCoroutine(MoveDialogBoxDown());
+            while (_boxIsMoving)
+            {
+                yield return null;
+            }
+            
+            //End
             _dialogText.text = string.Empty;
             _dialogIcon.sprite = null;
-            DialogBox.SetActive(false);
+            dialogBox.SetActive(false);
+            _hasBeenInteractedWith = false;
         }
     }
 
     private IEnumerator MoveDialogBoxUp()
     {
-        DialogBox.SetActive(true);
-        _dialogText = DialogBox.GetComponentInChildren<TextMeshProUGUI>();
-        _dialogIcon = DialogBox.GetComponentsInChildren<Image>()[1];
+        dialogBox.SetActive(true);
+        _dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
+        _dialogIcon = dialogBox.GetComponentsInChildren<Image>()[1];
         _dialogIcon.sprite = icon;
 
-        float tempY = DialogBox.transform.position.y;
+        float tempY = dialogBox.transform.position.y;
 
-        while (DialogBox.transform.position.y < 0)
+        while (dialogBox.transform.localPosition.y < -225f)
         {
-            tempY += 0.2f;
-            DialogBox.transform.position = new Vector2(DialogBox.transform.position.x,tempY);
+            tempY += 3f;
+            dialogBox.transform.position = new Vector2(dialogBox.transform.position.x,tempY);
+            
+            yield return new WaitForSeconds(0.0001f);
+        }
+
+        _boxIsMoving = false;
+    }
+    private IEnumerator MoveDialogBoxDown()
+    {
+        dialogBox.SetActive(true);
+        _dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
+        _dialogIcon = dialogBox.GetComponentsInChildren<Image>()[1];
+        _dialogIcon.sprite = icon;
+
+        float tempY = dialogBox.transform.position.y;
+
+        while (dialogBox.transform.localPosition.y > -350f)
+        {
+            tempY -= 3f;
+            dialogBox.transform.position = new Vector2(dialogBox.transform.position.x,tempY);
             
             yield return new WaitForSeconds(0.0001f);
         }
