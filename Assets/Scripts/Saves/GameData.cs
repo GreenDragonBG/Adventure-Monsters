@@ -16,6 +16,10 @@ public class GameData
     //PlayerAbilities
     public bool hasUnlockedDash;
     
+    //Tutorials
+    public bool tutorialIsActive = true;
+    public List<string> doneInfoScreens = new List<string>();
+    
     // Parallax
     public List<string> parallaxKeys = new List<string>();
     public List<Vector3> parallaxValues = new List<Vector3>();

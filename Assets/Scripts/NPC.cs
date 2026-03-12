@@ -61,6 +61,10 @@ public class NPC : MonoBehaviour
         if (isInteractable)
         {
             _dialogLines = dialog.Split("\\");
+            dialogBox.SetActive(true);
+            _dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
+            _dialogIcon = dialogBox.GetComponentsInChildren<Image>()[1];
+            dialogBox.SetActive(false);
         }
     }
 
@@ -223,8 +227,6 @@ public class NPC : MonoBehaviour
     private IEnumerator MoveDialogBoxUp()
     {
         dialogBox.SetActive(true);
-        _dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
-        _dialogIcon = dialogBox.GetComponentsInChildren<Image>()[1];
         _dialogIcon.sprite = icon;
 
         float tempY = dialogBox.transform.position.y;
@@ -242,8 +244,6 @@ public class NPC : MonoBehaviour
     private IEnumerator MoveDialogBoxDown()
     {
         dialogBox.SetActive(true);
-        _dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
-        _dialogIcon = dialogBox.GetComponentsInChildren<Image>()[1];
         _dialogIcon.sprite = icon;
 
         float tempY = dialogBox.transform.position.y;
