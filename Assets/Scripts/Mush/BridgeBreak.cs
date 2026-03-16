@@ -16,5 +16,9 @@ public class BridgeBreak : MonoBehaviour
     private void BreakBridge()
     {
         partToBreak.enabled = false;
+        foreach (Collider2D c in transform.GetComponentsInChildren<Collider2D>())
+        {
+            c.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
     }
 }

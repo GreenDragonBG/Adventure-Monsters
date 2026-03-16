@@ -9,7 +9,6 @@ public class GameData
     public bool isNewGame = true;
     public string lastScene;
     public Vector3 playerPos;
-    public Vector3 cameraPos;
     public List<string> activatedCampfires = new List<string>();
     public List<string> destroyedHearts = new List<string>();
     
@@ -17,7 +16,6 @@ public class GameData
     public bool hasUnlockedDash;
     
     //Tutorials
-    public bool tutorialIsActive = true;
     public List<string> doneInfoScreens = new List<string>();
     
     // Parallax

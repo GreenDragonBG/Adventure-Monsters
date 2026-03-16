@@ -17,6 +17,8 @@ namespace Saves
             public int VideoResolution = 2;
             public bool VSync = true;
             public bool Fullscreen = true;
+            //Tutorial
+            public bool TutorialIsActive = true;
         }
         
         public static string SavePath => Path.Combine(Application.persistentDataPath, "options.json");

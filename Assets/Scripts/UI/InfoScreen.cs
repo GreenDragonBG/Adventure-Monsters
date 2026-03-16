@@ -1,18 +1,20 @@
 using System;
 using System.Collections;
+using Saves;
 using TMPro;
 using UnityEngine;
 
 public class InfoScreen : MonoBehaviour
 {
     [SerializeField] private string infoID;
+    [SerializeField] private bool hasDelay;
     private GameObject _box;
     private TextMeshProUGUI _continueText;
     private Collider2D _collider2D;
     
     void Start()
     {
-        if (!SaveSystem.CurrentData.tutorialIsActive)
+        if (!OptionsSave.Data.TutorialIsActive)
         {
             SaveSystem.CurrentData.doneInfoScreens.Add(infoID);
         }
@@ -32,14 +34,18 @@ public class InfoScreen : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _collider2D.enabled = false;
-            _box.SetActive(true);
-            Time.timeScale = 0f;
             StartCoroutine(PopUp());
         }
     }
     
     private IEnumerator PopUp()
     {
+        if (hasDelay)
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
+        _box.SetActive(true);
+        Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(3.5f);
         
         _continueText.gameObject.SetActive(true);

@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
         // 2. Only load save if we didn't have a transition spawn
         else if (PlayerController.ShouldTeleportToSave && SaveSystem.CurrentData != null && !SaveSystem.CurrentData.isNewGame)
         {
-            StartCoroutine(TeleportAndSyncParallax(SaveSystem.CurrentData.cameraPos));
+            StartCoroutine(TeleportAndSyncParallax(new Vector3(SaveSystem.CurrentData.playerPos.x, SaveSystem.CurrentData.playerPos.y + 1, -10)));
         }
     }
 

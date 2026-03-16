@@ -1,5 +1,7 @@
 using System.Collections;
 using System.IO;
+using Mush.Enemies;
+using Saves;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -14,7 +16,7 @@ public class Campfire : MonoBehaviour
     [SerializeField] private string campfireID;
     [SerializeField] private float targetFireScale = 3f;
     [SerializeField] private float scaleGrowthSpeed = 2f;
-    private float _stopThreshold = 0.2f;
+    private readonly float _stopThreshold = 0.2f;
     [SerializeField] private TextMeshProUGUI savedText;
 
     [Header("Fire")]
@@ -145,6 +147,8 @@ public class Campfire : MonoBehaviour
         if (_playerAnim.GetBool(IsResting))
         {
             SetRestingState(false);
+            MushroomEnemy.Respawn();
+            MushSlug.Respawn();
             yield break;
         }
 
@@ -267,8 +271,6 @@ public class Campfire : MonoBehaviour
         data.playerPos = _playerTransform.position;
         data.isNewGame = false;
 
-        data.cameraPos = _camera.transform.position;
-
         // Save Parallax
         var layers = FindObjectsByType<ParallaxLayer>(FindObjectsSortMode.InstanceID);
         foreach (var layer in layers) layer.SaveState();
@@ -280,6 +282,13 @@ public class Campfire : MonoBehaviour
         // Screenshot & File IO
         CaptureSaveScreenshot();
         SaveSystem.SaveToFile();
+
+        if (OptionsSave.Data.TutorialIsActive)
+        {
+            OptionsSave.Data.TutorialIsActive = false;
+            OptionsSave.SaveOptions();
+        }
+
     }
 
     private void CaptureSaveScreenshot()

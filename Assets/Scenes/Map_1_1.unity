@@ -10847,6 +10847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoScreen
   infoID: 1_1_2
+  hasDelay: 0
 --- !u!1 &717999567
 GameObject:
   m_ObjectHideFlags: 0
@@ -18461,6 +18462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoScreen
   infoID: 1_1_1
+  hasDelay: 0
 --- !u!61 &1225567749
 BoxCollider2D:
   m_ObjectHideFlags: 0

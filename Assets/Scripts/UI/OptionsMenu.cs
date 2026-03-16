@@ -33,7 +33,7 @@ namespace UI
             videoResolution.value = OptionsSave.Data.VideoResolution;
             vSync.isOn = OptionsSave.Data.VSync;
             fullscreen.isOn = OptionsSave.Data.Fullscreen;
-        
+            
             masterVolume.onValueChanged.AddListener(delegate { OptionsSave.Data.MasterVolume = masterVolume.value; OptionsSave.SaveOptions(); });
             musicVolume.onValueChanged.AddListener(delegate { OptionsSave.Data.MusicVolume = musicVolume.value; OptionsSave.SaveOptions(); });
             sfxVolume.onValueChanged.AddListener(delegate { OptionsSave.Data.SfxVolume = sfxVolume.value; OptionsSave.SaveOptions();});
