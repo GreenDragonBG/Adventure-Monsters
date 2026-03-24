@@ -3,18 +3,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 public static class SaveSystem
 {
     public static string SavePath;
     public static GameData CurrentData = new GameData();
-
-    // Helper to get the folder containing the current JSON
-    public static string GetCurrentSaveDirectory()
-    {
-        SafetyCheck();
-        return Path.GetDirectoryName(SavePath);
-    }
+    private static readonly byte[] Key = Encoding.UTF8.GetBytes("[jAn2LZoUIf;5UJKCRSH*7Jg!,O:J2Y6");
 
     public static void SaveToFile()
     {
@@ -25,19 +21,56 @@ public static class SaveSystem
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
         string json = JsonUtility.ToJson(CurrentData, true);
-        File.WriteAllText(SavePath, json);
+
+        //Encryption off the file and then save
+        using Aes aes = Aes.Create();
+        aes.Key = Key;
+        aes.GenerateIV(); // Unique IV for every save file
+        byte[] iv = aes.IV;
+
+        using FileStream fs = new FileStream(SavePath, FileMode.Create);
+        //Write the IV to the start of the file (16 bytes)
+        fs.Write(iv, 0, iv.Length);
+
+        // Wrap the stream in a CryptoStream to encrypt the rest
+        using CryptoStream cs = new CryptoStream(fs, aes.CreateEncryptor(), CryptoStreamMode.Write);
+
+        using StreamWriter sw = new StreamWriter(cs);
+        sw.Write(json);
     }
 
     public static void LoadFromFile()
     {
         SafetyCheck();
-        if (File.Exists(SavePath))
+        if (!File.Exists(SavePath))
         {
-            string json = File.ReadAllText(SavePath);
-            CurrentData = JsonUtility.FromJson<GameData>(json);
+            CurrentData = new GameData();
+            return;
         }
-        else
+        
+        //Decryption of the file
+        try
         {
+            using Aes aes = Aes.Create();
+            aes.Key = Key;
+            byte[] iv = new byte[16];
+
+            using FileStream fs = new FileStream(SavePath, FileMode.Open);
+            //Read the 16-byte IV back from the start of the file
+            fs.Read(iv, 0, iv.Length);
+            aes.IV = iv;
+
+            //Decrypt the remaining data
+            using (CryptoStream cs = new CryptoStream(fs, aes.CreateDecryptor(), CryptoStreamMode.Read))
+            using (StreamReader sr = new StreamReader(cs))
+            {
+                string json = sr.ReadToEnd();
+                CurrentData = JsonUtility.FromJson<GameData>(json);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to decrypt save: {e.Message}. Data may be corrupted or key is wrong.");
             CurrentData = new GameData();
         }
     }
@@ -119,9 +152,31 @@ public static class SaveSystem
         // 2. Check if that file actually exists
         if (File.Exists(SavePath))
         {
-            // 3. Read the JSON
-            string json = File.ReadAllText(SavePath);
-            CurrentData = JsonUtility.FromJson<GameData>(json);
+            // 3. Read the JSON by decryption
+            try
+            {
+                using Aes aes = Aes.Create();
+                aes.Key = Key;
+                byte[] iv = new byte[16];
+
+                using FileStream fs = new FileStream(SavePath, FileMode.Open);
+                //Read the 16-byte IV back from the start of the file
+                fs.Read(iv, 0, iv.Length);
+                aes.IV = iv;
+
+                //Decrypt the remaining data
+                using (CryptoStream cs = new CryptoStream(fs, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                using (StreamReader sr = new StreamReader(cs))
+                {
+                    string json = sr.ReadToEnd();
+                    CurrentData = JsonUtility.FromJson<GameData>(json);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to load save: {e.Message}. Data may be corrupted.");
+                CurrentData = new GameData();
+            }
 
             // 4. Move the player back to the last saved scene
             if (!string.IsNullOrEmpty(CurrentData.lastScene))
@@ -143,7 +198,7 @@ public static class SaveSystem
 
     public static bool SaveExists() => GetSaveFolders().Length > 0;
 
-    public static void SafetyCheck()
+    private static void SafetyCheck()
     {
         if (string.IsNullOrEmpty(SavePath))
         {

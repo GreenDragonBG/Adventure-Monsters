@@ -147,8 +147,17 @@ public class Campfire : MonoBehaviour
         if (_playerAnim.GetBool(IsResting))
         {
             SetRestingState(false);
-            MushroomEnemy.Respawn();
-            MushSlug.Respawn();
+            
+            //Respawn Enemies
+            if (FindAnyObjectByType<MushroomEnemy>())
+            {
+                MushroomEnemy.Respawn();
+            }
+            if (FindAnyObjectByType<MushSlug>())
+            {
+                MushSlug.Respawn();
+            }
+
             yield break;
         }
 

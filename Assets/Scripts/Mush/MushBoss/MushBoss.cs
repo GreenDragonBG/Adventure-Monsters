@@ -293,6 +293,10 @@ public class MushBoss : MonoBehaviour
             }
             gameObject.SetActive(false);
             enabled = false;
+            if (!SaveSystem.CurrentData.hasUnlockedDash)
+            {
+                Instantiate(alePrefab, new Vector3(transform.position.x,transform.position.y+8), Quaternion.identity);
+            }
         }
     }
 }

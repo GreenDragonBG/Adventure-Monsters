@@ -46,13 +46,13 @@ public class BlendingPlant : MonoBehaviour
 
     private IEnumerator RepeatAttack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         while (playerInside)
         {
             animator.SetTrigger("Attack");
 
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
         }
     }
 
