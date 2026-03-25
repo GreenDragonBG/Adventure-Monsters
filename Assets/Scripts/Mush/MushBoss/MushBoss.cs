@@ -116,7 +116,7 @@ public class MushBoss : MonoBehaviour
         }
         else if ( transform.localScale.y > normalSize)
         {
-            transform.localScale = new Vector3(1,transform.localScale.y - 0.003f, 1);
+            transform.localScale = new Vector3(1,transform.localScale.y -sizeChangerValue, 1);
         }
     }
 

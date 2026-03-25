@@ -68450,6 +68450,14 @@ PrefabInstance:
       propertyPath: alePrefab
       value: 
       objectReference: {fileID: 7215580542792651467, guid: f4354e2a536fae24683dc44b4f4f3806, type: 3}
+    - target: {fileID: 1875462522552185328, guid: 0e30b2382c80587469da391fd1c43947, type: 3}
+      propertyPath: bossHealth
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875462522552185328, guid: 0e30b2382c80587469da391fd1c43947, type: 3}
+      propertyPath: sizeChangerValue
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 3366202525006665589, guid: 0e30b2382c80587469da391fd1c43947, type: 3}
       propertyPath: m_RenderMode
       value: 4

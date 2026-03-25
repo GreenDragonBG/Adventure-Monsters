@@ -26,7 +26,7 @@ public class Chomper : MonoBehaviour
     [Header("BossHealth")]
     [SerializeField ]private GameObject bossBar;
     private BossBar bossBarScript;
-    private int bossHealth=120;
+    private int bossHealth=1200;
 
     [Header("Movement")]
     [SerializeField] private float speed = 2f;
